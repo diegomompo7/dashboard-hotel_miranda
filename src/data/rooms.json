@@ -1,0 +1,67 @@
+[
+    {
+      "id": 1,
+      "photos": [],
+      "roomType": "Single Bed",
+      "roomNumber": 66,
+      "description": "Habitación individual con una cama individual. Baño privado y vistas a la ciudad.",
+      "offer": "YES",
+      "priceNight": 189,
+      "discount": 30,
+      "cancellation": "Flexible",
+      "amenities": ["Wi-Fi", "TV", "Aire acondicionado"],
+      "is_available": false
+    },
+    {
+      "id": 2,
+      "photos": [],
+      "roomType": "Double Bed",
+      "roomNumber": 28,
+      "description": "Habitación doble con una cama matrimonial. Ideal para parejas. Vistas al jardín.",
+      "offer": "NO",
+      "priceNight": 66,
+      "discount": null,
+      "cancellation": "Moderate",
+      "amenities": ["Wi-Fi", "Minibar", "Caja fuerte"],
+      "is_available": false
+    },
+    {
+      "id": 3,
+      "photos": [],
+      "roomType": "Double Superior",
+      "roomNumber": 12,
+      "description": "Habitación doble superior con cama king-size. Amplio espacio y baño de lujo.",
+      "offer": "YES",
+      "priceNight": 114,
+      "discount": 10,
+      "cancellation": "Strict",
+      "amenities": [],
+      "is_available": false
+    },
+    {
+      "id": 4,
+      "photos": [],
+      "roomType": "Suite",
+      "roomNumber": 29,
+      "description": "Suite de lujo con dormitorio separado y sala de estar. Vistas panorámicas.",
+      "offer": "YES",
+      "priceNight": 101,
+      "discount": 20,
+      "cancellation": "Flexible",
+      "amenities": ["Wi-Fi", "Minibar", "Cocina privada"],
+      "is_available": false
+    },
+    {
+      "id": 5,
+      "photos": [],
+      "roomType": "Single Bed",
+      "roomNumber": 39,
+      "description": "Habitación individual con cama individual. Perfecta para viajeros solitarios.",
+      "offer": "NO",
+      "priceNight": 85,
+      "discount": null,
+      "cancellation": "Moderate",
+      "amenities": ["Wi-Fi", "TV", "Escritorio"],
+      "is_available": false
+    }
+  ]

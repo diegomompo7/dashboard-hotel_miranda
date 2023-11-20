@@ -1,0 +1,48 @@
+[
+    {
+      "id": 1,
+      "name": "Ana",
+      "surname": "García",
+      "email": "ana.garcia@gmail.com",
+      "phone": "+34676058384",
+      "subject": "Maravillosa experiencia",
+      "message": "Mi estancia en el hotel fue increíble. Desde la llegada, el personal fue muy atento y amable. Las instalaciones eran modernas y limpias. Definitivamente, recomendaré este hotel a mis amigos y familiares."
+    },
+    {
+      "id": 2,
+      "name": "Luis",
+      "surname": "Martínez",
+      "email": "luis.martinez@gmail.com",
+      "phone": "+34671490554",
+      "subject": "Problemas con la reserva",
+      "message": "Tuve algunos problemas con la reserva en línea. La plataforma era confusa y no recibí confirmación de inmediato. Afortunadamente, el personal de atención al cliente fue capaz de resolver la situación, pero creo que necesitan mejorar su sistema de reservas."
+    },
+    {
+      "id": 3,
+      "name": "Sofía",
+      "surname": "Hernández",
+      "email": "sofia.hernandez@gmail.com",
+      "phone": "+34639562067",
+      "subject": "Vacaciones inolvidables",
+      "message": "Mis vacaciones en el hotel fueron inolvidables. La ubicación era perfecta, cerca de todas las atracciones locales. Las habitaciones eran acogedoras y el personal siempre estaba dispuesto a ayudar. Definitivamente, volveré en mi próximo viaje."
+    },
+    {
+      "id": 4,
+      "name": "Javier",
+      "surname": "López",
+      "email": "javier.lopez@gmail.com",
+      "phone": "+34682495313",
+      "subject": "Servicio deficiente",
+      "message": "Estoy decepcionado con el servicio del hotel. La limpieza de la habitación no fue adecuada, y el personal no parecía estar muy comprometido. Fue una experiencia frustrante y no creo que regrese en el futuro."
+    },
+    {
+      "id": 5,
+      "name": "Carmen",
+      "surname": "Fernández",
+      "email": "carmen.fernandez@gmail.com",
+      "phone": "+34745892914",
+      "subject": "Buena relación calidad-precio",
+      "message": "La relación calidad-precio del hotel es excelente. Las habitaciones son cómodas y el desayuno incluido es una gran ventaja. Recomiendo este lugar a aquellos que buscan una estancia agradable sin gastar demasiado."
+    }
+  ]
+  

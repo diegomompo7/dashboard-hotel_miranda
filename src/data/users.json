@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "photo": "",
+    "name": "David",
+    "surname": "López",
+    "job": "Manager",
+    "email": "david.lopez@example.com",
+    "phone": "+34788128729",
+    "startDate": "13-02-2023",
+    "descriptionJob": "Responsable de la gestión operativa del hotel. Toma decisiones estratégicas y coordina las actividades de los diferentes departamentos.",
+    "status": "ACTIVE",
+    "password": "securePass123"
+  },
+  {
+    "id": 2,
+    "photo": "user2.jpg",
+    "name": "Elena",
+    "surname": "Gómez",
+    "job": "Recepcionista",
+    "email": "elena.gomez@example.com",
+    "phone": "+683517198",
+    "startDate": "11-12-2023",
+    "descriptionJob": "Atiende a los huéspedes en la recepción, realiza check-ins y check-outs, y proporciona información sobre servicios del hotel y la zona.",
+    "status": "ACTIVE",
+    "password": "hotel123pass"
+  },
+  {
+    "id": 3,
+    "photo": "user3.jpg",
+    "name": "Carlos",
+    "surname": "Fernández",
+    "job": "Servicio de Habitaciones",
+    "email": "carlos.fernandez@example.com",
+    "phone": "+34747047325",
+    "startDate": "15-07-2023",
+    "descriptionJob": "Encargado de asegurar un servicio impecable en las habitaciones. Atiende solicitudes de los huéspedes y mantiene la calidad del servicio.",
+    "status": "ACTIVE",
+    "password": "roomService456"
+  },
+  {
+    "id": 4,
+    "photo": "user4.jpg",
+    "name": "Laura",
+    "surname": "Martínez",
+    "job": "Recepcionista",
+    "email": "laura.martinez@example.com",
+    "phone": "+34680752567",
+    "startDate": "03-02-2023",
+    "descriptionJob": "Responsable de la recepción. Realiza check-ins y check-outs, brinda información a los huéspedes y gestiona reservas.",
+    "status": "INACTIVE",
+    "password": "receptionist789"
+  },
+  {
+    "id": 5,
+    "photo": "user5.jpg",
+    "name": "Isabel",
+    "surname": "Sánchez",
+    "job": "Servicio de Habitaciones",
+    "email": "isabel.sanchez@example.com",
+    "phone": "+34682283754",
+    "startDate": "28-07-2023",
+    "descriptionJob": "Asegura que las habitaciones estén limpias y bien abastecidas. Atiende a las solicitudes de los huéspedes para garantizar una experiencia agradable.",
+    "status": "ACTIVE",
+    "password": "roomAttendantABC"
+  }
+]
