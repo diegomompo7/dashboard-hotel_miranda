@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import Contact from "./components/Contact"
+import Dashboard from "./components/Dashboard"
+import GuestDetail from "./components/GuestDetail"
+import Guests from "./components/Guests"
+import Login from "./components/Login"
+import newUser from "./components/newUser"
+import newRoom from "./components/newRoom"
+import RoomList from "./components/RoomsList"
+import User from "./components/User";
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      a
     </div>
-  );
+  )
 }
 
 export default App;
