@@ -1,14 +1,14 @@
 import './App.css';
-import {ContactPage} from "./components/ContactPage"
-import {DashboardPage} from "./components/DashboardPage"
-import {GuestDetailPage} from "./components/GuestDetailPage"
-import { GuestsPage } from "./components/GuestsPage"
-import {LoginPage} from "./components/LoginPage"
-import newUserPage from "./components/newUserPage"
-import newRoomPage from "./components/newRoomPage"
-import {RoomsListPage} from "./components/RoomsListPage"
-import { Root } from './components/Root';
-import {UserPage} from "./components/UserPage";
+import {ContactPage} from "./pages/ContactPage"
+import {DashboardPage} from "./pages/DashboardPage"
+import {GuestDetailPage} from "./pages/GuestDetailPage"
+import { GuestsPage } from "./pages/GuestsPage"
+import {LoginPage} from "./pages/LoginPage"
+import newUserPage from "./pages/newUserPage"
+import newRoomPage from "./pages/newRoomPage"
+import {RoomsListPage} from "./pages/RoomsListPage"
+import { Root } from './pages/Root';
+import {UserPage} from "./pages/UserPage";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 

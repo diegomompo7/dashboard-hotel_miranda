@@ -2,21 +2,30 @@ import { IoIosSearch, IoMdHeartEmpty } from "react-icons/io";
 import { FiAlignLeft, FiBell } from "react-icons/fi";
 import { MdOutlineMail, MdOutlineMessage } from "react-icons/md";
 import styled from "styled-components";
+import { LuLayoutDashboard, LuCalendarCheck2  } from "react-icons/lu";
+import { TfiKey } from "react-icons/tfi";
+import { FaRegUser } from "react-icons/fa6";
+import { HiOutlinePuzzle } from "react-icons/hi";
+import { SlLogin } from "react-icons/sl";
 
-const styleIcons = `
+
+const styleIconsMenu = `
+       color: #799283;
+
+`
+const styleIcons =`
     width: 24px;
-    height: 24px
+    height: 24px;
     
 `
-
 const styleIconsHeader = `
-       margin-top: 51px;
-       margin-left: 57px;
+       margin-top: 3.188rem;
+       margin-left: 3%;
 `
 
 export const StyledMenuIcon = styled(FiAlignLeft)`
-        margin-top: 51px;
-        margin-left: 41px;
+        margin-top: 3.188rem;
+        margin-left: 2.1%;
         ${styleIcons}
 `
 export const StyledSearchIcon = styled(IoIosSearch)`
@@ -25,8 +34,8 @@ export const StyledSearchIcon = styled(IoIosSearch)`
 `
 export const StyledHeartIcon = styled(IoMdHeartEmpty)`
        ${styleIcons};
-       margin-top: 51px;
-       margin-left: 52px;
+       margin-top: 3.188rem;
+       margin-left: auto;
 
 `
 export const StyledEmailIcon = styled(MdOutlineMail)`
@@ -39,8 +48,29 @@ export const StyledBellIcon = styled(FiBell)`
        ${styleIconsHeader};
 
 `
-export const StyledMessageIcon = styled(MdOutlineMessage)`
+export const StyledLogOutIcon = styled(SlLogin)`
        ${styleIcons};
        ${styleIconsHeader};
+       margin-right: 3.125rem
+`
 
+export const StyledDashboardIcon = styled(LuLayoutDashboard)`
+       ${styleIconsMenu}
+       ${styleIcons}
+`
+export const StyledBookingIcon = styled(TfiKey)`
+       ${styleIconsMenu}
+       ${styleIcons}
+`
+export const StyledRoomsIcon = styled(LuCalendarCheck2)`
+       ${styleIconsMenu}
+       ${styleIcons}
+`
+export const StyledContactIcon = styled(FaRegUser)`
+       ${styleIconsMenu}
+       ${styleIcons}
+`
+export const StyledUsersIcon = styled(HiOutlinePuzzle)`
+       ${styleIconsMenu}
+       ${styleIcons}
 `

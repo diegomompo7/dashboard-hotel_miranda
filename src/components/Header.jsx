@@ -1,18 +1,23 @@
 import React from "react";
-import { StyledBox, StyledSquare } from "../styled/StyledBox";
+import { StyledBox, StyledMenuBox, StyledLogo, StyledBoxMenuProfile} from "../styled/StyledBox";
 import {
   StyledBellIcon,
+  StyledBookingIcon,
+  StyledContactIcon,
+  StyledDashboardIcon,
   StyledEmailIcon,
   StyledHeartIcon,
+  StyledLogOutIcon,
   StyledMenuIcon,
-  StyledMessageIcon,
-  StyledSearchIcon,
+  StyledRoomsIcon,
+  StyledUsersIcon,
 } from "../styled/StyledIcons";
-import { StyledTextHeader } from "../styled/StyledText";
-import { StyledSearch } from "../styled/StyledSearch";
-import { InputAdornment } from "@mui/material";
-import { FormControl, NativeSelect } from "@mui/material";
-import { StyledFormControl, StyledNativeSelect } from "../styled/StyledSelect";
+import { StyledTextUserMenu, StyledTextHeader, StyledTextLogo, StyledTextFooter } from "../styled/StyledText";
+import { StyledImgLogo, StyledTextImgLogo, StyledImgProfileMenu } from "../styled/StyledImg";
+import { StyledMenuItem } from "../styled/StyledMenuItem";
+import logo  from"../assets/img/logo.png"
+import textLogo from "../assets/img/textLogo.png"
+import { StyledButton } from "../styled/StyledButton";
 
 export const Header = () => {
   const [lang, setLang] = React.useState("");
@@ -22,37 +27,56 @@ export const Header = () => {
   };
 
   return (
-    <>
+    <div style={{display: 'flex'}}>
+    <StyledMenuBox>
+      <StyledLogo>
+        <StyledImgLogo src={logo} width="47px" height="40px"></StyledImgLogo>
+        <StyledTextLogo fontSize="0.75rem" fontFamily="'Poppins', sans-serif" color= "#5D5449" weight="300">
+            <StyledTextImgLogo src={textLogo} width="72px" height="23px"></StyledTextImgLogo>
+            <p>Hotel Admin Dashboard</p>
+        </StyledTextLogo>
+      </StyledLogo>
+
+      <StyledMenuItem>
+        <StyledDashboardIcon></StyledDashboardIcon>
+        <p>Dashboard</p>
+      </StyledMenuItem>
+      <StyledMenuItem>
+        <StyledBookingIcon></StyledBookingIcon>
+        <p>Room</p>
+      </StyledMenuItem>
+      <StyledMenuItem>
+        <StyledRoomsIcon></StyledRoomsIcon>
+        <p>Bookings</p>
+      </StyledMenuItem>
+      <StyledMenuItem>
+        <StyledContactIcon></StyledContactIcon>
+        <p>Guest</p>
+      </StyledMenuItem>
+      <StyledMenuItem>
+        <StyledUsersIcon></StyledUsersIcon>
+        <p>Concierge</p>
+      </StyledMenuItem>
+      <StyledBoxMenuProfile>
+        <StyledImgProfileMenu style={{background: "#C5C5C5"}} width="70px" height="70px" ></StyledImgProfileMenu>
+        <StyledTextUserMenu fontSize="1rem" fontFamily="'Poppins', sans-serif" color= "#5D5449" weight="500" >Diego Mompó</StyledTextUserMenu>
+        <StyledTextUserMenu fontSize="0.75rem" fontFamily="'Poppins', sans-serif" color= "#B2B2B2" weight="300" >diego@diegomompo.com</StyledTextUserMenu>
+        <StyledButton name="CONTACT_US">Contact Us</StyledButton>
+      </StyledBoxMenuProfile>
+      <StyledTextFooter name="travl">Travl Hotel Admin Dashboard</StyledTextFooter>
+      <StyledTextFooter name="copy">© 2020 All Rights Reserved</StyledTextFooter>
+      <StyledTextFooter name="made">Made with ♥ by Peterdraw</StyledTextFooter>
+    </StyledMenuBox>
       <StyledBox>
         <StyledMenuIcon></StyledMenuIcon>
-        <StyledTextHeader fontSize="1.7rem" color="#262626">
+        <StyledTextHeader fontSize="1.7rem" color="#393939" fontFamily="'Poppins', sans-serif" weight="600">
           Guest List
         </StyledTextHeader>
-        <StyledSearch
-        disableUnderline={true}
-          endAdornment={
-            <InputAdornment position="start">
-              <StyledSearchIcon></StyledSearchIcon>
-            </InputAdornment>
-          }
-        ></StyledSearch>
         <StyledHeartIcon></StyledHeartIcon>
         <StyledEmailIcon></StyledEmailIcon>
         <StyledBellIcon></StyledBellIcon>
-        <StyledMessageIcon></StyledMessageIcon>
-        <StyledSquare></StyledSquare>
-
-        <FormControl>
-          <StyledNativeSelect
-          disableUnderline={true}
-          style={{color: "#E23428"}}
-            defaultValue={10}
-          >
-            <option value={10}>EN</option>
-            <option value={20}>ES</option>
-          </StyledNativeSelect>
-        </FormControl>
+        <StyledLogOutIcon></StyledLogOutIcon>
       </StyledBox>
-    </>
+    </div>
   );
 };

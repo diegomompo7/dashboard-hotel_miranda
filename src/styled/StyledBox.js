@@ -3,16 +3,26 @@ import { Box} from "@mui/material";
 
 export const StyledBox = styled(Box)`
     height: 7.5rem;
+    width: 100%;
     display: flex;
 `
 
-export const StyledSquare = styled.div`
-    background: #C5C5C5;
-    width:3.75rem;
-    height: 3.75rem;
-    margin-top: 1.875rem;
-    margin-left: 4.313rem;
-    border-radius: 0.5rem;
+export const StyledMenuBox = styled(Box) `
+    width:18%;
+    height: 100vh;
+`
 
-    
+export const StyledLogo = styled(Box)`
+    display: flex;
+`
+
+export const StyledBoxMenuProfile = styled(Box) `
+    display: flex;
+    flex-direction: column;
+    width: 233px;
+    margin: 0 auto;
+    box-shadow: 0px 20px 30px #00000014;
+    text-align: center;
+    border-radius: 18px;
+
 `
