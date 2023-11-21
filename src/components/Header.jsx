@@ -18,17 +18,16 @@ import { StyledMenuItem } from "../styled/StyledMenuItem";
 import logo  from"../assets/img/logo.png"
 import textLogo from "../assets/img/textLogo.png"
 import { StyledButton } from "../styled/StyledButton";
+import { StyledLink } from "../styled/StyledLink";
 
 export const Header = () => {
-  const [lang, setLang] = React.useState("");
+  const [open, setOpen] = React.useState(false);
 
-  const handleChange = (event) => {
-    setLang(event.target.value);
-  };
 
   return (
     <div style={{display: 'flex'}}>
-    <StyledMenuBox>
+    { open === true &&
+    <StyledMenuBox >
       <StyledLogo>
         <StyledImgLogo src={logo} width="47px" height="40px"></StyledImgLogo>
         <StyledTextLogo fontSize="0.75rem" fontFamily="'Poppins', sans-serif" color= "#5D5449" weight="300">
@@ -39,23 +38,23 @@ export const Header = () => {
 
       <StyledMenuItem>
         <StyledDashboardIcon></StyledDashboardIcon>
-        <p>Dashboard</p>
+        <StyledLink to="/">Dashboard</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledBookingIcon></StyledBookingIcon>
-        <p>Room</p>
+        <StyledLink to="/rooms">Room</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledRoomsIcon></StyledRoomsIcon>
-        <p>Bookings</p>
+        <StyledLink to="/booking">Bookings</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledContactIcon></StyledContactIcon>
-        <p>Guest</p>
+        <StyledLink to="/contact">Guest</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledUsersIcon></StyledUsersIcon>
-        <p>Concierge</p>
+        <StyledLink to="/users">Concierge</StyledLink>
       </StyledMenuItem>
       <StyledBoxMenuProfile>
         <StyledImgProfileMenu style={{background: "#C5C5C5"}} width="70px" height="70px" ></StyledImgProfileMenu>
@@ -66,9 +65,9 @@ export const Header = () => {
       <StyledTextFooter name="travl">Travl Hotel Admin Dashboard</StyledTextFooter>
       <StyledTextFooter name="copy">© 2020 All Rights Reserved</StyledTextFooter>
       <StyledTextFooter name="made">Made with ♥ by Peterdraw</StyledTextFooter>
-    </StyledMenuBox>
+    </StyledMenuBox> }
       <StyledBox>
-        <StyledMenuIcon></StyledMenuIcon>
+        <StyledMenuIcon onClick={() => setOpen(!open)}></StyledMenuIcon>
         <StyledTextHeader fontSize="1.7rem" color="#393939" fontFamily="'Poppins', sans-serif" weight="600">
           Guest List
         </StyledTextHeader>
