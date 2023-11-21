@@ -67,7 +67,9 @@ export const Header = () => {
       <StyledTextFooter name="made">Made with ♥ by Peterdraw</StyledTextFooter>
     </StyledMenuBox> }
       <StyledBox>
-        <StyledMenuIcon onClick={() => setOpen(!open)}></StyledMenuIcon>
+        <StyledMenuIcon onClick={() => {
+          setOpen(!open)
+        }}></StyledMenuIcon>
         <StyledTextHeader fontSize="1.7rem" color="#393939" fontFamily="'Poppins', sans-serif" weight="600">
           Guest List
         </StyledTextHeader>

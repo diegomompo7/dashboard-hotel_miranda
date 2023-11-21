@@ -1,0 +1,77 @@
+[
+  {
+    "id": 1,
+    "name": "Alice",
+    "surname": "Johnson",
+    "orderDate": "2023-11-22",
+    "check_in": "2023-12-10",
+    "check_out": "2023-12-15",
+    "specialRequest": "Early check-in",
+    "roomType": {
+      "id": 3,
+      "roomType": "Double Superior",
+      "roomNumber": 12
+    },
+    "status": "Booked"
+  },
+  {
+    "id": 2,
+    "name": "Bob",
+    "surname": "Smith",
+    "orderDate": "2023-11-23",
+    "check_in": "2023-12-05",
+    "check_out": "2023-12-08",
+    "specialRequest": "Quiet room",
+    "roomType": {
+      "id": 4,
+      "roomType": "Suite",
+      "roomNumber": 29
+    },
+    "status": "Booked"
+  },
+  {
+    "id": 3,
+    "name": "Charlie",
+    "surname": "Brown",
+    "orderDate": "2023-11-24",
+    "check_in": "2023-12-20",
+    "check_out": "2023-12-25",
+    "specialRequest": "Extra pillows",
+    "roomType": {
+      "id": 1,
+      "roomType": "Single Bed",
+      "roomNumber": 66
+    },
+    "status": "Booked"
+  },
+  {
+    "id": 4,
+    "name": "David",
+    "surname": "Miller",
+    "orderDate": "2023-11-25",
+    "check_in": "2023-12-01",
+    "check_out": "2023-12-03",
+    "specialRequest": "Room with a view",
+    "roomType": {
+      "id": 2,
+      "roomType": "Double Bed",
+      "roomNumber": 28
+    },
+    "status": "Booked"
+  },
+  {
+    "id": 5,
+    "name": "Eva",
+    "surname": "Williams",
+    "orderDate": "2023-11-26",
+    "check_in": "2023-12-08",
+    "check_out": "2023-12-12",
+    "specialRequest": "Late check-out",
+    "roomType": {
+      "id": 5,
+      "roomType": "Single Bed",
+      "roomNumber": 39
+    },
+    "status": "Booked"
+  }
+]
