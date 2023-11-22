@@ -5,8 +5,10 @@
       "surname": "García",
       "email": "ana.garcia@gmail.com",
       "phone": "+34676058384",
+      "date": "2023-11-22 10:30",
       "subject": "Maravillosa experiencia",
-      "message": "Mi estancia en el hotel fue increíble. Desde la llegada, el personal fue muy atento y amable. Las instalaciones eran modernas y limpias. Definitivamente, recomendaré este hotel a mis amigos y familiares."
+      "message": "Mi estancia en el hotel fue increíble. Desde la llegada, el personal fue muy atento y amable.",
+      "stars": 5
     },
     {
       "id": 2,
@@ -14,8 +16,10 @@
       "surname": "Martínez",
       "email": "luis.martinez@gmail.com",
       "phone": "+34671490554",
+      "date": "2023-11-23 15:45",
       "subject": "Problemas con la reserva",
-      "message": "Tuve algunos problemas con la reserva en línea. La plataforma era confusa y no recibí confirmación de inmediato. Afortunadamente, el personal de atención al cliente fue capaz de resolver la situación, pero creo que necesitan mejorar su sistema de reservas."
+      "message": "Tuve algunos problemas con la reserva en línea. La plataforma era confusa y no recibí confirmación de inmediato.",
+      "stars": 3
     },
     {
       "id": 3,
@@ -23,8 +27,10 @@
       "surname": "Hernández",
       "email": "sofia.hernandez@gmail.com",
       "phone": "+34639562067",
+      "date": "2023-11-25 08:00",
       "subject": "Vacaciones inolvidables",
-      "message": "Mis vacaciones en el hotel fueron inolvidables. La ubicación era perfecta, cerca de todas las atracciones locales. Las habitaciones eran acogedoras y el personal siempre estaba dispuesto a ayudar. Definitivamente, volveré en mi próximo viaje."
+      "message": "Mis vacaciones en el hotel fueron inolvidables. La ubicación era perfecta, cerca de todas las atracciones locales. .",
+      "stars": 5
     },
     {
       "id": 4,
@@ -32,8 +38,10 @@
       "surname": "López",
       "email": "javier.lopez@gmail.com",
       "phone": "+34682495313",
+      "date": "2023-11-27 18:20",
       "subject": "Servicio deficiente",
-      "message": "Estoy decepcionado con el servicio del hotel. La limpieza de la habitación no fue adecuada, y el personal no parecía estar muy comprometido. Fue una experiencia frustrante y no creo que regrese en el futuro."
+      "message": "Estoy decepcionado con el servicio del hotel. La limpieza de la habitación no fue adecuada, y el personal no parecía estar muy comprometido.",
+      "stars": 2
     },
     {
       "id": 5,
@@ -41,8 +49,10 @@
       "surname": "Fernández",
       "email": "carmen.fernandez@gmail.com",
       "phone": "+34745892914",
+      "date": "2023-11-29 12:00",
       "subject": "Buena relación calidad-precio",
-      "message": "La relación calidad-precio del hotel es excelente. Las habitaciones son cómodas y el desayuno incluido es una gran ventaja. Recomiendo este lugar a aquellos que buscan una estancia agradable sin gastar demasiado."
+      "message": "La relación calidad-precio del hotel es excelente. Las habitaciones son cómodas y el desayuno incluido es una gran ventaja.",
+      "stars": 5
     }
   ]
   

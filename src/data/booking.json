@@ -15,7 +15,7 @@
       "roomType": "Double Superior",
       "roomNumber": 12
     },
-    "status": "Booked"
+    "status": "Check In"
   },
   {
     "id": 2,
@@ -33,7 +33,7 @@
       "roomType": "Suite",
       "roomNumber": 29
     },
-    "status": "Booked"
+    "status": "Check Out"
   },
   {
     "id": 3,
@@ -51,7 +51,7 @@
       "roomType": "Single Bed",
       "roomNumber": 66
     },
-    "status": "Booked"
+    "status": "In Progress"
   },
   {
     "id": 4,
@@ -69,7 +69,7 @@
       "roomType": "Double Bed",
       "roomNumber": 28
     },
-    "status": "Booked"
+    "status": "Check In"
   },
   {
     "id": 5,
@@ -87,6 +87,6 @@
       "roomType": "Single Bed",
       "roomNumber": 39
     },
-    "status": "Booked"
+    "status": "Check In"
   }
 ]

@@ -17,9 +17,17 @@ export const StyledTableCellRow = styled(TableCell)`
 
 export const StyledTableCellBodyText = styled.p`
 
+
         ${(props) => props.typeStyle === "title" && `
         font-weight: 500;
         color: #393939;
+        margin: 0;
+        ` }
+
+        ${(props) => props.typeStyle === "titleSemiBold" && `
+        font-weight: 600;
+        color: #393939;
+        padding-right: 0.25em;
         margin: 0;
         ` }
 
@@ -35,6 +43,10 @@ export const StyledTableCellBodyText = styled.p`
     margin: 0;`
     }
 
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+
 `
 export const StyledTableCellBody = styled(TableCell)`
     font-size: 1rem;
@@ -42,7 +54,13 @@ export const StyledTableCellBody = styled(TableCell)`
     font-weight: 400; 
     color: unnamed-color-393939;
     height: 92px;
-    margin: 0 auto;`
+    margin: 0 auto;
+
+    ${props => props.typeStyle === "message" && `
+        
+    `}
+
+    `
 
 
 export const StyledTableCellBodyImg = styled.img `
@@ -52,5 +70,11 @@ export const StyledTableCellBodyImg = styled.img `
         height: 2.813em;
         padding-right: 0.375em
     `}
+    ${(props) => props.typeImg === "rooms" && `
+    width: 9.375em;
+    height: 4.813em;
+    border-radius: 0.5em;
+    padding-right: 1.75em
+`}
 
 `

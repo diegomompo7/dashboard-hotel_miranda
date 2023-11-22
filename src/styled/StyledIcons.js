@@ -81,6 +81,4 @@ export const StyledUsersIcon = styled(HiOutlinePuzzle)`
 export const StyledMoreIcon = styled(IoMdMore)`
        ${styleIcons}
        color: #6E6E6E;
-       transform: translateY(-25%);
-
 `

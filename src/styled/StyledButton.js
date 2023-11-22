@@ -29,7 +29,7 @@ export const StyledButton = styled(Button)`
 
     `}
 
-    ${props => props.name==="Booked" && 
+    ${props => props.name==="Check In" && 
     `
        font-size: 1rem;
        background-color: #E8FFEE;
@@ -37,11 +37,10 @@ export const StyledButton = styled(Button)`
        font-weight: 500;
        color: #5AD07A;
        border-radius:  0.75em;
-       padding: 13px 1.5em 12px 1.563em;
-
+       padding: 0.813em 1.5em 0.75em 1.563em;
     `
     }
-    ${props => props.name==="Refund" && 
+    ${props => props.name==="Check Out" && 
     `
        font-size: 1rem;
        background-color: #FFEDEC;
@@ -53,7 +52,7 @@ export const StyledButton = styled(Button)`
 
     `
     }
-    ${props => props.name==="Pending" && 
+    ${props => props.name==="In Progress" && 
     `
        font-size: 1rem;
        background-color: #FEFFEB;
@@ -65,4 +64,58 @@ export const StyledButton = styled(Button)`
 
     `
     }
-`
+    ${props => (props.name==="Prev" || props.name==="Next") && 
+    `
+       font-size: 1rem;
+       text-align: center;
+       background-color: #FFFFFF;
+       color: #135846;
+       border: 1px solid #135846;
+       font-family: 'Poppins', sans-serif;
+       font-weight: 400;
+       border-radius: 0.75em;
+       padding: 0.938em 1.75em 0.875em 1.813em;
+    `
+    }
+   ${props => props.name==="Prev" && `margin-right:0.25em`}
+
+   
+           ${props => props.name==="Available" && 
+           `
+              font-size: 1rem;
+              background-color: #5AD07A;
+              font-family: 'Poppins', sans-serif;
+              font-weight: 500;
+              color: #FFFFFF;
+              border-radius:  0.75em;
+              padding: 0.813em 1.5em 0.75em 1.563em;
+       
+           `
+           }
+           ${props => props.name==="Booked" && 
+           `
+              font-size: 1rem;
+              background-color: #E23428;
+              font-family: 'Poppins', sans-serif;
+              font-weight: 500;
+              color: #FFFFFF;
+              border-radius:  0.75em;
+              padding: 0.813em 1.5em 0.75em 1.563em;
+       
+           `
+           }
+           ${props => props.name==="archived" && 
+           `
+              font-size: 1rem;
+   
+              font-family: 'Poppins', sans-serif;
+              font-weight: 500;
+              color:#E23428;
+              border-radius:  0.75em;
+              padding: 0.813em 1.5em 0.75em 1.563em;
+       
+           `
+           }
+
+
+   `

@@ -8,7 +8,9 @@ import { useState } from "react";
 import { StyledNav, StyledNavText } from "../styled/StyledNav";
 import { StyledTextField } from "../styled/StyledTextField";
 import { StyledFormControl, StyledInputLabel, StyledSelect } from "../styled/StyledSelect";
-import { FormControl, InputLabel, Box, Select, MenuItem} from "@mui/material";
+import {MenuItem} from "@mui/material";
+import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../styled/StyledPagination";
+import { StyledButton } from "../styled/StyledButton";
 
 export const GuestsPage = () => {
 
@@ -16,7 +18,7 @@ export const GuestsPage = () => {
 
   return (
     <>
-      <Header setIsOpen={setIsOpen}></Header>
+      <Header setIsOpen={setIsOpen} title="Guest List"></Header>
       <StyledBody isOpen={isOpen}>
 
       <div style={{display: 'flex'}}>
@@ -24,7 +26,7 @@ export const GuestsPage = () => {
           <StyledNavText>All Bookings</StyledNavText>
           <StyledNavText>Checking In</StyledNavText>
           <StyledNavText>Checking Out</StyledNavText>
-          <StyledNavText name="progress">In Progress</StyledNavText>
+          <StyledNavText name="last">In Progress</StyledNavText>
         </StyledNav>
         <StyledTextField label="Client"/>
         <StyledFormControl>
@@ -55,6 +57,17 @@ export const GuestsPage = () => {
             <DataTableGuest data={booking}></DataTableGuest>
           </TableBody>
         </StyledTable>
+        <StyledPagination>
+          <StyledPaginationText> Showing 1 of 5 Data</StyledPaginationText>
+          <StyledButtonPage>
+              <StyledButton name="Prev">Prev</StyledButton>
+              <StyledTextPage>1</StyledTextPage>
+              <StyledTextPage>2</StyledTextPage>
+              <StyledTextPage >3</StyledTextPage>
+              <StyledTextPage>4</StyledTextPage>
+              <StyledButton  name="Next">Next</StyledButton>
+          </StyledButtonPage>
+        </StyledPagination>
       </StyledBody>
     </>
   );

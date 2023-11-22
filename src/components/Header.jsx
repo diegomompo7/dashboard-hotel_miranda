@@ -51,7 +51,7 @@ export const Header = (props) => {
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledContactIcon></StyledContactIcon>
-        <StyledLink to="/contact" activeClassName="active">Guest</StyledLink>
+        <StyledLink to="/booking/:id" activeClassName="active">Guest</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledUsersIcon></StyledUsersIcon>
@@ -73,7 +73,7 @@ export const Header = (props) => {
           props.setIsOpen(!open)
         }}></StyledMenuIcon>
         <StyledTextHeader fontSize="1.7rem" color="#393939" fontFamily="'Poppins', sans-serif" weight="600">
-          Guest List
+          {props.title}
         </StyledTextHeader>
         <StyledHeartIcon></StyledHeartIcon>
         <StyledEmailIcon></StyledEmailIcon>
