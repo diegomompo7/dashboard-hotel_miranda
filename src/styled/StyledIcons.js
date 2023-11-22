@@ -65,6 +65,10 @@ export const StyledBookingIcon = styled(TfiKey)`
 export const StyledRoomsIcon = styled(LuCalendarCheck2)`
        ${styleIconsMenu}
        ${styleIcons}
+
+       &.active {
+              color: red;
+            }
 `
 export const StyledContactIcon = styled(FaRegUser)`
        ${styleIconsMenu}

@@ -25,7 +25,7 @@ export const StyledBoxMenuProfile = styled(Box) `
     margin: 0 auto;
     box-shadow: 0px 20px 30px #00000014;
     text-align: center;
-    border-radius: 18px;
+    border-radius: 1.125em;
     word-wrap: break-word;
 
 `

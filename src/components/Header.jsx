@@ -39,23 +39,23 @@ export const Header = (props) => {
       </StyledLogo>
       <StyledMenuItem>
         <StyledDashboardIcon></StyledDashboardIcon>
-        <StyledLink to="/">Dashboard</StyledLink>
+        <StyledLink to="/" activeClassName="active">Dashboard</StyledLink>
       </StyledMenuItem>
-      <StyledMenuItem>
+      <StyledMenuItem> 
         <StyledBookingIcon></StyledBookingIcon>
-        <StyledLink to="/rooms">Room</StyledLink>
+        <StyledLink to="/rooms" activeClassName="active">Room</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledRoomsIcon></StyledRoomsIcon>
-        <StyledLink to="/booking">Bookings</StyledLink>
+        <StyledLink to="/booking" activeClassName="active">Bookings</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledContactIcon></StyledContactIcon>
-        <StyledLink to="/contact">Guest</StyledLink>
+        <StyledLink to="/contact" activeClassName="active">Guest</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledUsersIcon></StyledUsersIcon>
-        <StyledLink to="/users">Concierge</StyledLink>
+        <StyledLink to="/users" activeClassName="active">Concierge</StyledLink>
       </StyledMenuItem>
       <StyledBoxMenuProfile>
         <StyledImgProfileMenu src={userImg} width="70px" height="70px"></StyledImgProfileMenu>

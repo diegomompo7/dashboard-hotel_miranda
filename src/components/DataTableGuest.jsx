@@ -14,7 +14,7 @@ export const DataTableGuest = (props) => {
                       key={data.name}
                     >
                         
-                    <StyledTableCellBody style={{display: "flex"}}>
+                    <StyledTableCellBody style={{display: "flex", alignItems: "center"}}>
                         <StyledTableCellBodyImg src={data.userImg} typeImg="booking"></StyledTableCellBodyImg>
                         <div> 
                             <StyledTableCellBodyText typeStyle="title">{data.name} {data.surname}</StyledTableCellBodyText> 

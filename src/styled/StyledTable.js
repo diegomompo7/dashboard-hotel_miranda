@@ -40,14 +40,17 @@ export const StyledTableCellBody = styled(TableCell)`
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 400; 
-    color: unnamed-color-393939;`
+    color: unnamed-color-393939;
+    height: 92px;
+    margin: 0 auto;`
+
 
 export const StyledTableCellBodyImg = styled.img `
 
     ${(props) => props.typeImg === "booking" && `
-        width: 45px;
-        height: 45px;
-        padding-right: 0.375em;
+        width: 2.813em;
+        height: 2.813em;
+        padding-right: 0.375em
     `}
 
 `

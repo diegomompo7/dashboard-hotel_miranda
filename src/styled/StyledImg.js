@@ -18,6 +18,6 @@ export const StyledTextImgLogo = styled.img`
 
 export const StyledImgProfileMenu = styled.img`
     ${styledImg};
-    border-radius: 8px;
+    border-radius: 0.5em;
     margin: 0 auto;
 `

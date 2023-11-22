@@ -24,7 +24,7 @@ export const StyledButton = styled(Button)`
        font-family: 'Poppins', sans-serif;
        font-weight: 500;
        color: #212121;
-       border-radius: 12px;
+       border-radius:  0.75em;
        padding: 0.813em 2.188em 0.75em 2.25em;
 
     `}
@@ -36,7 +36,7 @@ export const StyledButton = styled(Button)`
        font-family: 'Poppins', sans-serif;
        font-weight: 500;
        color: #5AD07A;
-       border-radius: 12px;
+       border-radius:  0.75em;
        padding: 13px 1.5em 12px 1.563em;
 
     `
@@ -48,7 +48,7 @@ export const StyledButton = styled(Button)`
        font-family: 'Poppins', sans-serif;
        font-weight: 500;
        color: #E23428;
-       border-radius: 12px;
+       border-radius:  0.75em;
        padding: 0.813em 1.5em 0.75em 1.563em;
 
     `
@@ -60,7 +60,7 @@ export const StyledButton = styled(Button)`
        font-family: 'Poppins', sans-serif;
        font-weight: 500;
        color: #909217;
-       border-radius: 12px;
+       border-radius: 0.75em;
        padding: 0.813em 1.5em 0.75em 1.563em;
 
     `
