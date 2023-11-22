@@ -1,6 +1,6 @@
-import { IoIosSearch, IoMdHeartEmpty } from "react-icons/io";
+import { IoIosSearch, IoMdHeartEmpty, IoMdMore } from "react-icons/io";
 import { FiAlignLeft, FiBell } from "react-icons/fi";
-import { MdOutlineMail, MdOutlineMessage } from "react-icons/md";
+import { MdOutlineMail} from "react-icons/md";
 import styled from "styled-components";
 import { LuLayoutDashboard, LuCalendarCheck2  } from "react-icons/lu";
 import { TfiKey } from "react-icons/tfi";
@@ -73,4 +73,10 @@ export const StyledContactIcon = styled(FaRegUser)`
 export const StyledUsersIcon = styled(HiOutlinePuzzle)`
        ${styleIconsMenu}
        ${styleIcons}
+`
+export const StyledMoreIcon = styled(IoMdMore)`
+       ${styleIcons}
+       color: #6E6E6E;
+       transform: translateY(-25%);
+
 `

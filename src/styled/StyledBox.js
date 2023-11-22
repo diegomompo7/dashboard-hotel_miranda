@@ -9,7 +9,7 @@ export const StyledBox = styled(Box)`
 `
 
 export const StyledMenuBox = styled(Box) `
-    width:18%;
+    width: 18%;
     height: auto;
     background-color: #FFFFFF;
 `

@@ -16,17 +16,19 @@ import { StyledTextUserMenu, StyledTextHeader, StyledTextLogo, StyledTextFooter 
 import { StyledImgLogo, StyledTextImgLogo, StyledImgProfileMenu } from "../styled/StyledImg";
 import { StyledMenuItem } from "../styled/StyledMenuItem";
 import logo  from"../assets/img/logo.png"
+import userImg from "../assets/img/userImg.jpg"
 import textLogo from "../assets/img/textLogo.png"
 import { StyledButton } from "../styled/StyledButton";
 import { StyledLink } from "../styled/StyledLink";
 
-export const Header = () => {
+export const Header = (props) => {
   const [open, setOpen] = React.useState(false);
 
 
   return (
     <div style={{display: 'flex'}}>
-    { open === true &&
+    { open === true ? (
+    
     <StyledMenuBox >
       <StyledLogo>
         <StyledImgLogo src={logo} width="47px" height="40px"></StyledImgLogo>
@@ -35,7 +37,6 @@ export const Header = () => {
             <p>Hotel Admin Dashboard</p>
         </StyledTextLogo>
       </StyledLogo>
-
       <StyledMenuItem>
         <StyledDashboardIcon></StyledDashboardIcon>
         <StyledLink to="/">Dashboard</StyledLink>
@@ -57,7 +58,7 @@ export const Header = () => {
         <StyledLink to="/users">Concierge</StyledLink>
       </StyledMenuItem>
       <StyledBoxMenuProfile>
-        <StyledImgProfileMenu style={{background: "#C5C5C5"}} width="70px" height="70px" ></StyledImgProfileMenu>
+        <StyledImgProfileMenu src={userImg} width="70px" height="70px"></StyledImgProfileMenu>
         <StyledTextUserMenu fontSize="1rem" fontFamily="'Poppins', sans-serif" color= "#5D5449" weight="500" >Diego Mompó</StyledTextUserMenu>
         <StyledTextUserMenu fontSize="0.75rem" fontFamily="'Poppins', sans-serif" color= "#B2B2B2" weight="300" >diego@diegomompo.com</StyledTextUserMenu>
         <StyledButton name="CONTACT_US">Contact Us</StyledButton>
@@ -65,10 +66,11 @@ export const Header = () => {
       <StyledTextFooter name="travl">Travl Hotel Admin Dashboard</StyledTextFooter>
       <StyledTextFooter name="copy">© 2020 All Rights Reserved</StyledTextFooter>
       <StyledTextFooter name="made">Made with ♥ by Peterdraw</StyledTextFooter>
-    </StyledMenuBox> }
+    </StyledMenuBox> ) : ''}
       <StyledBox>
         <StyledMenuIcon onClick={() => {
           setOpen(!open)
+          props.setIsOpen(!open)
         }}></StyledMenuIcon>
         <StyledTextHeader fontSize="1.7rem" color="#393939" fontFamily="'Poppins', sans-serif" weight="600">
           Guest List

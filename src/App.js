@@ -20,11 +20,11 @@ function App() {
         <Route path='/login' element={<LoginPage/>}/>
           <Route element={<Root />}>
             <Route path='/' element={<DashboardPage />}/>
-            <Route path='/booking' element={<GuestsPage />}/>
-            <Route path='/booking/:id' element={<GuestDetailPage />}/>
-            <Route path='/rooms' element={<RoomsListPage />}/>
-            <Route path='/contact' element={<ContactPage />}/>
-            <Route path='/users' element={<UserPage />}/>
+            <Route path='booking' element={<GuestsPage />}/>
+            <Route path='booking/:id' element={<GuestDetailPage />}/>
+            <Route path='rooms' element={<RoomsListPage />}/>
+            <Route path='contact' element={<ContactPage />}/>
+            <Route path='users' element={<UserPage />}/>
 
           </Route>
         </Routes>

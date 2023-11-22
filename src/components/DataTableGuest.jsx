@@ -1,7 +1,8 @@
 import React from "react";
 import { TableRow } from "@mui/material";
-import { StyledTableCellBody, StyledTableCellBodyText } from "../styled/StyledTable";
+import { StyledTableCellBody, StyledTableCellBodyText, StyledTableCellBodyImg } from "../styled/StyledTable";
 import { StyledButton } from "../styled/StyledButton";
+import { StyledMoreIcon } from "../styled/StyledIcons";
 
 
 export const DataTableGuest = (props) => {
@@ -12,16 +13,22 @@ export const DataTableGuest = (props) => {
                     <TableRow
                       key={data.name}
                     >
-                    <StyledTableCellBody>
-                        <StyledTableCellBodyText typeStyle="title">{data.name} {data.surname}</StyledTableCellBodyText> 
-                        <StyledTableCellBodyText typeStyle="subtitle">#{data.roomType.id}</StyledTableCellBodyText>
+                        
+                    <StyledTableCellBody style={{display: "flex"}}>
+                        <StyledTableCellBodyImg src={data.userImg} typeImg="booking"></StyledTableCellBodyImg>
+                        <div> 
+                            <StyledTableCellBodyText typeStyle="title">{data.name} {data.surname}</StyledTableCellBodyText> 
+                            <StyledTableCellBodyText typeStyle="id">#{data.id}</StyledTableCellBodyText>
+                        </div> 
                     </StyledTableCellBody>
                     <StyledTableCellBody>{data.orderDate}</StyledTableCellBody>
                     <StyledTableCellBody>
                         <StyledTableCellBodyText typeStyle="title">{data.check_in}</StyledTableCellBodyText>
+                        <StyledTableCellBodyText typeStyle="subtitle">{data.hour_in}</StyledTableCellBodyText>
                     </StyledTableCellBody>
                     <StyledTableCellBody>
                     <StyledTableCellBodyText typeStyle="title">{data.check_out}</StyledTableCellBodyText>
+                    <StyledTableCellBodyText typeStyle="subtitle">{data.hour_out}</StyledTableCellBodyText>
                     </StyledTableCellBody>
                     <StyledTableCellBody>
                         <StyledButton name="view_notes">View Notes</StyledButton>
@@ -32,6 +39,7 @@ export const DataTableGuest = (props) => {
                     <StyledTableCellBody>
                         <StyledButton name={data.status}>{data.status}</StyledButton>
                     </StyledTableCellBody>
+                    <StyledMoreIcon></StyledMoreIcon>
                     </TableRow>
 
             ))

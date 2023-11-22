@@ -13,7 +13,7 @@ export const StyledButton = styled(Button)`
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             color: #135846;
-            padding: 14px 0 13px 0;
+            padding: 1em 0 0.929em 0;
             margin-bottom: 2.5em;
         `
     }
@@ -25,7 +25,7 @@ export const StyledButton = styled(Button)`
        font-weight: 500;
        color: #212121;
        border-radius: 12px;
-       padding: 13px 35px 12px 36px;
+       padding: 0.813em 2.188em 0.75em 2.25em;
 
     `}
 
@@ -37,7 +37,7 @@ export const StyledButton = styled(Button)`
        font-weight: 500;
        color: #5AD07A;
        border-radius: 12px;
-       padding: 13px 24px 12px 25px;
+       padding: 13px 1.5em 12px 1.563em;
 
     `
     }
@@ -49,7 +49,7 @@ export const StyledButton = styled(Button)`
        font-weight: 500;
        color: #E23428;
        border-radius: 12px;
-       padding: 13px 24px 12px 25px;
+       padding: 0.813em 1.5em 0.75em 1.563em;
 
     `
     }
@@ -61,7 +61,7 @@ export const StyledButton = styled(Button)`
        font-weight: 500;
        color: #909217;
        border-radius: 12px;
-       padding: 13px 24px 12px 25px;
+       padding: 0.813em 1.5em 0.75em 1.563em;
 
     `
     }
