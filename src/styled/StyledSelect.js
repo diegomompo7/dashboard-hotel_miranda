@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FormControl, InputLabel, Box, Select, MenuItem} from "@mui/material";
 
 export const StyledFormControl = styled(FormControl)`
+  
     margin-left: auto;
     width: 15%;
     & .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline{

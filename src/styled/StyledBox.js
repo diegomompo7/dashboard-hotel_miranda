@@ -12,6 +12,7 @@ export const StyledMenuBox = styled(Box) `
     width: 18%;
     height: auto;
     background-color: #FFFFFF;
+
 `
 
 export const StyledLogo = styled(Box)`

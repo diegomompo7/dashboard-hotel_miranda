@@ -2,44 +2,46 @@ import { Header } from "../components/Header";
 import { DataTableContact } from "../components/DataTableContact";
 import contact from "../data/contact.json";
 import { TableHead, TableBody, TableRow } from "@mui/material";
-import { StyledTable, StyledTableCellRow } from "../styled/StyledTable";
+import { StyledTable, StyledTableCellRow, StyledTableContainer} from "../styled/StyledTable";
 import { StyledBody } from "../styled/StyledBody";
 import { useState } from "react";
 import { StyledNav, StyledNavText } from "../styled/StyledNav";
-import { StyledTextField } from "../styled/StyledTextField";
-import { StyledFormControl, StyledInputLabel, StyledSelect } from "../styled/StyledSelect";
-import {MenuItem} from "@mui/material";
 import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../styled/StyledPagination";
 import { StyledButton } from "../styled/StyledButton";
+import { CardContact } from "../components/CardContact";
 
 export const ContactPage = () => {
 
   const [isOpen, setIsOpen] = useState(false)
+  const contactTable = contact
+
+  console.log(contact)
 
   return (
     <>
       <Header setIsOpen={setIsOpen} title="Reviews"></Header>
       <StyledBody isOpen={isOpen} typeBody="contact">
 
+       <CardContact contact={contact}></CardContact> 
+
       <StyledNav>
           <StyledNavText>All Contacts</StyledNavText>
           <StyledNavText name="last">Archived</StyledNavText>
         </StyledNav>
+        <StyledTableContainer isOpen={isOpen}>
         <StyledTable>
           <TableHead>
             <TableRow>
-              <StyledTableCellRow >ID</StyledTableCellRow>
-              <StyledTableCellRow>Date</StyledTableCellRow>
+              <StyledTableCellRow >Date & ID</StyledTableCellRow>
               <StyledTableCellRow>Customer</StyledTableCellRow>
-              <StyledTableCellRow>Subject</StyledTableCellRow>
               <StyledTableCellRow>Comment</StyledTableCellRow>
-              <StyledTableCellRow>Archived</StyledTableCellRow>
             </TableRow>
           </TableHead>
           <TableBody>
-            <DataTableContact data={contact}></DataTableContact>
+            <DataTableContact data={contactTable}></DataTableContact>
           </TableBody>
         </StyledTable>
+        </StyledTableContainer>
         <StyledPagination>
           <StyledPaginationText> Showing 1 of 5 Data</StyledPaginationText>
           <StyledButtonPage>

@@ -4,8 +4,10 @@ import { Text } from "@chakra-ui/react";
 export const StyledNav = styled.nav `
     display: flex;
     width: 34%;
-    margin-bottom:35px;
+    min-width: 500px;
+    margin-bottom:2.188em;
     border-bottom: 1px solid #D4D4D4;
+  
 `
 export const StyledNavText = styled(Text) `
     white-space: nowrap;

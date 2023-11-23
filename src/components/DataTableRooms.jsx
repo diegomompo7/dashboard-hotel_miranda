@@ -44,7 +44,9 @@ export const DataTableRooms = (props) => {
                     <StyledTableCellBody>
                         <StyledButton name={data.status}>{data.status}</StyledButton>
                     </StyledTableCellBody>
-                    <StyledMoreIcon></StyledMoreIcon>
+                    <StyledTableCellBody>
+                        <StyledMoreIcon></StyledMoreIcon>
+                    </StyledTableCellBody>
                     </TableRow>
 
             ))

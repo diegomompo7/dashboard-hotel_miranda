@@ -104,7 +104,7 @@ export const StyledButton = styled(Button)`
        
            `
            }
-           ${props => props.name==="archived" && 
+           ${props => props.name==="archived"  && 
            `
               font-size: 1rem;
    
@@ -116,6 +116,30 @@ export const StyledButton = styled(Button)`
        
            `
            }
+
+           ${props => props.name==="ACTIVE" && 
+           `
+              font-size: 0.875rem;
+   
+              font-family: 'Poppins', sans-serif;
+              font-weight: 500;
+              color:#5AD07A;
+              border-radius:  0.75em;
+              padding: 0.813em 1.5em 0.75em 1.563em;
+           `
+           }
+           ${props => props.name==="INACTIVE" && 
+           `
+              font-size: 0.875rem;
+   
+              font-family: 'Poppins', sans-serif;
+              font-weight: 500;
+              color:#E23428;
+              border-radius:  0.75em;
+              padding: 0.813em 1.5em 0.75em 1.563em;
+           `
+           }
+
 
 
    `

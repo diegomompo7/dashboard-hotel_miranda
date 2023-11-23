@@ -1,9 +1,25 @@
-import { Header } from "../components/Header"
-
+import { Header } from "../components/Header";
+import contact from "../data/contact.json";
+import { StyledBody } from "../styled/StyledBody";
+import { useState } from "react";
+import { CardContact } from "../components/CardContact";
+import { CardKpi } from "../components/CardKpi";
 export const DashboardPage = () => {
-    return (
+
+  const [isOpen, setIsOpen] = useState(false)
+
+
+  console.log(contact)
+
+  return (
     <>
-    <Header></Header>
+      <Header setIsOpen={setIsOpen} title="Dashboard"></Header>
+      <StyledBody isOpen={isOpen} name="dashboard">
+
+        <CardKpi></CardKpi>
+       <CardContact contact={contact}></CardContact> 
+
+      </StyledBody>
     </>
-    )
-}
+  );
+};

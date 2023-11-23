@@ -1,8 +1,8 @@
 import { Header } from "../components/Header";
 import { DataTableRooms } from "../components/DataTableRooms";
 import rooms from "../data/rooms.json";
-import { TableHead, TableBody, TableRow } from "@mui/material";
-import { StyledTable, StyledTableCellRow } from "../styled/StyledTable";
+import { TableHead, TableBody, TableRow, TableContainer } from "@mui/material";
+import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../styled/StyledTable";
 import { StyledBody } from "../styled/StyledBody";
 import { useState } from "react";
 import { StyledNav, StyledNavText } from "../styled/StyledNav";
@@ -37,6 +37,7 @@ export const RoomsListPage = () => {
         </StyledSelect>
         </StyledFormControl>
       </div>
+      <StyledTableContainer isOpen={isOpen}>
         <StyledTable>
           <TableHead>
             <TableRow>
@@ -53,6 +54,7 @@ export const RoomsListPage = () => {
             <DataTableRooms data={rooms}></DataTableRooms>
           </TableBody>
         </StyledTable>
+        </StyledTableContainer>
         <StyledPagination>
           <StyledPaginationText> Showing 1 of 5 Data</StyledPaginationText>
           <StyledButtonPage>

@@ -2,15 +2,19 @@ import styled from "styled-components";
 
 export const StyledBody = styled.div `
     ${(props) => props.isOpen === true && `
+        position: static;
         margin-left: 17.5%;
-        width: 77%;
-        transform: translateY(-110%);
-    `}
+        transform: translateY(-100%);
+        max-height: 55rem;
 
-    ${(props) => props.typeBody === "contact" && `
-    
+    `}
+    ${(props) => props.name === "dashboard" && `
+        height: 55rem;
+
 `}
 
-    margin-top: 50px;
-    padding: 0 30px;
+    ${(props) => props.isOpen === true ? `
+    margin-top: 0px;` : `margin-top: 50px;`}
+    padding-left: 1.875em;
+    padding-right: 1.56%
 `

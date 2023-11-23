@@ -1,14 +1,13 @@
 import { Header } from "../components/Header";
 import { DataTableGuest } from "../components/DataTableGuest";
 import booking from "../data/booking.json";
-import { TableHead, TableBody, TableRow } from "@mui/material";
-import { StyledTable, StyledTableCellRow } from "../styled/StyledTable";
+import { TableHead, TableBody, TableRow, MenuItem } from "@mui/material";
+import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../styled/StyledTable";
 import { StyledBody } from "../styled/StyledBody";
 import { useState } from "react";
 import { StyledNav, StyledNavText } from "../styled/StyledNav";
 import { StyledTextField } from "../styled/StyledTextField";
 import { StyledFormControl, StyledInputLabel, StyledSelect } from "../styled/StyledSelect";
-import {MenuItem} from "@mui/material";
 import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../styled/StyledPagination";
 import { StyledButton } from "../styled/StyledButton";
 
@@ -40,6 +39,7 @@ export const GuestsPage = () => {
         </StyledSelect>
         </StyledFormControl>
       </div>
+      <StyledTableContainer isOpen={isOpen}>
         <StyledTable>
           <TableHead>
             <TableRow>
@@ -57,6 +57,7 @@ export const GuestsPage = () => {
             <DataTableGuest data={booking}></DataTableGuest>
           </TableBody>
         </StyledTable>
+        </StyledTableContainer>
         <StyledPagination>
           <StyledPaginationText> Showing 1 of 5 Data</StyledPaginationText>
           <StyledButtonPage>
