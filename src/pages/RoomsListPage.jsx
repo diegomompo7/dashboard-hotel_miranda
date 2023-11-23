@@ -1,14 +1,12 @@
 import { Header } from "../components/Header";
 import { DataTableRooms } from "../components/DataTableRooms";
 import rooms from "../data/rooms.json";
-import { TableHead, TableBody, TableRow, TableContainer } from "@mui/material";
+import { TableHead, TableBody, TableRow, MenuItem} from "@mui/material";
 import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../styled/StyledTable";
 import { StyledBody } from "../styled/StyledBody";
 import { useState } from "react";
 import { StyledNav, StyledNavText } from "../styled/StyledNav";
-import { StyledTextField } from "../styled/StyledTextField";
 import { StyledFormControl, StyledInputLabel, StyledSelect } from "../styled/StyledSelect";
-import {MenuItem} from "@mui/material";
 import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../styled/StyledPagination";
 import { StyledButton } from "../styled/StyledButton";
 

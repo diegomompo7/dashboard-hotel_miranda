@@ -51,7 +51,7 @@ export const Header = (props) => {
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledContactIcon></StyledContactIcon>
-        <StyledLink to="/booking/:id" activeClassName="active">Guest</StyledLink>
+        <StyledLink to="/contact" activeClassName="activeId">Contact</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledUsersIcon></StyledUsersIcon>

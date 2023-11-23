@@ -11,7 +11,7 @@ export const StyledLink = styled(NavLink)`
     margin-bottom: 2.833em;
     text-decoration: none;
 
-      &.active {
+      &.active , &.activeId {
         color: #E23428;
         font-weight: 600;
         }

@@ -14,8 +14,6 @@ export const CardContact = (props) => {
     const contact = props.contact
     const orderContactDate = contact.sort((a,b) => new Date(b.date) - new Date(a.date))
 
-    console.log(orderContactDate)
-
 
     return (
         <StyledSwiper

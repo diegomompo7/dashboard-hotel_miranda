@@ -15,8 +15,6 @@ export const ContactPage = () => {
   const [isOpen, setIsOpen] = useState(false)
   const contactTable = contact
 
-  console.log(contact)
-
   return (
     <>
       <Header setIsOpen={setIsOpen} title="Reviews"></Header>

@@ -8,9 +8,6 @@ export const DashboardPage = () => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-
-  console.log(contact)
-
   return (
     <>
       <Header setIsOpen={setIsOpen} title="Dashboard"></Header>

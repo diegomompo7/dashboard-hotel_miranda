@@ -6,7 +6,6 @@ import { StyledMoreIcon } from "../styled/StyledIcons";
 
 
 export const DataTableGuest = (props) => {
-    console.log(props.data)
     return (
         <>{
             props.data.map((data) => (
@@ -34,7 +33,7 @@ export const DataTableGuest = (props) => {
                         <StyledButton name="view_notes">View Notes</StyledButton>
                     </StyledTableCellBody>
                     <StyledTableCellBody>
-                        <StyledTableCellBodyText typeStyle="title">{data.roomType.roomType} - {data.roomType.roomNumber}</StyledTableCellBodyText>
+                        <StyledTableCellBodyText typeStyle="title">{data.roomType.roomNumber}</StyledTableCellBodyText>
                     </StyledTableCellBody>
                     <StyledTableCellBody>
                         <StyledButton name={data.status}>{data.status}</StyledButton>

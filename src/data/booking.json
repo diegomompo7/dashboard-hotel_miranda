@@ -12,8 +12,11 @@
     "specialRequest": "Early check-in",
     "roomType": {
       "id": 3,
+      "photos": [],
       "roomType": "Double Superior",
-      "roomNumber": 12
+      "roomNumber": "Overview Room - 601",
+      "priceNight": 114,
+      "amenities": []
     },
     "status": "Check In"
   },
@@ -30,8 +33,10 @@
     "specialRequest": "Quiet room",
     "roomType": {
       "id": 4,
+      "photos": [],
       "roomType": "Suite",
-      "roomNumber": 29
+      "roomNumber": "Executive Loft - 318",
+      "amenities": ["Wi-Fi", "Minibar", "Cocina privada"]
     },
     "status": "Check Out"
   },
@@ -48,8 +53,10 @@
     "specialRequest": "Extra pillows",
     "roomType": {
       "id": 1,
+      "photos": [],
       "roomType": "Single Bed",
-      "roomNumber": 66
+      "roomNumber": "Deluxe-Room - 215",
+      "amenities": ["Wi-Fi", "TV", "Aire acondicionado"]
     },
     "status": "In Progress"
   },
@@ -66,8 +73,10 @@
     "specialRequest": "Room with a view",
     "roomType": {
       "id": 2,
+      "photos": [],
       "roomType": "Double Bed",
-      "roomNumber": 28
+      "roomNumber": "Suite Junior - 402",
+      "amenities": ["Wi-Fi", "Minibar", "Caja fuerte"]
     },
     "status": "Check In"
   },
@@ -84,8 +93,10 @@
     "specialRequest": "Late check-out",
     "roomType": {
       "id": 5,
+      "photos": [],
       "roomType": "Single Bed",
-      "roomNumber": 39
+      "roomNumber": "Thermal Room - 124",
+      "amenities": ["Wi-Fi", "TV", "Escritorio"]
     },
     "status": "Check In"
   }
