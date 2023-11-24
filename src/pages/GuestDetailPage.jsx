@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { Header } from "../components/Header"
 import booking from "../data/booking.json"
 import { StyledBody } from "../styled/StyledBody";
-import { StyledDetailContainer, StyledDetailPhotos, StyledDetailContent, StyledDetailContentPerson, StyledDetailImg, StyledDetailPersonText, StyledDetailText, StyledDetailActions, StyledDetailIconPhone, StyledDetailMessage, StyledDetailIconMessage} from "../styled/StyledDetail";
+import { StyledDetailContainer, StyledDetailPhotos, StyledDetailContent, StyledDetailContentPerson, StyledDetailImg, StyledDetailPersonText, StyledDetailText, StyledDetailActions, StyledDetailIconPhone, StyledDetailMessage, StyledDetailIconMessage, StyleDetailCheck, StyleDeailIn} from "../styled/StyledDetail";
 
 export const GuestDetailPage = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -31,6 +31,16 @@ export const GuestDetailPage = () => {
                   </StyledDetailActions>
                 </StyledDetailPersonText>
               </StyledDetailContentPerson>
+              <StyleDetailCheck>
+                <div>
+                  <StyledDetailText typeStyle="normal"> Check In</StyledDetailText>
+                  <StyledDetailText typeStyle="checkMedium"> {bookingId.check_in} | {bookingId.hour_in} </StyledDetailText>
+                </div>
+                <div>
+                  <StyledDetailText typeStyle="normal"> Check out</StyledDetailText>
+                  <StyledDetailText typeStyle="checkMedium">{bookingId.check_out} | {bookingId.hour_out} </StyledDetailText>
+                </div>
+              </StyleDetailCheck>
             </StyledDetailContent>
             <StyledDetailPhotos></StyledDetailPhotos>
           </StyledDetailContainer>

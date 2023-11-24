@@ -13,6 +13,7 @@ export const StyledDetailContent = styled(Box)`
     width: 50%;
     background: #FFFFFF;
     border-radius: 0.75em;
+    padding-left: 4.1%;
 `
 export const StyledDetailPhotos = styled(Box)`
     width: 50%;
@@ -21,7 +22,6 @@ export const StyledDetailPhotos = styled(Box)`
 `
 export const StyledDetailContentPerson = styled.div`
     display: flex;
-    padding-left: 4.1%;
     padding-top: 2.5em;
     margin-bottom: 2em;
     
@@ -64,6 +64,21 @@ padding-right: 1.625em;
 
 `}
 
+${props => props.typeStyle === "normal" && `
+    
+font-size: 0.875rem;
+font-weight: 400;
+color: #6E6E6E;
+`}
+
+${props => props.typeStyle === "checkMedium" && `
+    
+font-size: 1rem;
+font-weight: 500;
+color: #212121;
+padding-right: 72px;
+`}
+
 `
 
 export const StyledDetailActions = styled(Box)`
@@ -91,5 +106,10 @@ export const StyledDetailIconMessage = styled(MdOutlineMessage)`
     height: 1.5em;
     padding-top: 1.063em;
     padding-left: 1.125em;
+
+`
+
+export const StyleDetailCheck = styled(Box)`
+    display: flex;
 
 `
