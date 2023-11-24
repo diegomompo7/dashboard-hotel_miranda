@@ -27,7 +27,7 @@ export const Header = (props) => {
 
 
   return (
-    <div style={{display: 'flex', background: 'aqua'}}>
+    <div>
             { open === true ? (
     
     <StyledMenuBox >

@@ -24,6 +24,7 @@ export const CardContact = (props) => {
         }}
         navigation={true}
         modules={[Keyboard, Navigation]}
+        className="mySwiper"
 
       >
         {

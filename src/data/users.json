@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "photo": "",
+    "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "name": "David",
     "surname": "López",
     "job": "Manager",
@@ -14,12 +14,12 @@
   },
   {
     "id": 2,
-    "photo": "user2.jpg",
+    "photo": "https://plus.unsplash.com/premium_photo-1661964420608-ebe824c1990a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "name": "Elena",
     "surname": "Gómez",
     "job": "Recepcionista",
     "email": "elena.gomez@example.com",
-    "phone": "+68 3517198",
+    "phone": "+34 648645815",
     "startDate": "11-12-2023",
     "descriptionJob": "Atiende a los huéspedes en la recepción, realiza check-ins y check-outs, y proporciona información sobre servicios del hotel y la zona.",
     "status": "ACTIVE",
@@ -27,7 +27,7 @@
   },
   {
     "id": 3,
-    "photo": "user3.jpg",
+    "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "name": "Carlos",
     "surname": "Fernández",
     "job": "Servicio de Habitaciones",
@@ -40,7 +40,7 @@
   },
   {
     "id": 4,
-    "photo": "user4.jpg",
+    "photo": "https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "name": "Laura",
     "surname": "Martínez",
     "job": "Recepcionista",
@@ -53,7 +53,7 @@
   },
   {
     "id": 5,
-    "photo": "user5.jpg",
+    "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "name": "Isabel",
     "surname": "Sánchez",
     "job": "Servicio de Habitaciones",

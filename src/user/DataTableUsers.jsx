@@ -15,7 +15,7 @@ export const DataTableUsers = (props) => {
       {props.data.map((data) => (
         <TableRow key={data.name}>
           <StyledTableCellBody>
-          <StyledTableCellBodyImg src={data.userImg} typeImg="users"></StyledTableCellBodyImg>
+          <StyledTableCellBodyImg src={data.photo} typeImg="users"></StyledTableCellBodyImg>
           </StyledTableCellBody>
           <StyledTableCellBody>
                 <StyledTableCellBodyText typeStyle="title">{data.name} {data.surname}</StyledTableCellBodyText>

@@ -13,12 +13,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 function App() {
+
   return (
     <div className="app">
       <BrowserRouter>
         <Routes>
         <Route path='/login' element={<LoginPage/>}/>
-          <Route element={<Root />}>
+          <Route path="/" element={<Root />}>
             <Route path='/' element={<DashboardPage />}/>
             <Route path='booking' element={<GuestsPage />}/>
             <Route path='booking/:id' element={<GuestDetailPage />}/>

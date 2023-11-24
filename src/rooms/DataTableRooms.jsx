@@ -14,7 +14,7 @@ export const DataTableRooms = (props) => {
                     >
                         
                     <StyledTableCellBody style={{display: "flex", alignItems: "center"}}>
-                        <StyledTableCellBodyImg src={data.userImg} typeImg="rooms"></StyledTableCellBodyImg>
+                        <StyledTableCellBodyImg src={data.photos[0]} typeImg="rooms"></StyledTableCellBodyImg>
                         <div> 
                             <StyledTableCellBodyText typeStyle="id">#{data.id}</StyledTableCellBodyText> 
                             <StyledTableCellBodyText typeStyle="title">{data.roomNumber}</StyledTableCellBodyText>
