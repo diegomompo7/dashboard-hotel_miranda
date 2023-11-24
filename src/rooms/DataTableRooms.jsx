@@ -1,8 +1,8 @@
 import React from "react";
 import { TableRow } from "@mui/material";
-import { StyledTableCellBody, StyledTableCellBodyText, StyledTableCellBodyImg } from "../styled/StyledTable";
-import { StyledButton } from "../styled/StyledButton";
-import { StyledMoreIcon } from "../styled/StyledIcons";
+import { StyledTableCellBody, StyledTableCellBodyText, StyledTableCellBodyImg } from "../common/StyledTable";
+import { StyledButton } from "../common/StyledButton";
+import { StyledMoreIcon } from "../common/StyledIcons";
 
 
 export const DataTableRooms = (props) => {

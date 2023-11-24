@@ -4,9 +4,9 @@ import {
   StyledTableCellBody,
   StyledTableCellBodyText,
   StyledTableCellBodyImg,
-} from "../styled/StyledTable";
-import { StyledButton } from "../styled/StyledButton";
-import { StyledMoreIcon, StyledPhone } from "../styled/StyledIcons";
+} from "../common/StyledTable";
+import { StyledButton } from "../common/StyledButton";
+import { StyledMoreIcon, StyledPhone } from "../common/StyledIcons";
 
 export const DataTableUsers = (props) => {
 

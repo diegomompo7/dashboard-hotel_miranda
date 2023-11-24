@@ -1,15 +1,13 @@
-import { Header } from "../components/Header";
-import { DataTableGuest } from "../components/DataTableGuest";
+import { DataTableGuest } from "./DataTableGuest";
 import booking from "../data/booking.json";
 import { TableHead, TableBody, TableRow, MenuItem } from "@mui/material";
-import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../styled/StyledTable";
-import { StyledBody } from "../styled/StyledBody";
+import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../common/StyledTable";
 import { useState } from "react";
-import { StyledNav, StyledNavText } from "../styled/StyledNav";
-import { StyledTextField } from "../styled/StyledTextField";
-import { StyledFormControl, StyledInputLabel, StyledSelect } from "../styled/StyledSelect";
-import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../styled/StyledPagination";
-import { StyledButton } from "../styled/StyledButton";
+import { StyledNav, StyledNavText } from "../common/StyledNav";
+import { StyledTextField } from "../common/StyledTextField";
+import { StyledFormControl, StyledInputLabel, StyledSelect } from "../common/StyledSelect";
+import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../common/StyledPagination";
+import { StyledButton } from "../common/StyledButton";
 
 export const GuestsPage = () => {
 
@@ -17,8 +15,6 @@ export const GuestsPage = () => {
 
   return (
     <>
-      <Header setIsOpen={setIsOpen} title="Guest List"></Header>
-      <StyledBody isOpen={isOpen}>
 
       <div style={{display: 'flex'}}>
       <StyledNav>
@@ -69,7 +65,6 @@ export const GuestsPage = () => {
               <StyledButton  name="Next">Next</StyledButton>
           </StyledButtonPage>
         </StyledPagination>
-      </StyledBody>
     </>
   );
 };

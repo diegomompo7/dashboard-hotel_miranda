@@ -1,14 +1,12 @@
-import { Header } from "../components/Header";
-import { DataTableContact } from "../components/DataTableContact";
+import { DataTableContact } from "./DataTableContact";
 import contact from "../data/contact.json";
 import { TableHead, TableBody, TableRow } from "@mui/material";
-import { StyledTable, StyledTableCellRow, StyledTableContainer} from "../styled/StyledTable";
-import { StyledBody } from "../styled/StyledBody";
+import { StyledTable, StyledTableCellRow, StyledTableContainer} from "../common/StyledTable";
 import { useState } from "react";
-import { StyledNav, StyledNavText } from "../styled/StyledNav";
-import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../styled/StyledPagination";
-import { StyledButton } from "../styled/StyledButton";
-import { CardContact } from "../components/CardContact";
+import { StyledNav, StyledNavText } from "../common/StyledNav";
+import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../common/StyledPagination";
+import { StyledButton } from "../common/StyledButton";
+import { CardContact } from "./CardContact";
 
 export const ContactPage = () => {
 
@@ -17,8 +15,6 @@ export const ContactPage = () => {
 
   return (
     <>
-      <Header setIsOpen={setIsOpen} title="Reviews"></Header>
-      <StyledBody isOpen={isOpen} typeBody="contact">
 
        <CardContact contact={contact}></CardContact> 
 
@@ -51,7 +47,6 @@ export const ContactPage = () => {
               <StyledButton  name="Next">Next</StyledButton>
           </StyledButtonPage>
         </StyledPagination>
-      </StyledBody>
     </>
   );
 };

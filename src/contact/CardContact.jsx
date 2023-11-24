@@ -1,5 +1,5 @@
 import React from "react";
-import {StyledSwiper, StyledSwiperSlide, StyledSSText, StyledSSImg } from "../styled/StyledCardContact";
+import {StyledSwiper, StyledSwiperSlide, StyledSSText, StyledSSImg } from "../common/StyledCardContact";
 import { Keyboard,  Navigation } from "swiper/modules";
 
 

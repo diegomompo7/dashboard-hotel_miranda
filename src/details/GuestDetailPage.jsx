@@ -1,8 +1,6 @@
 import React, {useState} from "react";
-import { Header } from "../components/Header"
 import booking from "../data/booking.json"
-import { StyledBody } from "../styled/StyledBody";
-import { StyledDetailContainer, StyledDetailPhotos, StyledDetailContent, StyledDetailContentPerson, StyledDetailImg, StyledDetailPersonText, StyledDetailText, StyledDetailActions, StyledDetailIconPhone, StyledDetailMessage, StyledDetailIconMessage, StyleDetailCheck, StyleDeailIn} from "../styled/StyledDetail";
+import { StyledDetailContainer, StyledDetailPhotos, StyledDetailContent, StyledDetailContentPerson, StyledDetailImg, StyledDetailPersonText, StyledDetailText, StyledDetailActions, StyledDetailIconPhone, StyledDetailMessage, StyledDetailIconMessage, StyleDetailCheck} from "./StyledDetail";
 
 export const GuestDetailPage = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -12,8 +10,6 @@ export const GuestDetailPage = () => {
 
   return (
     <>
-      <Header setIsOpen={setIsOpen} title="Guest Detail"></Header>
-      <StyledBody isOpen={isOpen}>
         {
           <StyledDetailContainer key={bookingId.id}>
             <StyledDetailContent>
@@ -46,7 +42,6 @@ export const GuestDetailPage = () => {
           </StyledDetailContainer>
 
         }
-      </StyledBody>
     </>
   );
 }

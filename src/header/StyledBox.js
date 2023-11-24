@@ -6,12 +6,19 @@ export const StyledBox = styled(Box)`
     width: 100%;
     display: flex;
     background-color: #FFFFFF;
+
+    ${(props) => props.isOpen === true && `
+    margin-left: 17.5%;
+    width: 83%;
+
+`}
 `
 
 export const StyledMenuBox = styled(Box) `
     width: 18%;
-    height: auto;
     background-color: #FFFFFF;
+    position: absolute;
+    height: 100%;
 
 `
 

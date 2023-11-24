@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledBox, StyledMenuBox, StyledLogo, StyledBoxMenuProfile} from "../styled/StyledBox";
+import { StyledBox, StyledMenuBox, StyledLogo, StyledBoxMenuProfile} from "./StyledBox";
 import {
   StyledBellIcon,
   StyledBookingIcon,
@@ -11,23 +11,24 @@ import {
   StyledMenuIcon,
   StyledRoomsIcon,
   StyledUsersIcon,
-} from "../styled/StyledIcons";
-import { StyledTextUserMenu, StyledTextHeader, StyledTextLogo, StyledTextFooter } from "../styled/StyledText";
-import { StyledImgLogo, StyledTextImgLogo, StyledImgProfileMenu } from "../styled/StyledImg";
-import { StyledMenuItem } from "../styled/StyledMenuItem";
+} from "../common/StyledIcons";
+import { StyledTextUserMenu, StyledTextHeader, StyledTextLogo, StyledTextFooter } from "./StyledText";
+import { StyledImgLogo, StyledTextImgLogo, StyledImgProfileMenu } from "../common/StyledImg";
+import { StyledMenuItem } from "./StyledMenuItem";
 import logo  from"../assets/img/logo.png"
 import userImg from "../assets/img/userImg.jpg"
 import textLogo from "../assets/img/textLogo.png"
-import { StyledButton } from "../styled/StyledButton";
-import { StyledLink } from "../styled/StyledLink";
+import { StyledButton } from "../common/StyledButton";
+import { StyledLink } from "./StyledLink";
+import { background } from "@chakra-ui/react";
 
 export const Header = (props) => {
   const [open, setOpen] = React.useState(false);
 
 
   return (
-    <div style={{display: 'flex'}}>
-    { open === true ? (
+    <div style={{display: 'flex', background: 'aqua'}}>
+            { open === true ? (
     
     <StyledMenuBox >
       <StyledLogo>
@@ -67,7 +68,7 @@ export const Header = (props) => {
       <StyledTextFooter name="copy">© 2020 All Rights Reserved</StyledTextFooter>
       <StyledTextFooter name="made">Made with ♥ by Peterdraw</StyledTextFooter>
     </StyledMenuBox> ) : ''}
-      <StyledBox>
+      <StyledBox isOpen={open}>
         <StyledMenuIcon onClick={() => {
           setOpen(!open)
           props.setIsOpen(!open)

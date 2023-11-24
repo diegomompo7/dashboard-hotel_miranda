@@ -3,9 +3,9 @@ import { TableRow } from "@mui/material";
 import {
   StyledTableCellBody,
   StyledTableCellBodyText,
-} from "../styled/StyledTable";
-import { StyledButton } from "../styled/StyledButton";
-import { StyledMoreIcon } from "../styled/StyledIcons";
+} from "../common/StyledTable";
+import { StyledButton } from "../common/StyledButton";
+import { StyledMoreIcon } from "../common/StyledIcons";
 
 export const DataTableContact = (props) => {
   

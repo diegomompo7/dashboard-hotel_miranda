@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledCardContainer, StyledCardKpi, StyledKpiIconBed, StyledKpiTextContainer, StyledKpiText, StyledKpiIconCalendar, StyledKpiIconIn, StyledKpiIconOut } from "../styled/StyledCardKpi";
+import { StyledCardContainer, StyledCardKpi, StyledKpiIconBed, StyledKpiTextContainer, StyledKpiText, StyledKpiIconCalendar, StyledKpiIconIn, StyledKpiIconOut } from "./StyledCardKpi";
 
 
 export const CardKpi = () => {
