@@ -15,13 +15,14 @@ export const RoomsListPage = () => {
   return (
     <>
 
-      <div style={{display: 'flex', }}>
+    <div style={{display: 'flex', flexWrap: 'wrap'}}>
       <StyledNav>
           <StyledNavText>All Bookings</StyledNavText>
           <StyledNavText>Available</StyledNavText>
           <StyledNavText>Booked</StyledNavText>
           <StyledNavText name="last">Price</StyledNavText>
         </StyledNav>
+        <StyledButton name="create" href="/createRoom">+ New Room</StyledButton>
         <StyledFormControl>
         <StyledInputLabel>Order</StyledInputLabel>
         <StyledSelect label="Order"  >

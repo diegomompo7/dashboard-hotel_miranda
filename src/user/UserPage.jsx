@@ -16,19 +16,19 @@ export const UserPage = () => {
 
   return (
     <>
-      <div style={{display: 'flex'}}>
+      <div style={{display: 'flex', flexWrap: 'wrap'}}>
       <StyledNav>
           <StyledNavText>All Employee</StyledNavText>
           <StyledNavText>Active Employee</StyledNavText>
           <StyledNavText name="last">Inactive Employee</StyledNavText>
         </StyledNav>
         <StyledTextField label="Employee"/>
+        <StyledButton name="create" href="/createUser">+ New Employee</StyledButton>
         <StyledFormControl>
         <StyledInputLabel>Order</StyledInputLabel>
         <StyledSelect label="Order"  >
                 <MenuItem value="orderDate" >Order Date</MenuItem>
                 <MenuItem value="name">Name</MenuItem>
-
 
         </StyledSelect>
         </StyledFormControl>

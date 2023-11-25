@@ -2,8 +2,7 @@
   {
     "id": 1,
     "photo": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "name": "David",
-    "surname": "López",
+    "fullName": "David López",
     "job": "Manager",
     "email": "david.lopez@example.com",
     "phone": "+34 788128729",
@@ -15,8 +14,7 @@
   {
     "id": 2,
     "photo": "https://plus.unsplash.com/premium_photo-1661964420608-ebe824c1990a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "name": "Elena",
-    "surname": "Gómez",
+    "fullName": "Elena Gómez",
     "job": "Recepcionista",
     "email": "elena.gomez@example.com",
     "phone": "+34 648645815",
@@ -28,8 +26,7 @@
   {
     "id": 3,
     "photo": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "name": "Carlos",
-    "surname": "Fernández",
+    "fullName": "Carlos Fernández",
     "job": "Servicio de Habitaciones",
     "email": "carlos.fernandez@example.com",
     "phone": "+34 747047325",
@@ -41,8 +38,7 @@
   {
     "id": 4,
     "photo": "https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "name": "Laura",
-    "surname": "Martínez",
+    "fullName": "Laura Martínez",
     "job": "Recepcionista",
     "email": "laura.martinez@example.com",
     "phone": "+34 680752567",
@@ -54,8 +50,7 @@
   {
     "id": 5,
     "photo": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "name": "Isabel",
-    "surname": "Sánchez",
+    "fullName": "Isabel Sánchez",
     "job": "Servicio de Habitaciones",
     "email": "isabel.sanchez@example.com",
     "phone": "+34 682283754",

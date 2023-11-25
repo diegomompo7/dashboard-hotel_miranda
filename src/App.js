@@ -4,24 +4,26 @@ import {DashboardPage} from "./dashboard/DashboardPage"
 import {GuestDetailPage} from "./details/GuestDetailPage"
 import { GuestsPage } from "./guest/GuestsPage"
 import {LoginPage} from "./login/LoginPage"
-import newUserPage from "./user/newUserPage"
-import newRoomPage from "./rooms/newRoomPage"
+import { NewUserPage } from './user/NewUserPage';
+import {NewRoomPage} from "./rooms/NewRoomPage"
 import {RoomsListPage} from "./rooms/RoomsListPage"
 import { Root } from './root/Root';
 import {UserPage} from "./user/UserPage";
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route,  Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import users from "./data/users.json"
 
 
 function App() {
 
+
+
   let checkLogin = false
   const[userLogin , setUserLogin] = useState ("");
 
   useEffect (() => {
     const userLogged = localStorage.getItem("email")
-    userLogged && setUserLogin(userLogged)
+    userLogged && setUserLogin(userLogged), checkLogin=true
   }, [])
 
 
@@ -42,23 +44,23 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-      
-      {
-        (checkLogin || userLogin !== "") ? <Navigate to="/"></Navigate> : <Navigate to="/login"></Navigate>
-      }
 
-
+      {(checkLogin) && <Navigate to="/login"/>}
+    
         <Routes>
-        <Route path='/login' element={<LoginPage  handleOnSubmit={handleOnSubmit}/>}/>
-          <Route path="/" element={<Root />}>
-            <Route path='/' element={<DashboardPage />}/>
-            <Route path='booking' element={<GuestsPage />}/>
-            <Route path='booking/:id' element={<GuestDetailPage />}/>
-            <Route path='rooms' element={<RoomsListPage />}/>
-            <Route path='contact' element={<ContactPage />}/>
-            <Route path='users' element={<UserPage />}/>
-          </Route>
+        <Route path='/login' element={<LoginPage  handleOnSubmit={handleOnSubmit} checkLogin={checkLogin} userLogin={userLogin}/>}/>
+        <Route path="/createUser" element={<NewUserPage />} />
+        <Route path="/createRoom" element={<NewRoomPage />} />
+            <Route path="/" element={<Root />}>
+              <Route path="/" element={<DashboardPage />} />
+              <Route path="booking" element={<GuestsPage />} />
+              <Route path="booking/:id" element={<GuestDetailPage />} />
+              <Route path="rooms" element={<RoomsListPage />} />
+              <Route path="contact" element={<ContactPage />} />
+              <Route path="users" element={<UserPage />} />
+            </Route>
         </Routes>
+
       </BrowserRouter>
     </div>
   )

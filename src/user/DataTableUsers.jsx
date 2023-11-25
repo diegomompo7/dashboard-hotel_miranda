@@ -18,7 +18,7 @@ export const DataTableUsers = (props) => {
           <StyledTableCellBodyImg src={data.photo} typeImg="users"></StyledTableCellBodyImg>
           </StyledTableCellBody>
           <StyledTableCellBody>
-                <StyledTableCellBodyText typeStyle="title">{data.name} {data.surname}</StyledTableCellBodyText>
+                <StyledTableCellBodyText typeStyle="title">{data.fullName}</StyledTableCellBodyText>
           </StyledTableCellBody>
           <StyledTableCellBody>
             {data.id}

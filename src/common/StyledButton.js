@@ -159,6 +159,46 @@ export const StyledButton = styled(Button)`
            `
            }
 
+           ${props => props.name==="new" && 
+           `
+               width: 70.7%;
+              font-size: 1.25rem;
+              font-family: 'Poppins', sans-serif;
+              font-weight: 500;
+              background: #135846;
+              color:#FFFFFF;
+               margin: 0 auto;
+              border-radius:  0.6em;
+              box-shadow: 0 0 8px 4px #135846;
 
+              &:hover{
+               background: #135846;
+               box-shadow: 0 0 8px 4px #135846;
+              }
+
+           `
+           }
+
+           ${props => props.name==="create" && 
+           `
+             width: 18%;
+      
+             height: 49px;
+               margin-left: auto;
+              font-size: 1rem;
+              font-family: 'Poppins', sans-serif;
+              font-weight: 500;
+              background: #135846;
+              color:#FFFFFF;
+              border-radius:  0.75em;
+   
+
+              &:hover{
+               background: #135846;
+   
+              }
+
+           `
+           }
 
    `

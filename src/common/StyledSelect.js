@@ -9,6 +9,21 @@ export const StyledFormControl = styled(FormControl)`
         border-color: #135846;
         border-radius: 0.75em;
     };
+
+    ${props => props.name==="selectCreate" && `
+        width: 45%;
+        margin-left: 0;
+        margin-right: 1.25em;
+        margin-bottom: 1.875em;
+
+        & .MuiSelect-select {
+ 
+        }
+        & .MuiInputLabel-root {
+    
+        }
+      
+    `}
 `
 export const StyledInputLabel = styled(InputLabel)`
     color: #135846;

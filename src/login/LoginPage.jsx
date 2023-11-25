@@ -1,33 +1,40 @@
 import React from "react";
 import {
-  StyledBoxLogin,
-  StyledImgLogin,
-  StyledFormLogin,
-  StyledInputLogin
-} from "./StyledLogin";
+  StyledBoxForm,
+  StyledImgForm,
+  StyledFormContainer,
+  StyledInputForm
+} from "../common/StyledForm";
 import logo from "../assets/img/logo.png";
 import { StyledButton } from "../common/StyledButton";
+import { Navigate } from "react-router-dom";
 
 
 
-export const LoginPage = ({handleOnSubmit}) => {
+export const LoginPage = ({handleOnSubmit, checkLogin, userLogin}) => {
+
+    
 
   return (
-    <StyledBoxLogin>
-      <StyledImgLogin src={logo}></StyledImgLogin>
-      <StyledFormLogin onSubmit={(e) => handleOnSubmit(e)}>
-        <StyledInputLogin
+  
+    <StyledBoxForm>
+
+    {userLogin!=="" && <Navigate to="/"/>}
+
+      <StyledImgForm src={logo}></StyledImgForm>
+      <StyledFormContainer onSubmit={(e) => handleOnSubmit(e)}>
+        <StyledInputForm
           placeholder="Email"
           type="email"
           variant="email"
-        ></StyledInputLogin>
-        <StyledInputLogin
+        ></StyledInputForm>
+        <StyledInputForm
           placeholder="Password"
           type="password"
           variant="password"
-        ></StyledInputLogin>
+        ></StyledInputForm>
         <StyledButton name="login" type="submit">LOGIN</StyledButton>
-      </StyledFormLogin>
-    </StyledBoxLogin>
+      </StyledFormContainer>
+    </StyledBoxForm>
   );
 };
