@@ -44,7 +44,7 @@ function App() {
       <BrowserRouter>
       
       {
-        (checkLogin || userLogin !== "") && <Navigate to="/"></Navigate>
+        (checkLogin || userLogin !== "") ? <Navigate to="/"></Navigate> : <Navigate to="/login"></Navigate>
       }
 
 
