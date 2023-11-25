@@ -139,6 +139,25 @@ export const StyledButton = styled(Button)`
               padding: 0.813em 1.5em 0.75em 1.563em;
            `
            }
+           ${props => props.name==="login" && 
+           `
+               width: 26.7%;
+              font-size: 1.25rem;
+              font-family: 'Poppins', sans-serif;
+              font-weight: 500;
+              background: #135846;
+              color:#FFFFFF;
+               margin: 0 auto;
+              border-radius:  0.6em;
+              box-shadow: 0 0 8px 4px #135846;
+
+              &:hover{
+               background: #135846;
+               box-shadow: 0 0 8px 4px #135846;
+              }
+
+           `
+           }
 
 
 
