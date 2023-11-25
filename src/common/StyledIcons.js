@@ -82,6 +82,15 @@ export const StyledMoreIcon = styled(IoMdMore)`
        ${styleIcons}
        color: #6E6E6E;
        margin: 0 auto;
+
+       ${props => props.name==="moreDetail" && `
+              width: 1.5em;
+              height:1.5em;
+              margin-right: 30px;
+              margin-left: auto;
+       
+       `
+       }
 `
 export const StyledPhone = styled(MdOutlineLocalPhone)`
        ${styleIcons}

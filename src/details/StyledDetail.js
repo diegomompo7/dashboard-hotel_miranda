@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMessage } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
 
 export const StyledDetailContainer = styled(Box)`
@@ -84,7 +85,7 @@ font-size: 1rem;
 font-weight: 500;
 color: #212121;
 margin: 0;
-padding-right: 72px;
+padding-right: 4.5em;
 `}
 
 ${props => props.typeStyle === "infoMedium" && `
@@ -109,7 +110,7 @@ font-weight: 400;
 color: #363636;
 line-height: 1.5em;
 margin-top: 2.142em;
-width: 90.7%;
+width: 93.7%;
 `}
 ${props => props.typeStyle === "amenities" && `
     
@@ -117,8 +118,27 @@ font-size: 1rem;
 font-weight: 600;
 color: #2c6a5a;
 background: #e8f2ef;
-padding: 13px 15px 13px 15px;
-margin-right: 13px;
+padding: 0.812em 0.937em  0.812em 0.937em;
+margin-right: 0.812em;
+`}
+
+${props => props.typeStyle === "roomType" && `
+    
+font-size: 1rem;
+font-weight: 500;
+color: #FFFFFF;
+padding-left: 3.375em;
+margin-top: 0;
+margin-bottom: 1.187em;
+`}
+${props => props.typeStyle === "roomDescription" && `
+    
+font-size: 0.875rem;
+font-weight: 400;
+color: #8f8f8f;
+padding-left: 3.857em;
+margin-top: 0;
+margin-bottom: 2.714em;
 `}
 
 `
@@ -157,7 +177,7 @@ export const StyleDetailCheck = styled(Box)`
 `
 
 export const StyledDetailLine = styled.hr`
-    margin: 20px 0 0;
+    margin: 1.25em 0 0;
     width: 97%
 `
 
@@ -189,7 +209,24 @@ export const StyledDetailAmenities= styled(Box)`
 export const StyledDetailSwiper = styled(Swiper)`
     width: 50%;
     border-radius: 0.75em;
+
+    & .swiper-button-next, .swiper-button-prev {
+        color: #ffffff;
+        background: #c8c8c8;
+        border-radius: 0.7em;
+        border: 5px solid #d2d2d2;
+        top: 40.625em;
+        margin-left: 3.375em;
+        margin-right: 2.062em;
+        width: 2.5em;
+        height: 2.5em;
+        
+        &::after{
+            font-size: 0;
+        }
+    }
 `
+
 
 
 export const StyledDetailSwiperImg = styled.div`
@@ -205,10 +242,55 @@ export const StyledDetailSwiperImg = styled.div`
     background-position: center;`
 
 export const StyledDetailSwiperSlide = styled(SwiperSlide)`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   border-radius: 1.25em;
   width: 22.4%;
   height: auto;
   background-image: url(${props => props.img});
-  background-size: 100% ;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   z-index: -1;
 `;
+
+export const StyledDetailTextContainer= styled.div`
+
+`
+export const StyleDetailStatus = styled.div`
+    position: relative;
+    margin-left: auto;
+    left: 3.75em;
+    top: 1.25em;
+    transform: rotate(40deg);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    margin-right: 0;
+    padding: 18px 0;
+    text-align: center;
+    width:30%;
+
+${props => props.typeStyle==="Check In" && 
+`
+   background-color: #5AD07A;
+   color: #FFFFFF;
+   
+   `
+}
+${props => props.typeStyle==="Check Out" && 
+`
+    background-color: #E23428;
+    color: #FFFFFF;
+
+`
+}
+${props => props.typeStyle==="In Progress" && 
+`
+    background-color: #e2dc28;
+    color: #000000;
+
+`
+}
+
+`

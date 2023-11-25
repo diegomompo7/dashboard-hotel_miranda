@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import booking from "../data/booking.json";
 import {
   StyledDetailContainer,
@@ -19,15 +18,18 @@ import {
   StyledDetailInfoPrice,
   StyledDetailAmenities,
   StyledDetailAmeContainer,
-  StyledDetailSwiperImg,
+  StyledDetailTextContainer,
   StyledDetailSwiperSlide,
+  StyleDetailStatus
 } from "./StyledDetail";
 
+import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Navigation } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { StyledMoreIcon } from "../common/StyledIcons";
 
 export const GuestDetailPage = () => {
   const bookingId = booking[0];
+
 
   return (
     <>
@@ -53,6 +55,7 @@ export const GuestDetailPage = () => {
                   </StyledDetailMessage>
                 </StyledDetailActions>
               </StyledDetailPersonText>
+              <StyledMoreIcon name="moreDetail"></StyledMoreIcon>
             </StyledDetailContentPerson>
             <StyleDetailCheck>
               <div>
@@ -115,15 +118,33 @@ export const GuestDetailPage = () => {
               </StyledDetailAmenities>
             </StyledDetailAmeContainer>
           </StyledDetailContent>
-          <StyledDetailSwiper navigation={true} modules={[Navigation]} className="mySwiper">
-              {
-                bookingId.roomType.photos.map((element) => (
-                  <StyledDetailSwiperSlide key={element} img={element}>
-                    <p>iaj+a+ja</p>
-                  </StyledDetailSwiperSlide>
-                ))
-              }
-      </StyledDetailSwiper>
+          <StyledDetailSwiper
+            navigation={{
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev'
+            }}
+            modules={[Navigation]}
+            className="mySwiper"
+          >
+            {bookingId.roomType.photos.map((element) => (
+              <StyledDetailSwiperSlide key={element} img={element}>
+                <StyleDetailStatus typeStyle={bookingId.status}>
+                    {bookingId.status}
+                </StyleDetailStatus>
+                <StyledDetailTextContainer>
+                  <StyledDetailText typeStyle="roomType">
+                    {bookingId.roomType.roomType}
+                  </StyledDetailText>
+                  <StyledDetailText typeStyle="roomDescription">
+                    {bookingId.roomType.description}
+                  </StyledDetailText>
+                </StyledDetailTextContainer>
+              </StyledDetailSwiperSlide>
+            ))}
+
+<div className="swiper-button-next"><IoIosArrowRoundForward /></div>
+      <div className="swiper-button-prev"><IoIosArrowRoundBack /></div>
+          </StyledDetailSwiper>
         </StyledDetailContainer>
       }
     </>

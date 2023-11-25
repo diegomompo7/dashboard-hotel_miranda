@@ -19,6 +19,7 @@
       ],
       "roomType": "Double Superior",
       "roomNumber": "Overview Room - 601",
+      "description": "Habitación doble superior con cama king-size. Amplio espacio y baño de lujo.",
       "priceNight": 114,
       "amenities": ["Vistas panorámicas", "Baño de lujo", "Amplio espacio", "Cama king-size", "Sala de estar", "Terraza privada", "Armario empotrado"]
     },
@@ -44,6 +45,8 @@
       ],
       "roomType": "Suite",
       "roomNumber": "Executive Loft - 318",
+      "description": "Suite de lujo con dormitorio separado y sala de estar. Vistas panorámicas.",
+      "priceNight": 101,
       "amenities": ["Vistas panorámicas", "Suite de lujo", "Dormitorio separado", "Sala de estar", "Baño de lujo", "Espacio amplio", "Ventanas panorámicas"]
     },
     "status": "Check Out"
@@ -68,6 +71,8 @@
       ],
       "roomType": "Single Bed",
       "roomNumber": "Deluxe-Room - 215",
+      "description": "Habitación individual con una cama individual. Baño privado y vistas a la ciudad.",
+      "priceNight": 189,
       "amenities": ["Vistas a la ciudad", "Baño privado", "Ventanas panorámicas", "Cama cómoda", "Mesa de trabajo", "Cafetera", "Armario espacioso"]
     },
     "status": "In Progress"
@@ -92,6 +97,8 @@
       ],
       "roomType": "Double Bed",
       "roomNumber": "Suite Junior - 402",
+      "description": "Habitación doble con una cama matrimonial. Ideal para parejas. Vistas al jardín.",
+      "priceNight": 66,
       "amenities": ["Vistas al jardín", "Baño amplio", "Ventilación natural", "Cama espaciosa", "Sala de estar", "Comedor privado", "Baño de lujo"]
     },
     "status": "Check In"
@@ -116,6 +123,8 @@
       ],
       "roomType": "Single Bed",
       "roomNumber": "Thermal Room - 124",
+      "description": "Habitación individual con cama individual. Perfecta para viajeros solitarios.",
+      "priceNight": 85,
       "amenities": ["Vistas relajantes", "Baño privado", "Cama cómoda", "Escritorio", "Espacio tranquilo", "Iluminación natural", "Armario espacioso"]
     },
     "status": "Check In"
