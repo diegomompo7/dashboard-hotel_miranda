@@ -1,14 +1,21 @@
 import React from "react";
-import { TableRow } from "@mui/material";
+import { Modal, TableRow } from "@mui/material";
 import { StyledTableCellBody, StyledTableCellBodyText, StyledTableCellBodyImg } from "../common/StyledTable";
 import { StyledButton } from "../common/StyledButton";
 import { StyledMoreIcon } from "../common/StyledIcons";
+import { ModalComponent } from "../ModalComponent/ModalComponent";
 
 
 export const DataTableGuest = (props) => {
+
+
+    
     return (
         <>{
             props.data.map((data) => (
+
+                
+
                     <TableRow
                       key={data.name}
                     >
@@ -30,7 +37,7 @@ export const DataTableGuest = (props) => {
                     <StyledTableCellBodyText typeStyle="subtitle">{data.hour_out}</StyledTableCellBodyText>
                     </StyledTableCellBody>
                     <StyledTableCellBody>
-                        <StyledButton name="view_notes">View Notes</StyledButton>
+                        <StyledButton name="view_notes" onClick={() => {props.handleOpen(), props.setSpecialRequest(data.specialRequest)}}>View Notes</StyledButton>
                     </StyledTableCellBody>
                     <StyledTableCellBody>
                         <StyledTableCellBodyText typeStyle="title">{data.roomType.roomNumber}</StyledTableCellBodyText>

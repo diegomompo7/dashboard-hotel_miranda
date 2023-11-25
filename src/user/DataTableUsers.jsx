@@ -7,6 +7,7 @@ import {
 } from "../common/StyledTable";
 import { StyledButton } from "../common/StyledButton";
 import { StyledMoreIcon, StyledPhone } from "../common/StyledIcons";
+import { ModalComponent } from "../ModalComponent/ModalComponent";
 
 export const DataTableUsers = (props) => {
 

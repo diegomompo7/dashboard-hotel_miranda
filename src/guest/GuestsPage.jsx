@@ -8,13 +8,22 @@ import { StyledTextField } from "../common/StyledTextField";
 import { StyledFormControl, StyledInputLabel, StyledSelect } from "../common/StyledSelect";
 import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../common/StyledPagination";
 import { StyledButton } from "../common/StyledButton";
+import { ModalComponent } from "../ModalComponent/ModalComponent";
 
 export const GuestsPage = () => {
 
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [specialRequest, setSpecialRequest] = useState("")
+
+  console.log(open)
 
   return (
     <>
+
+    <ModalComponent open={open} handleClose={handleClose} description={specialRequest}></ModalComponent>
 
       <div style={{display: 'flex'}}>
       <StyledNav>
@@ -50,7 +59,7 @@ export const GuestsPage = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <DataTableGuest data={booking}></DataTableGuest>
+            <DataTableGuest data={booking} handleOpen={handleOpen} setSpecialRequest={setSpecialRequest}></DataTableGuest>
           </TableBody>
         </StyledTable>
         </StyledTableContainer>

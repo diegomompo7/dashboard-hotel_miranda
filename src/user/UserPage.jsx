@@ -23,7 +23,7 @@ export const UserPage = () => {
           <StyledNavText name="last">Inactive Employee</StyledNavText>
         </StyledNav>
         <StyledTextField label="Employee"/>
-        <StyledButton name="create" href="/createUser">+ New Employee</StyledButton>
+        <StyledButton name="create" href="/users/createUser">+ New Employee</StyledButton>
         <StyledFormControl>
         <StyledInputLabel>Order</StyledInputLabel>
         <StyledSelect label="Order"  >
