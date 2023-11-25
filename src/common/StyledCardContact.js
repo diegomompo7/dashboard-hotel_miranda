@@ -22,7 +22,7 @@ export const StyledSwiper = styled(Swiper)`
 
     }
 }
-    padding-bottom: 5.438em;
+    margin-bottom: 5.438em;
 `;
 
 export const StyledSSText = styled.p`
