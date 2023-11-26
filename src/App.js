@@ -4,6 +4,7 @@ import {DashboardPage} from "./dashboard/DashboardPage"
 import {GuestDetailPage} from "./details/GuestDetailPage"
 import { GuestsPage } from "./guest/GuestsPage"
 import {LoginPage} from "./login/LoginPage"
+import { EditUserPage } from './user/EditUserPage';
 import { NewUserPage } from './user/NewUserPage';
 import {NewRoomPage} from "./rooms/NewRoomPage"
 import {RoomsListPage} from "./rooms/RoomsListPage"
@@ -12,6 +13,7 @@ import {UserPage} from "./user/UserPage";
 import { BrowserRouter, Routes, Route,  Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import users from "./data/users.json"
+import { EditRoomsPage } from './rooms/EditRoomsPage';
 
 
 function App() {
@@ -50,7 +52,9 @@ function App() {
         <Routes>
         <Route path='/login' element={<LoginPage  handleOnSubmit={handleOnSubmit} checkLogin={checkLogin} userLogin={userLogin}/>}/>
         <Route path="/createUser" element={<NewUserPage />} />
+        <Route path="/createUser/:id" element={<EditUserPage />} />
         <Route path="/createRoom" element={<NewRoomPage />} />
+        <Route path="/createRoom/:id" element={<EditRoomsPage />} />
             <Route path="/" element={<Root />}>
               <Route path="/" element={<DashboardPage />} />
               <Route path="booking" element={<GuestsPage />} />

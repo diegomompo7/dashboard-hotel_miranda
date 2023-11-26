@@ -3,14 +3,17 @@ import { TableRow } from "@mui/material";
 import { StyledTableCellBody, StyledTableCellBodyText, StyledTableCellBodyImg } from "../common/StyledTable";
 import { StyledButton } from "../common/StyledButton";
 import { StyledMoreIcon } from "../common/StyledIcons";
+import { useNavigate } from "react-router-dom";
 
 
 export const DataTableRooms = (props) => {
+    const navigate = useNavigate()
     return (
         <>{
             props.data.map((data) => (
                     <TableRow
                       key={data.name}
+                      onClick={ () => navigate(`/createRoom/${data.id}`)}
                     >
                         
                     <StyledTableCellBody style={{display: "flex", alignItems: "center"}}>

@@ -4,20 +4,23 @@ import { StyledTableCellBody, StyledTableCellBodyText, StyledTableCellBodyImg } 
 import { StyledButton } from "../common/StyledButton";
 import { StyledMoreIcon } from "../common/StyledIcons";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
+import { GuestDetailPage } from "../details/GuestDetailPage";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 export const DataTableGuest = (props) => {
 
-
+    const navigate = useNavigate()
     
     return (
         <>{
             props.data.map((data) => (
 
-                
+
 
                     <TableRow
                       key={data.name}
+                      onClick={ () => navigate(`/booking/${data.id}`)}
                     >
                         
                     <StyledTableCellBody style={{display: "flex", alignItems: "center"}}>

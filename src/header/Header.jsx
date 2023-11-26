@@ -20,9 +20,14 @@ import userImg from "../assets/img/userImg.jpg"
 import textLogo from "../assets/img/textLogo.png"
 import { StyledButton } from "../common/StyledButton";
 import { StyledLink } from "./StyledLink";
+import users from "../data/users.json"
 
 export const Header = (props) => {
   const [open, setOpen] = React.useState(false);
+
+  const user =  users.filter(user => user.email === localStorage.getItem("email"))
+
+  console.log(user)
 
 
   return (
@@ -58,9 +63,9 @@ export const Header = (props) => {
         <StyledLink to="/users" activeClassName="active">Concierge</StyledLink>
       </StyledMenuItem>
       <StyledBoxMenuProfile>
-        <StyledImgProfileMenu src={userImg} width="70px" height="70px"></StyledImgProfileMenu>
-        <StyledTextUserMenu fontSize="1rem" fontFamily="'Poppins', sans-serif" color= "#5D5449" weight="500" >Diego Mompó</StyledTextUserMenu>
-        <StyledTextUserMenu fontSize="0.75rem" fontFamily="'Poppins', sans-serif" color= "#B2B2B2" weight="300" >diego@diegomompo.com</StyledTextUserMenu>
+        <StyledImgProfileMenu src={user[0].photo} width="70px" height="70px"></StyledImgProfileMenu>
+        <StyledTextUserMenu fontSize="1rem" fontFamily="'Poppins', sans-serif" color= "#5D5449" weight="500" >{user[0].fullName}</StyledTextUserMenu>
+        <StyledTextUserMenu fontSize="0.75rem" fontFamily="'Poppins', sans-serif" color= "#B2B2B2" weight="300" >{user[0].email}</StyledTextUserMenu>
         <StyledButton name="CONTACT_US">Contact Us</StyledButton>
       </StyledBoxMenuProfile>
       <StyledTextFooter name="travl">Travl Hotel Admin Dashboard</StyledTextFooter>

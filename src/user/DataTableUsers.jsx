@@ -8,13 +8,15 @@ import {
 import { StyledButton } from "../common/StyledButton";
 import { StyledMoreIcon, StyledPhone } from "../common/StyledIcons";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
+import { useNavigate } from "react-router-dom";
 
 export const DataTableUsers = (props) => {
+  const navigate = useNavigate()
 
   return (
     <>
       {props.data.map((data) => (
-        <TableRow key={data.name}>
+        <TableRow key={data.name}  onClick={ () => navigate(`/createUser/${data.id}`)}>
           <StyledTableCellBody>
           <StyledTableCellBodyImg src={data.photo} typeImg="users"></StyledTableCellBodyImg>
           </StyledTableCellBody>

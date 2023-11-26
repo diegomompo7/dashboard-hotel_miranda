@@ -27,9 +27,13 @@ import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Navigation } from "swiper/modules";
 import { StyledMoreIcon } from "../common/StyledIcons";
 
-export const GuestDetailPage = () => {
-  const bookingId = booking[0];
 
+export const GuestDetailPage = () => {
+
+    const url = new URL(window.location.href)
+    const id = url.pathname.split("/").slice(2,3).join("")
+    console.log(id)
+    const bookingId = booking.find((book) => parseInt(book.id) == id)
 
   return (
     <>

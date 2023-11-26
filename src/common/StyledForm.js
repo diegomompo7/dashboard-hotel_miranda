@@ -52,7 +52,14 @@ export const StyledInputForm = styled.input`
     border-bottom: 1px solid #135846;
     color: #135846;
     margin-bottom: 1.875rem;
-
-    
-
+`
+export const StyledTextAreaForm = styled.textarea`
+    width: 100%;
+    background: none;
+    font-family: "Poppins", sans-serif;
+    border-color #135846;
+    border: none;
+    border-bottom: 1px solid #135846;
+    color: #135846;
+    margin-bottom: 1.875rem;
 `
