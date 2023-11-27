@@ -2,29 +2,46 @@ import React from "react";
 import {StyledSwiper, StyledSwiperSlide, StyledSSText, StyledSSImg } from "../common/StyledCardContact";
 import { Keyboard,  Navigation } from "swiper/modules";
 import { useState } from "react";
+import { getContactData, getFullMessage, resetState } from "../features/contact/contactSlice";
+import {store} from "../../src/app/store"
 
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 export const CardContact = (props) => {
+
+  const data = store.getState()
+
+
+    const dispatch = useDispatch()
     const contact = props.contact
-    console.log(contact)
     const orderContactDate = [...contact].sort((a,b) => new Date(b.date) - new Date(a.date))
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const [messageContact, setMessageContact] = useState("")
+    const fullMessage = useSelector((state) => state.contact.fullMessage);
 
+    const handleOpen = (idContact) => {
+      
+      setOpen(true)
+      dispatch(getFullMessage(idContact));
+      
+    }
+    const handleClose = () => {
+      setOpen(false)
+    }
 
+  
     return (
       <>
 
-      <ModalComponent open={open} handleClose={handleClose} description={messageContact}></ModalComponent>
+    {  fullMessage !== undefined && 
+
+      <ModalComponent open={open} handleClose={handleClose} description={fullMessage.message}></ModalComponent> }
 
         <StyledSwiper
         slidesPerView={3}
@@ -40,7 +57,7 @@ export const CardContact = (props) => {
         {
             orderContactDate.map((contact) => (
             
-            <StyledSwiperSlide key={contact.id} onClick={() => {handleOpen(), setMessageContact(contact.message)}}>
+            <StyledSwiperSlide key={contact.id} onClick={() => {handleOpen(contact.id)}}>
                 <StyledSSText name="message">{contact.message}</StyledSSText>
                 <div style={{display: 'flex'}}>
                 <StyledSSImg src={contact.userImg}></StyledSSImg>

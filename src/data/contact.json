@@ -9,7 +9,8 @@
       "date": "2023-11-22 10:30",
       "subject": "Maravillosa experiencia",
       "message": "Mi estancia en el hotel fue increíble. Desde la llegada, el personal fue muy atento y amable. Las instalaciones eran modernas y limpias. Definitivamente, recomendaré este hotel a mis amigos y familiares.",
-      "stars": 5
+      "stars": 5,
+      "is_archived": false
     },
     {
 
@@ -22,7 +23,8 @@
       "date": "2023-11-23 15:45",
       "subject": "Problemas con la reserva",
       "message": "Tuve algunos problemas con la reserva en línea. La plataforma era confusa y no recibí confirmación de inmediato. Afortunadamente, el personal de atención al cliente fue capaz de resolver la situación, pero creo que necesitan mejorar su sistema de reservas.",
-      "stars": 3
+      "stars": 3,
+      "is_archived": false
     },
     {
       "id": 3,
@@ -34,7 +36,8 @@
       "date": "2023-11-22 08:00",
       "subject": "Vacaciones inolvidables",
       "message": "Mis vacaciones en el hotel fueron inolvidables. La ubicación era perfecta, cerca de todas las atracciones locales. Las habitaciones eran acogedoras y el personal siempre estaba dispuesto a ayudar. Definitivamente, volveré en mi próximo viaje.",
-      "stars": 5
+      "stars": 5,
+      "is_archived": false
     },
     {
       "id": 4,
@@ -46,7 +49,8 @@
       "date": "2023-11-23 18:20",
       "subject": "Servicio deficiente",
       "message": "Estoy decepcionado con el servicio del hotel. La limpieza de la habitación no fue adecuada, y el personal no parecía estar muy comprometido. Fue una experiencia frustrante y no creo que regrese en el futuro.",
-      "stars": 2
+      "stars": 2,
+      "is_archived": true
     },
     {
       "id": 5,
@@ -58,7 +62,8 @@
       "date": "2023-11-23 16:00",
       "subject": "Buena relación calidad-precio",
       "message": "La relación calidad-precio del hotel es excelente. Las habitaciones son cómodas y el desayuno incluido es una gran ventaja. Recomiendo este lugar a aquellos que buscan una estancia agradable sin gastar demasiado.",
-      "stars": 5
+      "stars": 5,
+      "is_archived": true
     }
   ]
   

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserLoggedFromApiTrunk } from "./loggedTrunk";
+import { getLoggedFromApiTrunk } from "./loggedTrunk";
 
 
 export const LoggedSlice = createSlice({
@@ -9,26 +9,33 @@ export const LoggedSlice = createSlice({
         status: "idle", // | "fulfilled" | "rejected" | "pending"
         error: null
     },
-    reducers:{
-        getUserLogged: (state, action) =>  state.data.filter((user) => user.email === action.payload)
-    },
+    reducers: {
+
+        getLogged:(state, action) => {
+            
+            const logged = state.data.filter((logged) => logged.email === action.payload)
+            state.data = logged;
+            
+        },
+},
+
     extraReducers: (builder) => {
-        builder.addCase( getUserLoggedFromApiTrunk.fulfilled, (state,action) => {
+        builder.addCase(getLoggedFromApiTrunk.fulfilled, (state,action) => {
             state.status = "fulfilled"
             state.data = action.payload;
         })
-        .addCase( getUserLoggedFromApiTrunk.rejected,(state,action)  => {
+        .addCase(getLoggedFromApiTrunk.rejected,(state,action)  => {
             state.status = "rejected"
             console.log(getUserLogged(state, action))
             state.error = action.error.message
         })
-        .addCase( getUserLoggedFromApiTrunk.pending,(state,action)  => {
+        .addCase(getLoggedFromApiTrunk.pending,(state,action)  => {
             state.status = "pending"
         })
     }
 })
 
-export const {getUserLogged} = LoggedSlice.actions;
+export const {getLogged} = LoggedSlice.actions;
 export const getLoggedData = state => state.logged.data
 export const getLoggedStatus = state => state.logged.status;
 export const getLoggedError = state => state.logged.error;

@@ -6,8 +6,27 @@ import {
 } from "../common/StyledTable";
 import { StyledButton } from "../common/StyledButton";
 import { StyledMoreIcon } from "../common/StyledIcons";
+import { useDispatch, useSelector } from "react-redux";
+import { getAll, getArchived, updateContact } from "../features/contact/contactSlice";
 
 export const DataTableContact = (props) => {
+
+    const dispatch = useDispatch()
+
+    const handleUpdate = (idContact, isArchived) => {
+
+      switch(isArchived){
+        case true:
+          dispatch(updateContact({id: idContact, is_archived: !isArchived}))
+          dispatch(getAll())
+        break;
+        case false:
+          dispatch(updateContact({id: idContact, is_archived: !isArchived}))
+          dispatch(getArchived())
+        break;
+      }
+
+    }
   
 
   return (
@@ -27,7 +46,7 @@ export const DataTableContact = (props) => {
             <StyledTableCellBodyText>{data.message}</StyledTableCellBodyText>
           </StyledTableCellBody>
           <StyledTableCellBody>
-            <StyledButton name="archived">Archived</StyledButton>
+            <StyledButton name="archived" onClick={() => handleUpdate(data.id, data.is_archived)}>{data.is_archived ? "Publish" : "Archived"}</StyledButton>
           </StyledTableCellBody>
           <StyledTableCellBody>
             <StyledMoreIcon></StyledMoreIcon>

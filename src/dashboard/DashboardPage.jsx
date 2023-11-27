@@ -30,6 +30,7 @@ export const DashboardPage = () => {
         setSpinner(true);
       } else if (contactListStatus === "fulfilled") {
         setSpinner(false)
+        setContactList(contactListData)
       }
     },
     [dispatch,
@@ -42,7 +43,7 @@ export const DashboardPage = () => {
   return (
     <> 
         <CardKpi></CardKpi>
-      {spinner ? <p>Loading</p>:  <CardContact contact={contactListData}></CardContact>}
+      {spinner ? <p>Loading</p>:  <CardContact contact={contactList}></CardContact>}
     </>
   );
 };

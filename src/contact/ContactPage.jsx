@@ -10,6 +10,8 @@ import { StyledButton } from "../common/StyledButton";
 import { CardContact } from "./CardContact";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  getAll,
+  getArchived,
   getContactData,
   getContactError,
   getContactStatus,
@@ -20,14 +22,13 @@ import { getContactFromApiTrunk } from "../features/contact/contactTrunk";
 export const ContactPage = () => {
 
   const [isOpen, setIsOpen] = useState(false)
-  const contactTable = contact
 
   const dispatch = useDispatch();
   const contactListData = useSelector(getContactData);
   const contactListError = useSelector(getContactError);
   const contactListStatus = useSelector(getContactStatus);
   const [spinner, setSpinner] = useState(true);
-  const [contactList, setContactList] = useState([]);
+  let viewTable = useSelector((state) => state.contact.viewTable);
 
   useEffect(
     () => {
@@ -45,6 +46,19 @@ export const ContactPage = () => {
     contactListStatus]
   );
 
+  const handleClick = (nav) => {
+
+    switch(nav){
+      case "all":
+      dispatch(getAll())
+      break;
+      case "archived":
+       dispatch(getArchived())
+      break;
+
+    }
+  }
+
 
   return (
     <>
@@ -52,8 +66,8 @@ export const ContactPage = () => {
       {spinner ? <p>Loading...</p> :<CardContact contact={contactListData}></CardContact> }
 
       <StyledNav>
-          <StyledNavText>All Contacts</StyledNavText>
-          <StyledNavText name="last">Archived</StyledNavText>
+          <StyledNavText onClick={() => handleClick("all")}>All Contacts</StyledNavText>
+          <StyledNavText name="last" onClick={() => handleClick("archived")}>Archived</StyledNavText>
         </StyledNav>
         <StyledTableContainer isOpen={isOpen}>
         <StyledTable>
@@ -65,7 +79,12 @@ export const ContactPage = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <DataTableContact data={contactTable}></DataTableContact>
+          {spinner ? <p>Loading...</p> : viewTable !== undefined ?
+           <DataTableContact data={viewTable} ></DataTableContact> :
+           
+           <DataTableContact data={contactListData}></DataTableContact>
+           
+           }
           </TableBody>
         </StyledTable>
         </StyledTableContainer>

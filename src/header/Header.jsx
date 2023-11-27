@@ -27,9 +27,6 @@ export const Header = (props) => {
 
   const user =  users.filter(user => user.email === localStorage.getItem("email"))
 
-  console.log(user)
-
-
   return (
     <div>
             { open === true ? (

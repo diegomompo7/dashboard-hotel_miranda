@@ -5,7 +5,6 @@ import { StyledBoxModal, StyledTextModal, StyledIconModal } from "./StyledModalC
 
 export const ModalComponent = ({open, handleClose, description}) => {
 
-    console.log(open)
 
 
     return (
