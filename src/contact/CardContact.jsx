@@ -12,9 +12,9 @@ import { ModalComponent } from "../ModalComponent/ModalComponent";
 
 
 export const CardContact = (props) => {
-
     const contact = props.contact
-    const orderContactDate = contact.sort((a,b) => new Date(b.date) - new Date(a.date))
+    console.log(contact)
+    const orderContactDate = [...contact].sort((a,b) => new Date(b.date) - new Date(a.date))
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
