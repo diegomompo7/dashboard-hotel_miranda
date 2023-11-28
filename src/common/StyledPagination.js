@@ -25,5 +25,7 @@ export const StyledTextPage= styled.div`
    padding: 0.938em 1.438em 0.875em 1.5em;
    font-family: "Poppins", sans-serif;
    margin-right: 0.25em;
-   color: #393939;
+    ${props => props.isCurrentPage && `
+    color:#FFFFFF;
+    background: #135846`};
 `

@@ -11,6 +11,10 @@ import { getAll, getArchived, updateContact } from "../features/contact/contactS
 
 export const DataTableContact = (props) => {
 
+  const data = props.data
+  const orderContactDate = [...data].sort((a,b) => new Date(b.date) - new Date(a.date))
+  const dataPage = orderContactDate.slice(props.firstItem, props.lastItem)
+
     const dispatch = useDispatch()
 
     const handleUpdate = (idContact, isArchived) => {
@@ -31,7 +35,7 @@ export const DataTableContact = (props) => {
 
   return (
     <>
-      {props.data.map((data) => (
+      {dataPage.map((data) => (
         <TableRow key={data.name}>
           <StyledTableCellBody>
           <StyledTableCellBodyText>{data.date}</StyledTableCellBodyText>

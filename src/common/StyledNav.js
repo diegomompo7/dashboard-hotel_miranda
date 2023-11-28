@@ -11,13 +11,18 @@ export const StyledNav = styled.nav `
 `
 export const StyledNavText = styled(Text) `
     white-space: nowrap;
+    width: 127px;
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
     margin-right: auto;
+    margin-bottom: auto;
+    padding-bottom: 20px;
     text-align: center;
     color: #6E6E6E;
 
-    ${props => props.name==="last" && `margin-right: 0`}
+    ${props => props.isActive && `
+    color:#135846;
+    border-bottom: 1px solid #135846`};
 `
 

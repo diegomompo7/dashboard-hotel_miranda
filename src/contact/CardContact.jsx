@@ -65,10 +65,11 @@ export const CardContact = (props) => {
                 <StyledSSText name="title">{contact.name} {contact.surname}</StyledSSText>
                 <StyledSSText name="subtitle">{
                 
-                Math.floor((Date.now() - new Date(contact.date)) / 1000 / 60)
+                Math.floor((Date.now() - new Date(contact.date)) / 1000 / 60 / 60)
+                }h {
                 
-                
-                }m ago</StyledSSText>
+                  Math.floor(((Date.now() - new Date(contact.date)) / 1000 / 60 / 60 ) % 60)
+                  }m ago</StyledSSText>
                 </div>
                 
                 </div>
