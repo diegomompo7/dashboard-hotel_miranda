@@ -98,7 +98,7 @@ export const ContactPage = () => {
         </StyledTable>
         </StyledTableContainer>
         <StyledPagination>
-          <StyledPaginationText> Showing {numberPage[0]} to {numberPage[1]} of {contactListData.length} data</StyledPaginationText>
+          <StyledPaginationText> Showing {numberPage[0]} of { contactListData.length >= numberPage[1] ? numberPage[1] : contactListData.length} data</StyledPaginationText>
           <StyledButtonPage>
               <StyledButton name="Prev" disable-d={numberPage[0] === 1} onClick={() => {
                 numberPage[0] -= 10
