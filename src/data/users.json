@@ -6,7 +6,7 @@
     "job": "Manager",
     "email": "david.lopez@example.com",
     "phone": "+34 788128729",
-    "startDate": "13-02-2023",
+    "startDate": "2023-02-03",
     "descriptionJob": "Responsable de la gestión operativa del hotel. Toma decisiones estratégicas y coordina las actividades de los diferentes departamentos.",
     "status": "ACTIVE",
     "password": "securePass123"
@@ -18,7 +18,7 @@
     "job": "Recepcionista",
     "email": "elena.gomez@example.com",
     "phone": "+34 648645815",
-    "startDate": "11-12-2023",
+    "startDate": "2023-12-11",
     "descriptionJob": "Atiende a los huéspedes en la recepción, realiza check-ins y check-outs, y proporciona información sobre servicios del hotel y la zona.",
     "status": "ACTIVE",
     "password": "hotel123pass"
@@ -30,7 +30,7 @@
     "job": "Servicio de Habitaciones",
     "email": "carlos.fernandez@example.com",
     "phone": "+34 747047325",
-    "startDate": "15-07-2023",
+    "startDate": "2023-07-15",
     "descriptionJob": "Encargado de asegurar un servicio impecable en las habitaciones. Atiende solicitudes de los huéspedes y mantiene la calidad del servicio.",
     "status": "ACTIVE",
     "password": "roomService456"
@@ -42,7 +42,7 @@
     "job": "Recepcionista",
     "email": "laura.martinez@example.com",
     "phone": "+34 680752567",
-    "startDate": "03-02-2023",
+    "startDate": "2023-02-03",
     "descriptionJob": "Responsable de la recepción. Realiza check-ins y check-outs, brinda información a los huéspedes y gestiona reservas.",
     "status": "INACTIVE",
     "password": "receptionist789"
@@ -54,7 +54,7 @@
     "job": "Servicio de Habitaciones",
     "email": "isabel.sanchez@example.com",
     "phone": "+34 682283754",
-    "startDate": "28-07-2023",
+    "startDate": "2023-07-28",
     "descriptionJob": "Asegura que las habitaciones estén limpias y bien abastecidas. Atiende a las solicitudes de los huéspedes para garantizar una experiencia agradable.",
     "status": "ACTIVE",
     "password": "roomAttendantABC"

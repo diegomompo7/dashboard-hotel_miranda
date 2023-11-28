@@ -32,6 +32,11 @@ export const UsersSlice = createSlice({
             state.viewTable = searchEmployee;
             
         },
+        getSelect: (state, action) => {
+            
+            state.viewTable = action.payload;
+            
+        }
 
 },
 
@@ -39,6 +44,7 @@ export const UsersSlice = createSlice({
         builder.addCase(getUsersFromApiTrunk.fulfilled, (state,action) => {
             state.status = "fulfilled"
             state.data = action.payload;
+            state.viewTable = state.data
         })
         .addCase(getUsersFromApiTrunk.rejected,(state,action)  => {
             state.status = "rejected"
@@ -51,8 +57,9 @@ export const UsersSlice = createSlice({
     }
 })
 
-export const {getAll, getInactive, getActive, getEmployee} = UsersSlice.actions
+export const {getAll, getInactive, getActive, getEmployee, getSelect} = UsersSlice.actions
 
 export const getUsersData = state => state.users.data
+export const getUsersTable = state => state.users.viewTable
 export const getUsersStatus = state => state.users.status;
 export const getUsersError = state => state.users.error;

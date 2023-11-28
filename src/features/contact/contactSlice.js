@@ -40,6 +40,7 @@ export const ContactSlice = createSlice({
         builder.addCase(getContactFromApiTrunk.fulfilled, (state,action) => {
             state.status = "fulfilled"
             state.data = action.payload;
+            state.viewTable = state.data
         })
         .addCase(getContactFromApiTrunk.rejected,(state,action)  => {
             state.status = "rejected"
