@@ -38,7 +38,7 @@ export const UserPage = () => {
   let usersTable = useSelector(getUsersTable)
   const [currentView, setCurrentView] = useState("all");
 
-  const [numberPage, setNumberPage] = useState([1, 10])
+  const [numberPage, setNumberPage] = useState([0, 10])
   const [currentPage, setCurrentPage] = useState(1);
 
   console.log(currentPage)
@@ -65,6 +65,7 @@ export const UserPage = () => {
       case "all":
       dispatch(getAll())
       setCurrentView("all")
+
       break;
       case "active":
        dispatch(getActive())
@@ -75,6 +76,10 @@ export const UserPage = () => {
         setCurrentView("inactive")
        break;
     }
+
+    numberPage[0] = 0
+    numberPage[0] = 10
+    setCurrentPage(1)
   }
 
   const handleOnChange = (e) => {
@@ -95,6 +100,9 @@ export const UserPage = () => {
           break;
       }
       dispatch(getSelect(orderSelect))
+      numberPage[0] = 0;
+      numberPage[1] = 10;
+      setCurrentPage(1)
     }
 
 
@@ -144,7 +152,7 @@ export const UserPage = () => {
         </StyledTable>
         </StyledTableContainer>
         <StyledPagination>
-          <StyledPaginationText> Showing {numberPage[0]} of { usersTable.length >= numberPage[1] ? numberPage[1] : usersTable.length} data</StyledPaginationText>
+          <StyledPaginationText> Showing {usersTable.length !== 0 ? numberPage[0]+1 : numberPage[0]} of { usersTable.length >= numberPage[1] ? numberPage[1] : usersTable.length} data</StyledPaginationText>
           <StyledButtonPage>
               <StyledButton name="Prev" disabled={numberPage[0] === 1} onClick={() => {
                 numberPage[0] -= 10

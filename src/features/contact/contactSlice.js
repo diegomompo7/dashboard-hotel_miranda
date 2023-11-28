@@ -55,5 +55,6 @@ export const ContactSlice = createSlice({
 
 export const {getFullMessage, getArchived, getAll, updateContact} = ContactSlice.actions;
 export const getContactData = state => state.contact.data
+export const getContactTable = state => state.contact.viewTable
 export const getContactStatus = state => state.contact.status;
 export const getContactError = state => state.contact.error;

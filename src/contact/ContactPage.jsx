@@ -15,6 +15,7 @@ import {
   getContactData,
   getContactError,
   getContactStatus,
+  getContactTable
 } from "../features/contact/contactSlice";
 import { getContactFromApiTrunk } from "../features/contact/contactTrunk";
 
@@ -25,13 +26,14 @@ export const ContactPage = () => {
 
   const dispatch = useDispatch();
   const contactListData = useSelector(getContactData);
+  const contactTable = useSelector(getContactTable)
   const contactListError = useSelector(getContactError);
   const contactListStatus = useSelector(getContactStatus);
   const [spinner, setSpinner] = useState(true);
   let viewTable = useSelector((state) => state.contact.viewTable);
 
 
-  const [numberPage, setNumberPage] = useState([1, 10])
+  const [numberPage, setNumberPage] = useState([0, 10])
   const [currentPage, setCurrentPage] = useState(1);
   const [currentView, setCurrentView] = useState("all");
  
@@ -66,13 +68,20 @@ export const ContactPage = () => {
       break;
 
     }
+    numberPage[0] = 0;
+    numberPage[1] = 10;
+    setCurrentPage(1)
   }
+
 
 
   return (
     <>
 
-      {spinner ? <p>Loading...</p> :<CardContact contact={contactListData}></CardContact> }
+      { contactTable !== undefined &&
+
+        <>
+      {spinner ? <p>Loading...</p> :<CardContact contact={contactTable}></CardContact> }
 
       <StyledNav>
           <StyledNavText onClick={() => handleClick("all")} isActive={currentView === "all"}>All Contacts</StyledNavText>
@@ -88,34 +97,34 @@ export const ContactPage = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-          {spinner ? <p>Loading...</p> : viewTable !== undefined ?
-           <DataTableContact data={viewTable} irstItem={numberPage[0]} lastItem={numberPage[1]} ></DataTableContact> :
-           
-           <DataTableContact data={contactListData} firstItem={numberPage[0]} lastItem={numberPage[1]}></DataTableContact>
+          {spinner ? <p>Loading...</p> :
+           <DataTableContact data={contactTable} numberPage={numberPage} setCurrentPage={setCurrentPage} setCurrentView={setCurrentView}></DataTableContact>
            
            }
           </TableBody>
         </StyledTable>
         </StyledTableContainer>
         <StyledPagination>
-          <StyledPaginationText> Showing {numberPage[0]} of { contactListData.length >= numberPage[1] ? numberPage[1] : contactListData.length} data</StyledPaginationText>
+          <StyledPaginationText> Showing {contactTable.length !== 0 ? numberPage[0]+1 : numberPage[0]} of { contactTable.length >= numberPage[1] ? numberPage[1] : contactTable.length } data</StyledPaginationText>
           <StyledButtonPage>
-              <StyledButton name="Prev" disable-d={numberPage[0] === 1} onClick={() => {
+              <StyledButton name="Prev" disabled={numberPage[0] <= 1} onClick={() => {
                 numberPage[0] -= 10
                 numberPage[1] -= 10
                 setCurrentPage(next => next - 1) }}>Prev</StyledButton>
               {
-                Array.from({length: Math.ceil((contactListData.length / 10))}, (_, i) => (
+                Array.from({length: Math.ceil((contactTable.length / 10))}, (_, i) => (
                     <StyledTextPage key={i} isCurrentPage={i+1 === currentPage}>{i+1}</StyledTextPage>
                 ))
               }
-              <StyledButton  name="Next"  disabled={numberPage[1] >= contactListData.length} onClick={() => {
+              <StyledButton  name="Next"  disabled={numberPage[1] >= contactTable.length} onClick={() => {
                 numberPage[0] += 10
                 numberPage[1] += 10
                 setCurrentPage(next => next + 1)
               }}>Next</StyledButton>
           </StyledButtonPage>
         </StyledPagination>
+        </>
+      }
     </>
   );
 };

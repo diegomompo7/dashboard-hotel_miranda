@@ -13,7 +13,7 @@ export const DataTableContact = (props) => {
 
   const data = props.data
   const orderContactDate = [...data].sort((a,b) => new Date(b.date) - new Date(a.date))
-  const dataPage = orderContactDate.slice(props.firstItem, props.lastItem)
+  const dataPage = orderContactDate.slice(props.numberPage[0], props.numberPage[1])
 
     const dispatch = useDispatch()
 
@@ -23,12 +23,18 @@ export const DataTableContact = (props) => {
         case true:
           dispatch(updateContact({id: idContact, is_archived: !isArchived}))
           dispatch(getAll())
+          props.setCurrentView("all")
         break;
         case false:
           dispatch(updateContact({id: idContact, is_archived: !isArchived}))
           dispatch(getArchived())
+          props.setCurrentView("archived")
         break;
       }
+
+      props.numberPage[0] = 0;
+      props.numberPage[1] = 10;
+      props.setCurrentPage(1)
 
     }
   
