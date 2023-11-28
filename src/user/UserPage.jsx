@@ -78,7 +78,7 @@ export const UserPage = () => {
     }
 
     numberPage[0] = 0
-    numberPage[0] = 10
+    numberPage[1] = 10
     setCurrentPage(1)
   }
 
@@ -96,7 +96,19 @@ export const UserPage = () => {
         console.log(orderSelect[0].startDate)
         break;
         case "name":
-          orderSelect = [...usersTable].sort((a,b) => b.fullName - a.fullName)
+          orderSelect = [...usersTable].sort((a,b) => {
+            const nameA = a.fullName.toUpperCase(); // ignore upper and lowercase
+            const nameB = b.fullName.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+          
+            // names must be equal
+            return 0;
+          })
           break;
       }
       dispatch(getSelect(orderSelect))

@@ -1,9 +1,9 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { getUsersFromApiTrunk } from "./usersTrunk";
+import { getRoomsFromApiTrunk } from "./roomsTrunk";
 
 
-export const UsersSlice = createSlice({
-    name: "users",
+export const RoomsSlice = createSlice({
+    name: "rooms",
     initialState: {
         data: [],
         status: "idle", // | "fulfilled" | "rejected" | "pending"
@@ -11,16 +11,16 @@ export const UsersSlice = createSlice({
     },
     reducers: {
 
-        getActive: (state, action) => {
+        getAvailable: (state, action) => {
 
-            const fullActive = state.data.filter((active) => active.status === "ACTIVE")
-            state.viewTable = fullActive;
+            const fullAvailable = state.data.filter((active) => active.status === "Available")
+            state.viewTable = fullAvailable;
 
         },
-        getInactive: (state, action) => {
+        getBooked: (state, action) => {
 
-            const fullInactive = state.data.filter((inactive) => inactive.status === "INACTIVE")
-            state.viewTable = fullInactive;
+            const fullBooked = state.data.filter((inactive) => inactive.status === "Booked")
+            state.viewTable = fullBooked;
 
         },
         getAll: (state, action) => {
@@ -85,25 +85,25 @@ export const UsersSlice = createSlice({
 },
 
     extraReducers: (builder) => {
-        builder.addCase(getUsersFromApiTrunk.fulfilled, (state, action) => {
+        builder.addCase(getRoomsFromApiTrunk.fulfilled, (state, action) => {
             state.status = "fulfilled"
             state.data = action.payload;
             state.viewTable = state.data
         })
-            .addCase(getUsersFromApiTrunk.rejected, (state, action) => {
+            .addCase(getRoomsFromApiTrunk.rejected, (state, action) => {
                 state.status = "rejected"
-                console.log(getUserUsers(state, action))
+                console.log(getUserRooms(state, action))
                 state.error = action.error.message
             })
-            .addCase(getUsersFromApiTrunk.pending, (state, action) => {
+            .addCase(getRoomsFromApiTrunk.pending, (state, action) => {
                 state.status = "pending"
             })
     }
 })
 
-export const { getAll, getInactive, getActive, getEmployee, getSelect, updateUser, getId, createUser } = UsersSlice.actions
+export const { getAll, getBooked, getAvailable, getEmployee, getSelect, updateUser, getId, createUser } = RoomsSlice.actions
 
-export const getUsersData = state => state.users.data
-export const getUsersTable = state => state.users.viewTable
-export const getUsersStatus = state => state.users.status;
-export const getUsersError = state => state.users.error;
+export const getRoomsData = state => state.rooms.data
+export const getRoomsTable = state => state.rooms.viewTable
+export const getRoomsStatus = state => state.rooms.status;
+export const getRoomsError = state => state.rooms.error;

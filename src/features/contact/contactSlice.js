@@ -27,7 +27,7 @@ export const ContactSlice = createSlice({
             state.viewTable = state.data;
         },
         updateContact:(state, action) => {
-            const data = current(state.data)
+            const data = state.data
             const index = data.findIndex((archived) => archived.id === action.payload.id)
             if(index !== -1){
             const updatedData = { ...data[index], is_archived: action.payload.is_archived  };
