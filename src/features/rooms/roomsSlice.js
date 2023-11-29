@@ -15,6 +15,13 @@ export const RoomsSlice = createSlice({
 
             state.data = action.payload;
         },
+        
+        deleteRoom: (state, action) => {
+            const data = current(state.changeRoom)
+            const delRoom = data.filter((del) => del.id !== action.payload)
+            console.log(delRoom)
+            state.data = delRoom
+    },
 
         getNewData: (state, action) => {
             state.changeRoom = state.data
@@ -24,25 +31,29 @@ export const RoomsSlice = createSlice({
 
             const data = current(state.changeRoom)
             const index = data.findIndex((update) => update.id === action.payload.id)
+
+            console.log(action.payload.formData)
+
             console.log(index)
             if (index !== -1) {
                 const updatedData = {
                     ...data[index],
-                    photo: action.payload.formData.photo,
-                    fullName: action.payload.formData.fullName,
-                    job: action.payload.formData.job,
-                    email: action.payload.formData.email,
-                    phone: action.payload.formData.phone,
-                    startDate: action.payload.formData.startDate,
-                    descriptionJob: action.payload.formData.descriptionJob,
-                    status: action.payload.formData.status,
-                    password: action.payload.formData.password,
+                    photos: action.payload.formData.photos.split("\n"),
+                    roomType: action.payload.formData.roomType,
+                    roomNumber: action.payload.formData.roomNumber,
+                    description: action.payload.formData.description,
+                    offer: action.payload.formData.offer,
+                    priceNight: action.payload.formData.priceNight,
+                    discount: action.payload.formData.discount,
+                    cancellation: action.payload.formData.cancellation,
+                    amenities: action.payload.formData.amenities.split("\n"),
 
                 }
 
                 state.data = data.map((item, i) => (i === index ? updatedData : item));
-                console.log(state.data)
+                console.log(updatedData)
             }
+            
         },
         createRoom: (state, action) => {
             const data = state.changeRoom
@@ -82,12 +93,12 @@ export const RoomsSlice = createSlice({
     }
 })
 
-export const { getSelect, updateRoom, createRoom } = RoomsSlice.actions
+export const { getSelect, updateRoom, createRoom, deleteRoom, getNewData} = RoomsSlice.actions
 
 
 export const getRoomsDataAvailable = state => state.rooms.data.filter((available) => available.status === "Available")
 export const getRoomsDataBooked = state => state.rooms.data.filter((booked) => booked.status === "Booked")
 export const getRoomsData = state => state.rooms.data
-export const getRoomsTable = state => state.rooms.changeRoom;
+export const getChangeData = state => state.rooms.changeRoom;
 export const getRoomsStatus = state => state.rooms.status;
 export const getRoomsError = state => state.rooms.error;

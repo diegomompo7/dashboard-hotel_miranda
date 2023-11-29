@@ -21,6 +21,14 @@ export const UsersSlice = createSlice({
             state.data = action.payload;
         },
 
+        deleteUser: (state, action) => {
+                const data = current(state.changeUser)
+                const delUser = data.filter((del) => del.id !== action.payload)
+                console.log(delUser)
+
+                state.data = delUser
+        },
+
         getNewData: (state, action) => {
             state.changeUser = state.data
         },
@@ -88,7 +96,7 @@ export const UsersSlice = createSlice({
     }
 })
 
-export const {getEmployee, getSelect, updateUser, createUser, getNewData } = UsersSlice.actions
+export const {getEmployee, getSelect, updateUser, createUser, getNewData, deleteUser} = UsersSlice.actions
 export const getUsersDataActive = state => state.users.data.filter((active) => active.status === "ACTIVE")
 export const getUsersDataInactive = state => state.users.data.filter((inactive) => inactive.status === "INACTIVE")
 export const getUsersData = state => state.users.data

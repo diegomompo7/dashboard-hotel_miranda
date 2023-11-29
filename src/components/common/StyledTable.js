@@ -1,25 +1,31 @@
 import styled from "styled-components";
-import { Table, TableBody, TableCell, TableContainer } from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableRow } from "@mui/material";
 
 export const StyledTableContainer= styled(TableContainer) `
+    width:100%;
     ${(props) => props.isOpen === true && `
         width: 100%;
         max-height: 45rem;
     `}
 `
 
-export const StyledTable = styled(Table)`
+export const StyledTable = styled.table`
     background: #FFFFFF;
+    height: auto;
+    width: 100%;
+
 
 `
-export const StyledTableBody = styled(TableBody)`
+export const StyledTableBody = styled.tbody`
     border: none;
     table-layout: auto;
 `
-export const StyledTableCellRow = styled(TableCell)`
+export const StyledTableCellRow = styled.td`
         font-size: 1rem;
         font-family: "Poppins", sans-serif;
         font-weight: 600;
+        border-bottom: 1px solid #F8F8F8;
+        padding: 1.25em 0;
         
 `
 
@@ -53,20 +59,30 @@ export const StyledTableCellBodyText = styled.p`
   
 
 `
-export const StyledTableCellBody = styled(TableCell)`
+export const StyledTableCellBody = styled.td`
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
     font-weight: 400; 
     color: #393939;
-    height: 5.75em;
+    height: 121px;
     margin: 0 auto;
+    border-bottom: 1px solid #F8F8F8;
 
     ${props => props.typeStyle === "description" && `
-        max-width: 40rem;
+        
+        width: 30%;
+
     `}
     ${props => props.typeStyle === "message" && `
-        max-width: 40rem;
-`}
+            width: 30%;
+    `}
+    ${props => props.name="menu" && `
+        position: relative
+
+        &:active,  & div{
+            display: block;
+        }
+    `}
 
     `
 
@@ -90,5 +106,13 @@ height: 5.5em;
 border-radius: 0.5em;
 
 `}
+
+`
+
+export const StyledTableRow = styled.tr`
+
+ &:hover{
+    box-shadow: 0px 4px 30px #00000014;
+ }
 
 `
