@@ -69,6 +69,7 @@ export const EditUserPage = () => {
 
   const handleChange = (e) => 
   {
+    console.log(e)
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -119,7 +120,7 @@ export const EditUserPage = () => {
         ></StyledInputForm>
         <StyledInputForm
         value={formData.phone}
-          placeholder="123-456-789"
+          placeholder="123456789"
           type="tel"
           name="phone"
           pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
@@ -127,7 +128,7 @@ export const EditUserPage = () => {
         <StyledInputForm
         value={formData.startDate}
   
-          placeholder="Start Date"
+          placeholder="YYYY/MM/DD"
           type="text"
           name="startDate"
         ></StyledInputForm>
@@ -140,7 +141,7 @@ export const EditUserPage = () => {
         ></StyledTextAreaForm>
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Status</StyledInputLabel>
-          <StyledSelect name= "status" label="status" value={formData.status}>
+          <StyledSelect name= "status" label="status" value={formData.status} onChange={(e) => {handleChange(e)}}>
             <MenuItem value="ACTIVE">ACTIVE</MenuItem>
             <MenuItem value="INACTIVE">INACTIVE</MenuItem>
           </StyledSelect>

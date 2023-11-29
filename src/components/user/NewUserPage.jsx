@@ -13,7 +13,7 @@ import {
 } from "../common/StyledSelect";
 import { MenuItem } from "@mui/material";
 import logo from "../../assets/img/logo.png";
-import { createUser, getUsersData, getUsersError, getUsersStatus} from "../../features/users/usersSlice";
+import {  createUser, getChangeData, getNewData, getUsersData, getUsersError, getUsersStatus} from "../../features/users/usersSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -22,12 +22,12 @@ import { getUsersFromApiTrunk } from "../../features/users/usersTrunk";
 export const NewUserPage = () => {
 
   const navigate = useNavigate()
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const usersListData = useSelector(getUsersData);
   const usersListError = useSelector(getUsersError);
   const usersListStatus = useSelector(getUsersStatus);
   const [spinner, setSpinner] = useState(true);
+  let userCreate= useSelector(getChangeData)
 
   useEffect(
     () => {
@@ -41,7 +41,7 @@ export const NewUserPage = () => {
       }
     },[
     dispatch,
-    usersTable,
+    userCreate,
     usersListStatus]
   );
 
@@ -66,9 +66,12 @@ export const NewUserPage = () => {
     }));
   }
 
+
+
   const handleOnCreate = (e) => {
     e.preventDefault()
-    dispatch(createUser({id: 7, formData: formData }));
+    dispatch(createUser({id: userCreate[userCreate.length-1].id + 1, formData: formData }));
+    dispatch(getNewData())
   }
 
   return (
@@ -77,47 +80,41 @@ export const NewUserPage = () => {
       <StyledImgForm src={logo}></StyledImgForm>
       <StyledFormContainer
         name="createForm"
+        onChange={(e) => {handleChange(e)}}
       >
         <StyledTextAreaForm
-          onChange={handleChange}
           placeholder="Photo"
           type="url"
           name="photo"
           rows="1"
         ></StyledTextAreaForm>
         <StyledInputForm
-          onChange={handleChange}
           placeholder="Full Name"
           type="text"
           name="fullName"
         ></StyledInputForm>
         <StyledInputForm
-        onChange={handleChange}
           placeholder="Job"
           type="text"
           name="job"
         ></StyledInputForm>
         <StyledInputForm
-        onChange={handleChange}
           placeholder="Email"
           type="email"
           name="email"
         ></StyledInputForm>
         <StyledInputForm
-        onChange={handleChange}
-          placeholder="123-456-789"
+          placeholder="123456789"
           type="tel"
           name="phone"
           pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
         ></StyledInputForm>
         <StyledInputForm
-        onChange={handleChange}
-          placeholder="Start Date"
+          placeholder="YYYY/MM/DD"
           type="text"
           name="startDate"
         ></StyledInputForm>
         <StyledTextAreaForm
-          onChange={handleChange}
           placeholder="Description about job"
           type="text"
           name="descriptionJob"
@@ -125,13 +122,12 @@ export const NewUserPage = () => {
         ></StyledTextAreaForm>
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Status</StyledInputLabel>
-          <StyledSelect name= "status" label="status" value={formData.status}  onChange={handleChange}>
+          <StyledSelect name= "status" label="status" value={formData.status}    onChange={(e) => {handleChange(e)}}>
             <MenuItem value="ACTIVE">ACTIVE</MenuItem>
             <MenuItem value="INACTIVE">INACTIVE</MenuItem>
           </StyledSelect>
         </StyledFormControl>
         <StyledInputForm
-         onChange={handleChange}
           placeholder="Password"
           type="Password"
           name="password"

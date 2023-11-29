@@ -76,7 +76,7 @@ export const ContactPage = () => {
   return (
     <>
 
-      { contactListData !== undefined &&
+      { currentContactListData !== undefined &&
 
         <>
       {spinner ? <p>Loading...</p> :<CardContact contact={contactListData}></CardContact> }

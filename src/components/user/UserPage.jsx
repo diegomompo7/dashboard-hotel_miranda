@@ -17,7 +17,8 @@ import {
   getEmployee,
   getSelect,
   getUsersDataActive,
-  getUsersDataInactive
+  getUsersDataInactive,
+  getNewData,
 
 } from "../../features/users/usersSlice";
 import { getUsersFromApiTrunk } from "../../features/users/usersTrunk";
@@ -144,7 +145,7 @@ export const UserPage = () => {
           <TableBody>
           {spinner ? <p>Loading...</p> : 
            
-           <DataTableUsers data={currentUsersListData} firstItem={numberPage[0]} lastItem={numberPage[1]}></DataTableUsers>
+           <DataTableUsers data={currentUsersListData} numberPage={numberPage}></DataTableUsers>
            
            }
           </TableBody>

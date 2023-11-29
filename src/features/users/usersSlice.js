@@ -12,7 +12,7 @@ export const UsersSlice = createSlice({
     reducers: {
         getEmployee: (state, action) => {
 
-            const searchEmployee = state.data.filter((employee) => employee.fullName.includes(action.payload))
+            const searchEmployee = state.changeUser.filter((employee) => employee.fullName.includes(action.payload))
             state.data = searchEmployee;
 
         },
@@ -49,7 +49,7 @@ export const UsersSlice = createSlice({
             }
         },
         createUser: (state, action) => {
-            const data = state.data
+            const data = state.changeUser
 
            state.data = [{
                 id: action.payload.id,
