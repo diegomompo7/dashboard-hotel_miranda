@@ -14,7 +14,53 @@ import {
 import { MenuItem } from "@mui/material";
 import logo from "../../assets/img/logo.png";
 
+import {  getChangeData, getNewData, getRoomsData, getRoomsError, getRoomsStatus, createRoom } from "../../features/rooms/roomsSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 export const NewRoomPage = () => {
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const roomsListData = useSelector(getRoomsData);
+  const roomsListError = useSelector(getRoomsError);
+  const roomsListStatus = useSelector(getRoomsStatus);
+  const [spinner, setSpinner] = useState(true);
+  let roomCreate= useSelector(getChangeData)
+
+  useEffect(
+    () => {
+  
+      if (roomsListStatus === "idle") {
+        dispatch(getRoomsFromApiTrunk());
+      } else if (roomsListStatus === "pending") {
+        setSpinner(true);
+      } else if (roomsListStatus === "fulfilled") {
+        setSpinner(false)
+      }
+    },[
+    dispatch,
+    roomCreate,
+    roomsListStatus]
+  );
+
+  
+  const [formData, setFormData] = useState({
+    roomType: "",
+    offer: "",
+    photos: [],
+    roomNumber: "",
+    description: "",
+    priceNight: "",
+    discount: "",
+    cancellation: "",
+    amenities: [],
+  });
+
+  
+
   return (
     <StyledBoxForm name="createForm">
       <StyledImgForm src={logo}></StyledImgForm>
