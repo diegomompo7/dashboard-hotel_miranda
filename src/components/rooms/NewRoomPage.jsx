@@ -12,7 +12,7 @@ import {
   StyledSelect,
 } from "../common/StyledSelect";
 import { MenuItem } from "@mui/material";
-import logo from "../assets/img/logo.png";
+import logo from "../../assets/img/logo.png";
 
 export const NewRoomPage = () => {
   return (

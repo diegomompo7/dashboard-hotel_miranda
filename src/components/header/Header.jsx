@@ -15,12 +15,11 @@ import {
 import { StyledTextUserMenu, StyledTextHeader, StyledTextLogo, StyledTextFooter } from "./StyledText";
 import { StyledImgLogo, StyledTextImgLogo, StyledImgProfileMenu } from "../common/StyledImg";
 import { StyledMenuItem } from "./StyledMenuItem";
-import logo  from"../assets/img/logo.png"
-import userImg from "../assets/img/userImg.jpg"
-import textLogo from "../assets/img/textLogo.png"
+import logo  from "../../assets/img/logo.png";
+import textLogo from "../../assets/img/textLogo.png"
 import { StyledButton } from "../common/StyledButton";
 import { StyledLink } from "./StyledLink";
-import users from "../data/users.json"
+import users from "../../data/users.json"
 
 export const Header = (props) => {
   const [open, setOpen] = React.useState(false);

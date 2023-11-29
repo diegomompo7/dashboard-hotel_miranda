@@ -1,6 +1,6 @@
 
 import { DataTableUsers } from "./DataTableUsers";
-import users from "../data/users.json";
+import users from "../../data/users.json";
 import { TableHead, TableBody, TableRow, MenuItem } from "@mui/material";
 import { StyledTable, StyledTableCellRow, StyledTableContainer} from "../common/StyledTable";
 import { useEffect, useState } from "react";
@@ -14,15 +14,13 @@ import {
   getUsersData,
   getUsersError,
   getUsersStatus,
-  getAll,
-  getActive,
-  getInactive,
   getEmployee,
   getSelect,
-  getUsersTable,
+  getUsersDataActive,
+  getUsersDataInactive
 
-} from "../features/users/usersSlice";
-import { getUsersFromApiTrunk } from "../features/users/usersTrunk";
+} from "../../features/users/usersSlice";
+import { getUsersFromApiTrunk } from "../../features/users/usersTrunk";
 
 
 export const UserPage = () => {
@@ -33,9 +31,11 @@ export const UserPage = () => {
   const usersListData = useSelector(getUsersData);
   const usersListError = useSelector(getUsersError);
   const usersListStatus = useSelector(getUsersStatus);
+  const usersListActive = useSelector(getUsersDataActive);
+  const usersListInactive = useSelector(getUsersDataInactive);
+
   const [spinner, setSpinner] = useState(true);
 
-  let usersTable = useSelector(getUsersTable)
   const [currentView, setCurrentView] = useState("all");
 
   const [numberPage, setNumberPage] = useState([0, 10])
@@ -61,21 +61,7 @@ export const UserPage = () => {
 
   const handleClick = (click) => {
 
-    switch(click){
-      case "all":
-      dispatch(getAll())
-      setCurrentView("all")
-
-      break;
-      case "active":
-       dispatch(getActive())
-       setCurrentView("active")
-      break;
-      case "inactive":
-        dispatch(getInactive())
-        setCurrentView("inactive")
-       break;
-    }
+    setCurrentView(click)
 
     numberPage[0] = 0
     numberPage[1] = 10
@@ -92,11 +78,11 @@ export const UserPage = () => {
 
     switch(e.target.value){
       case "orderDate":
-        orderSelect = [...usersTable].sort((a,b) => new Date(`${b.startDate}`) - new Date(`${a.startDate}`))
+        orderSelect = [...currentUsersListData].sort((a,b) => new Date(`${b.startDate}`) - new Date(`${a.startDate}`))
         console.log(orderSelect[0].startDate)
         break;
         case "name":
-          orderSelect = [...usersTable].sort((a,b) => {
+          orderSelect = [...currentUsersListData].sort((a,b) => {
             const nameA = a.fullName.toUpperCase(); // ignore upper and lowercase
             const nameB = b.fullName.toUpperCase(); // ignore upper and lowercase
             if (nameA < nameB) {
@@ -117,15 +103,16 @@ export const UserPage = () => {
       setCurrentPage(1)
     }
 
+    const currentUsersListData = currentView ==="active" ? usersListActive : currentView === "inactive" ? usersListInactive : usersListData
 
 
   return (
     <>
-    { usersTable !== undefined &&
+    { currentUsersListData !== undefined &&
     <>
       <div style={{display: 'flex', flexWrap: 'wrap'}}>
       <StyledNav>
-          <StyledNavText onClick={() => handleClick("all")} isActive={currentView === "all"}>All Employee</StyledNavText>
+          <StyledNavText onClick={() =>handleClick("all")} isActive={currentView === "all"}>All Employee</StyledNavText>
           <StyledNavText onClick={() => handleClick("active")} isActive={currentView === "active"}>Active Employee</StyledNavText>
           <StyledNavText onClick={() => handleClick("inactive")} isActive={currentView === "inactive"}>Inactive Employee</StyledNavText>
         </StyledNav>
@@ -157,25 +144,25 @@ export const UserPage = () => {
           <TableBody>
           {spinner ? <p>Loading...</p> : 
            
-           <DataTableUsers data={usersTable} firstItem={numberPage[0]} lastItem={numberPage[1]}></DataTableUsers>
+           <DataTableUsers data={currentUsersListData} firstItem={numberPage[0]} lastItem={numberPage[1]}></DataTableUsers>
            
            }
           </TableBody>
         </StyledTable>
         </StyledTableContainer>
         <StyledPagination>
-          <StyledPaginationText> Showing {usersTable.length !== 0 ? numberPage[0]+1 : numberPage[0]} of { usersTable.length >= numberPage[1] ? numberPage[1] : usersTable.length} data</StyledPaginationText>
+          <StyledPaginationText> Showing {currentUsersListData.length !== 0 ? numberPage[0]+1 : numberPage[0]} of { currentUsersListData.length >= numberPage[1] ? numberPage[1] : currentUsersListData.length} data</StyledPaginationText>
           <StyledButtonPage>
               <StyledButton name="Prev" disabled={numberPage[0] === 1} onClick={() => {
                 numberPage[0] -= 10
                 numberPage[1] -= 10
                 setCurrentPage(next => next - 1) }}>Prev</StyledButton>
               {
-                Array.from({length: Math.ceil((usersTable.length / 10))}, (_, i) => (
+                Array.from({length: Math.ceil((currentUsersListData.length / 10))}, (_, i) => (
                     <StyledTextPage key={i} isCurrentPage={i+1 === currentPage}>{i+1}</StyledTextPage>
                 ))
               }
-              <StyledButton  name="Next"  disabled={numberPage[1] >= usersTable.length} onClick={() => {
+              <StyledButton  name="Next"  disabled={numberPage[1] >= currentUsersListData.length} onClick={() => {
                 numberPage[0] += 10
                 numberPage[1] += 10
                 setCurrentPage(next => next + 1)

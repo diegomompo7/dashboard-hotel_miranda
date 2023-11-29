@@ -6,8 +6,7 @@ import {
   StyledTableCellBodyImg,
 } from "../common/StyledTable";
 import { StyledButton } from "../common/StyledButton";
-import { StyledMoreIcon, StyledPhone } from "../common/StyledIcons";
-import { ModalComponent } from "../ModalComponent/ModalComponent";
+import { StyledMoreIcon, StyledPhone } from "../common/StyledIcons";;
 import { useNavigate } from "react-router-dom";
 
 export const DataTableUsers = (props) => {

@@ -20,8 +20,8 @@ import {
   getAvailable,
   getBooked,
 
-} from "../features/rooms/roomsSlice";
-import { getRoomsFromApiTrunk } from "../features/rooms/roomsTrunk";
+} from "../../features/rooms/roomsSlice";
+import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 
 
 export const RoomsListPage = () => {

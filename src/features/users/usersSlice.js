@@ -10,35 +10,23 @@ export const UsersSlice = createSlice({
         error: null
     },
     reducers: {
-
-        getActive: (state, action) => {
-
-            const fullActive = state.data.filter((active) => active.status === "ACTIVE")
-            state.viewTable = fullActive;
-
-        },
-        getInactive: (state, action) => {
-
-            const fullInactive = state.data.filter((inactive) => inactive.status === "INACTIVE")
-            state.viewTable = fullInactive;
-
-        },
-        getAll: (state, action) => {
-            state.viewTable = state.data;
-        },
         getEmployee: (state, action) => {
 
             const searchEmployee = state.data.filter((employee) => employee.fullName.includes(action.payload))
-            state.viewTable = searchEmployee;
+            state.data = searchEmployee;
 
         },
         getSelect: (state, action) => {
 
-            state.viewTable = action.payload;
+            state.data = action.payload;
+        },
+
+        getNewData: (state, action) => {
+            state.changeUser = state.data
         },
         updateUser: (state, action) => {
 
-            const data = state.viewTable
+            const data = current(state.changeUser)
             const index = data.findIndex((update) => update.id === action.payload.id)
             console.log(index)
             if (index !== -1) {
@@ -61,7 +49,7 @@ export const UsersSlice = createSlice({
             }
         },
         createUser: (state, action) => {
-            const data2 = current(state.viewTable)
+            const data = state.data
 
            state.data = [{
                 id: action.payload.id,
@@ -75,12 +63,11 @@ export const UsersSlice = createSlice({
                 status: action.payload.formData.status,
                 password: action.payload.formData.password
             },
-            ...data2
+            ...data
             ]
 
     },
 
-    getId: (state, action) => state.data.find((user) => parseInt(user.id) == id)
 
 },
 
@@ -88,7 +75,7 @@ export const UsersSlice = createSlice({
         builder.addCase(getUsersFromApiTrunk.fulfilled, (state, action) => {
             state.status = "fulfilled"
             state.data = action.payload;
-            state.viewTable = state.data
+            state.changeUser = state.data
         })
             .addCase(getUsersFromApiTrunk.rejected, (state, action) => {
                 state.status = "rejected"
@@ -101,9 +88,10 @@ export const UsersSlice = createSlice({
     }
 })
 
-export const { getAll, getInactive, getActive, getEmployee, getSelect, updateUser, getId, createUser } = UsersSlice.actions
-
+export const {getEmployee, getSelect, updateUser, createUser, getNewData } = UsersSlice.actions
+export const getUsersDataActive = state => state.users.data.filter((active) => active.status === "ACTIVE")
+export const getUsersDataInactive = state => state.users.data.filter((inactive) => inactive.status === "INACTIVE")
 export const getUsersData = state => state.users.data
-export const getUsersTable = state => state.users.viewTable
+export const getChangeData = state => state.users.changeUser
 export const getUsersStatus = state => state.users.status;
 export const getUsersError = state => state.users.error;

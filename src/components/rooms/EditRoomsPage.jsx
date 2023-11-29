@@ -12,8 +12,8 @@ import {
   StyledSelect,
 } from "../common/StyledSelect";
 import { MenuItem } from "@mui/material";
-import logo from "../assets/img/logo.png";
-import rooms from "../data/rooms.json"
+import logo from "../../assets/img/logo.png";
+import rooms from "../../data/rooms.json"
 
 export const EditRoomsPage = () => {
 

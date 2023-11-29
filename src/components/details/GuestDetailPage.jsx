@@ -1,4 +1,4 @@
-import booking from "../data/booking.json";
+import booking from "../../data/booking.json";
 import {
   StyledDetailContainer,
   StyledDetailSwiper,
@@ -20,20 +20,18 @@ import {
   StyledDetailAmeContainer,
   StyledDetailTextContainer,
   StyledDetailSwiperSlide,
-  StyleDetailStatus
+  StyleDetailStatus,
 } from "./StyledDetail";
 
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Navigation } from "swiper/modules";
 import { StyledMoreIcon } from "../common/StyledIcons";
 
-
 export const GuestDetailPage = () => {
-
-    const url = new URL(window.location.href)
-    const id = url.pathname.split("/").slice(2,3).join("")
-    console.log(id)
-    const bookingId = booking.find((book) => parseInt(book.id) == id)
+  const url = new URL(window.location.href);
+  const id = url.pathname.split("/").slice(2, 3).join("");
+  console.log(id);
+  const bookingId = booking.find((book) => parseInt(book.id) == id);
 
   return (
     <>
@@ -124,8 +122,8 @@ export const GuestDetailPage = () => {
           </StyledDetailContent>
           <StyledDetailSwiper
             navigation={{
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev'
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
             }}
             modules={[Navigation]}
             className="mySwiper"
@@ -133,7 +131,7 @@ export const GuestDetailPage = () => {
             {bookingId.roomType.photos.map((element) => (
               <StyledDetailSwiperSlide key={element} img={element}>
                 <StyleDetailStatus typeStyle={bookingId.status}>
-                    {bookingId.status}
+                  {bookingId.status}
                 </StyleDetailStatus>
                 <StyledDetailTextContainer>
                   <StyledDetailText typeStyle="roomType">
@@ -146,8 +144,12 @@ export const GuestDetailPage = () => {
               </StyledDetailSwiperSlide>
             ))}
 
-<div className="swiper-button-next"><IoIosArrowRoundForward /></div>
-      <div className="swiper-button-prev"><IoIosArrowRoundBack /></div>
+            <div className="swiper-button-next">
+              <IoIosArrowRoundForward />
+            </div>
+            <div className="swiper-button-prev">
+              <IoIosArrowRoundBack />
+            </div>
           </StyledDetailSwiper>
         </StyledDetailContainer>
       }

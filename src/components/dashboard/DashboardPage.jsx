@@ -6,8 +6,8 @@ import {
   getContactData,
   getContactError,
   getContactStatus,
-} from "../features/contact/contactSlice";
-import { getContactFromApiTrunk } from "../features/contact/contactTrunk";
+} from "../../features/contact/contactSlice";
+import { getContactFromApiTrunk } from "../../features/contact/contactTrunk";
 
 
 export const DashboardPage = () => {
