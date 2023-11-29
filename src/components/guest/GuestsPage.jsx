@@ -1,5 +1,5 @@
 import { DataTableGuest } from "./DataTableGuest";
-import booking from "../data/booking.json";
+import booking from "../../data/booking.json";
 import { TableHead, TableBody, TableRow, MenuItem } from "@mui/material";
 import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../common/StyledTable";
 import { useState } from "react";

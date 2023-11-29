@@ -1,19 +1,19 @@
 import './App.css';
-import {ContactPage} from "./contact/ContactPage"
-import {DashboardPage} from "./dashboard/DashboardPage"
-import {GuestDetailPage} from "./details/GuestDetailPage"
-import { GuestsPage } from "./guest/GuestsPage"
-import {LoginPage} from "./login/LoginPage"
-import { EditUserPage } from './user/EditUserPage';
-import { NewUserPage } from './user/NewUserPage';
-import {NewRoomPage} from "./rooms/NewRoomPage"
-import {RoomsListPage} from "./rooms/RoomsListPage"
-import { Root } from './root/Root';
-import {UserPage} from "./user/UserPage";
+import {ContactPage} from "./components/contact/ContactPage"
+import {DashboardPage} from "./components/dashboard/DashboardPage"
+import {GuestDetailPage} from "./components/details/GuestDetailPage"
+import { GuestsPage } from "./components/guest/GuestsPage"
+import {LoginPage} from "./components/login/LoginPage"
+import { EditUserPage } from './components/user/EditUserPage';
+import { NewUserPage } from './components/user/NewUserPage';
+import {NewRoomPage} from "./components/rooms/NewRoomPage"
+import {RoomsListPage} from "./components/rooms/RoomsListPage"
+import { Root } from './components/root/Root';
+import {UserPage} from "./components/user/UserPage";
 import { BrowserRouter, Routes, Route,  Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import users from "./data/users.json"
-import { EditRoomsPage } from './rooms/EditRoomsPage';
+import { EditRoomsPage } from './components/rooms/EditRoomsPage';
 
 
 function App() {

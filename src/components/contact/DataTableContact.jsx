@@ -7,7 +7,7 @@ import {
 import { StyledButton } from "../common/StyledButton";
 import { StyledMoreIcon } from "../common/StyledIcons";
 import { useDispatch, useSelector } from "react-redux";
-import { getAll, getArchived, updateContact } from "../features/contact/contactSlice";
+import { getAll, getArchived, updateContact } from "../../features/contact/contactSlice";
 
 export const DataTableContact = (props) => {
 
@@ -22,12 +22,10 @@ export const DataTableContact = (props) => {
       switch(isArchived){
         case true:
           dispatch(updateContact({id: idContact, is_archived: !isArchived}))
-          dispatch(getAll())
           props.setCurrentView("all")
         break;
         case false:
           dispatch(updateContact({id: idContact, is_archived: !isArchived}))
-          dispatch(getArchived())
           props.setCurrentView("archived")
         break;
       }

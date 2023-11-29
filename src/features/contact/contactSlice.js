@@ -17,20 +17,13 @@ export const ContactSlice = createSlice({
             state.fullMessage = fullMessage;
             
         },
-        getArchived:(state, action) => {
-            
-            const fullArchived = state.data.filter((archived) => archived.is_archived === true)
-            state.viewTable = fullArchived;
-            
-        },
-        getAll:(state, action) => {
-            state.viewTable = state.data;
-        },
         updateContact:(state, action) => {
             const data = state.data
             const index = data.findIndex((archived) => archived.id === action.payload.id)
+            console.log(index)
             if(index !== -1){
             const updatedData = { ...data[index], is_archived: action.payload.is_archived  };
+            console.log(updatedData)
             state.data = data.map((item, i) => (i === index ? updatedData : item));
             }
         },
@@ -40,7 +33,6 @@ export const ContactSlice = createSlice({
         builder.addCase(getContactFromApiTrunk.fulfilled, (state,action) => {
             state.status = "fulfilled"
             state.data = action.payload;
-            state.viewTable = state.data
         })
         .addCase(getContactFromApiTrunk.rejected,(state,action)  => {
             state.status = "rejected"
@@ -55,6 +47,6 @@ export const ContactSlice = createSlice({
 
 export const {getFullMessage, getArchived, getAll, updateContact} = ContactSlice.actions;
 export const getContactData = state => state.contact.data
-export const getContactTable = state => state.contact.viewTable
+export const getContactDataArchive = state => state.contact.data.filter((contact) => contact.is_archived === true)
 export const getContactStatus = state => state.contact.status;
 export const getContactError = state => state.contact.error;

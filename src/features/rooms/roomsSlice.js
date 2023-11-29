@@ -11,34 +11,18 @@ export const RoomsSlice = createSlice({
     },
     reducers: {
 
-        getAvailable: (state, action) => {
-
-            const fullAvailable = state.data.filter((active) => active.status === "Available")
-            state.viewTable = fullAvailable;
-
-        },
-        getBooked: (state, action) => {
-
-            const fullBooked = state.data.filter((inactive) => inactive.status === "Booked")
-            state.viewTable = fullBooked;
-
-        },
-        getAll: (state, action) => {
-            state.viewTable = state.data;
-        },
-        getEmployee: (state, action) => {
-
-            const searchEmployee = state.data.filter((employee) => employee.fullName.includes(action.payload))
-            state.viewTable = searchEmployee;
-
-        },
         getSelect: (state, action) => {
 
-            state.viewTable = action.payload;
+            state.data = action.payload;
         },
-        updateUser: (state, action) => {
 
-            const data = state.viewTable
+        getNewData: (state, action) => {
+            state.changeRoom = state.data
+        },
+
+        updateRoom: (state, action) => {
+
+            const data = current(state.changeRoom)
             const index = data.findIndex((update) => update.id === action.payload.id)
             console.log(index)
             if (index !== -1) {
@@ -60,8 +44,8 @@ export const RoomsSlice = createSlice({
                 console.log(state.data)
             }
         },
-        createUser: (state, action) => {
-            const data2 = current(state.viewTable)
+        createRoom: (state, action) => {
+            const data = state.changeRoom
 
            state.data = [{
                 id: action.payload.id,
@@ -75,24 +59,21 @@ export const RoomsSlice = createSlice({
                 status: action.payload.formData.status,
                 password: action.payload.formData.password
             },
-            ...data2
+            ...data
             ]
 
     },
-
-    getId: (state, action) => state.data.find((user) => parseInt(user.id) == id)
-
 },
 
     extraReducers: (builder) => {
         builder.addCase(getRoomsFromApiTrunk.fulfilled, (state, action) => {
             state.status = "fulfilled"
             state.data = action.payload;
-            state.viewTable = state.data
+            state.changeRoom = state.data
         })
             .addCase(getRoomsFromApiTrunk.rejected, (state, action) => {
                 state.status = "rejected"
-                console.log(getUserRooms(state, action))
+                console.log(getRoomRooms(state, action))
                 state.error = action.error.message
             })
             .addCase(getRoomsFromApiTrunk.pending, (state, action) => {
@@ -101,9 +82,12 @@ export const RoomsSlice = createSlice({
     }
 })
 
-export const { getAll, getBooked, getAvailable, getEmployee, getSelect, updateUser, getId, createUser } = RoomsSlice.actions
+export const { getSelect, updateRoom, createRoom } = RoomsSlice.actions
 
+
+export const getRoomsDataAvailable = state => state.rooms.data.filter((available) => available.status === "Available")
+export const getRoomsDataBooked = state => state.rooms.data.filter((booked) => booked.status === "Booked")
 export const getRoomsData = state => state.rooms.data
-export const getRoomsTable = state => state.rooms.viewTable
+export const getRoomsTable = state => state.rooms.changeRoom;
 export const getRoomsStatus = state => state.rooms.status;
 export const getRoomsError = state => state.rooms.error;

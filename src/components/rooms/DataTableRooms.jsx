@@ -8,9 +8,10 @@ import { useNavigate } from "react-router-dom";
 
 export const DataTableRooms = (props) => {
     const navigate = useNavigate()
+    const dataPage = [...props.data].slice(props.numberPage[0], props.numberPage[1])
     return (
         <>{
-            props.data.map((data) => (
+            dataPage.map((data) => (
                     <TableRow
                       key={data.name}
                       onClick={ () => navigate(`/createRoom/${data.id}`)}

@@ -11,17 +11,12 @@ import {
   getRoomsData,
   getRoomsError,
   getRoomsStatus,
-  getAll,
-  getActive,
-  getInactive,
-  getEmployee,
   getSelect,
-  getRoomsTable,
-  getAvailable,
-  getBooked,
+  getRoomsDataAvailable,
+  getRoomsDataBooked,
 
-} from "../features/rooms/roomsSlice";
-import { getRoomsFromApiTrunk } from "../features/rooms/roomsTrunk";
+} from "../../features/rooms/roomsSlice";
+import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 
 
 export const RoomsListPage = () => {
@@ -32,9 +27,10 @@ const roomsListData = useSelector(getRoomsData);
 const roomsListError = useSelector(getRoomsError);
 const roomsListStatus = useSelector(getRoomsStatus);
 const [spinner, setSpinner] = useState(true);
+const roomsListAvailable = useSelector(getRoomsDataAvailable)
+const roomsListBooked = useSelector(getRoomsDataBooked)
 
 
-  let roomsTable = useSelector(getRoomsTable)
   const [currentView, setCurrentView] = useState("all");
 
   const [numberPage, setNumberPage] = useState([0, 10])
@@ -60,27 +56,12 @@ const [spinner, setSpinner] = useState(true);
 
   const handleClick = (click) => {
 
-    switch(click){
-      case "all":
-      dispatch(getAll())
-      setCurrentView("all")
-
-      break;
-      case "avaliable":
-       dispatch(getAvailable())
-       setCurrentView("available")
-      break;
-      case "booked":
-        dispatch(getBooked())
-        setCurrentView("booked")
-       break;
-    }
+    setCurrentView(click)
 
     numberPage[0] = 0
     numberPage[1] = 10
     setCurrentPage(1)
   }
-
   
   const handleOnSelect = (e) => {
 
@@ -88,10 +69,10 @@ const [spinner, setSpinner] = useState(true);
 
     switch(e.target.value){
       case "priceLess":
-        orderSelect = [...roomsTable].sort((a,b) => a.priceNight - b.priceNight)
+        orderSelect = [...currentUsersListData].sort((a,b) => a.priceNight - b.priceNight)
         break;
         case "priceHigher":
-          orderSelect = [...roomsTable].sort((a,b) => b.priceNight - a.priceNight)
+          orderSelect = [...currentUsersListData].sort((a,b) => b.priceNight - a.priceNight)
           break;
       }
       console.log(orderSelect)
@@ -101,10 +82,12 @@ const [spinner, setSpinner] = useState(true);
       setCurrentPage(1)
     }
 
+    const currentUsersListData = currentView ==="available" ? roomsListAvailable : currentView === "booked" ? roomsListBooked : roomsListData
+
   return (
     <>
 
-    { roomsTable !== undefined && <>
+    { roomsListData !== undefined && <>
 
     <div style={{display: 'flex', flexWrap: 'wrap'}}>
       <StyledNav>
@@ -138,25 +121,25 @@ const [spinner, setSpinner] = useState(true);
           <TableBody>
           {spinner ? <p>Loading...</p> : 
            
-           <DataTableRooms data={roomsTable} firstItem={numberPage[0]} lastItem={numberPage[1]}></DataTableRooms>
+           <DataTableRooms data={currentUsersListData} numberPage={numberPage}></DataTableRooms>
            
            }
           </TableBody>
         </StyledTable>
         </StyledTableContainer>
         <StyledPagination>
-          <StyledPaginationText> Showing {roomsTable.length !== 0 ? numberPage[0]+1 : numberPage[0]} of { roomsTable.length >= numberPage[1] ? numberPage[1] : roomsTable.length} data</StyledPaginationText>
+          <StyledPaginationText> Showing {currentUsersListData.length !== 0 ? numberPage[0]+1 : numberPage[0]} of { currentUsersListData.length >= numberPage[1] ? numberPage[1] : currentUsersListData.length} data</StyledPaginationText>
           <StyledButtonPage>
               <StyledButton name="Prev" disabled={numberPage[0] === 1} onClick={() => {
                 numberPage[0] -= 10
                 numberPage[1] -= 10
                 setCurrentPage(next => next - 1) }}>Prev</StyledButton>
               {
-                Array.from({length: Math.ceil((roomsTable.length / 10))}, (_, i) => (
+                Array.from({length: Math.ceil((currentUsersListData.length / 10))}, (_, i) => (
                     <StyledTextPage key={i} isCurrentPage={i+1 === currentPage}>{i+1}</StyledTextPage>
                 ))
               }
-              <StyledButton  name="Next"  disabled={numberPage[1] >= roomsTable.length} onClick={() => {
+              <StyledButton  name="Next"  disabled={numberPage[1] >= currentUsersListData.length} onClick={() => {
                 numberPage[0] += 10
                 numberPage[1] += 10
                 setCurrentPage(next => next + 1)

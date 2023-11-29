@@ -2,8 +2,8 @@ import React from "react";
 import {StyledSwiper, StyledSwiperSlide, StyledSSText, StyledSSImg } from "../common/StyledCardContact";
 import { Keyboard,  Navigation } from "swiper/modules";
 import { useState } from "react";
-import { getContactData, getFullMessage, resetState } from "../features/contact/contactSlice";
-import {store} from "../../src/app/store"
+import { getContactData, getFullMessage, resetState } from "../../features/contact/contactSlice";
+import {store} from "../../app/store"
 
 
 import "swiper/css";

@@ -12,28 +12,22 @@ import {
   StyledSelect,
 } from "../common/StyledSelect";
 import { MenuItem } from "@mui/material";
-import logo from "../assets/img/logo.png";
-import users from "../data/users"
-import { useState, useEffect } from "react";
-import { getAll, getUsersData, getUsersError, getUsersStatus, getUsersTable, updateUser } from "../features/users/usersSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { getUsersFromApiTrunk } from "../features/users/usersTrunk";
+import logo from "../../assets/img/logo.png";
+import {  createUser, getChangeData, getNewData, getUsersData, getUsersError, getUsersStatus} from "../../features/users/usersSlice";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getUsersFromApiTrunk } from "../../features/users/usersTrunk";
 
-export const EditUserPage = () => {
-
-  const url = new URL(window.location.href)
-  const id = url.pathname.split("/").slice(2,3).join("")
-
+export const NewUserPage = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
+  const usersListData = useSelector(getUsersData);
   const usersListError = useSelector(getUsersError);
   const usersListStatus = useSelector(getUsersStatus);
   const [spinner, setSpinner] = useState(true);
-
-  let usersTable = useSelector(getUsersTable)
-  
+  let userCreate= useSelector(getChangeData)
 
   useEffect(
     () => {
@@ -47,24 +41,20 @@ export const EditUserPage = () => {
       }
     },[
     dispatch,
-    usersTable,
+    userCreate,
     usersListStatus]
   );
 
-  const userId = usersTable.find((user) => parseInt(user.id) == id)
-
-
-
   const [formData, setFormData] = useState({
-    photo: userId.photo,
-    fullName: userId.fullName,
-    job: userId.job,
-    email: userId.email,
-    phone: userId.phone,
-    startDate: userId.startDate,
-    descriptionJob: userId.descriptionJob,
-    status: userId.status,
-    password: userId.password
+    photo:"",
+    fullName:"",
+    job: "",
+    email: "",
+    phone: "",
+    startDate: "",
+    descriptionJob: "",
+    status: "",
+    password: ""
   });
 
   const handleChange = (e) => 
@@ -76,12 +66,13 @@ export const EditUserPage = () => {
     }));
   }
 
-  const handleOnSubmit = (e) => {
-    e.preventDefault()
-    dispatch(updateUser({ id: userId.id, formData: formData }));
-    dispatch(getAll())
-  }
 
+
+  const handleOnCreate = (e) => {
+    e.preventDefault()
+    dispatch(createUser({id: userCreate[userCreate.length-1].id + 1, formData: formData }));
+    dispatch(getNewData())
+  }
 
   return (
     <StyledBoxForm name="createForm">
@@ -89,54 +80,41 @@ export const EditUserPage = () => {
       <StyledImgForm src={logo}></StyledImgForm>
       <StyledFormContainer
         name="createForm"
+        onChange={(e) => {handleChange(e)}}
       >
         <StyledTextAreaForm
-          value={formData.photo}
-          onChange={handleChange}
           placeholder="Photo"
           type="url"
           name="photo"
           rows="1"
         ></StyledTextAreaForm>
         <StyledInputForm
-          value={formData.fullName}
-          onChange={handleChange}
           placeholder="Full Name"
           type="text"
           name="fullName"
         ></StyledInputForm>
         <StyledInputForm
-        value={formData.job}
-        onChange={handleChange}
           placeholder="Job"
           type="text"
           name="job"
         ></StyledInputForm>
         <StyledInputForm
-        value={formData.email}
-        onChange={handleChange}
           placeholder="Email"
           type="email"
           name="email"
         ></StyledInputForm>
         <StyledInputForm
-        value={formData.phone}
-        onChange={handleChange}
-          placeholder="123-456-789"
+          placeholder="123456789"
           type="tel"
           name="phone"
           pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
         ></StyledInputForm>
         <StyledInputForm
-        value={formData.startDate}
-        onChange={handleChange}
-          placeholder="Start Date"
+          placeholder="YYYY/MM/DD"
           type="text"
           name="startDate"
         ></StyledInputForm>
         <StyledTextAreaForm
-          value={formData.descriptionJob}
-          onChange={handleChange}
           placeholder="Description about job"
           type="text"
           name="descriptionJob"
@@ -144,20 +122,18 @@ export const EditUserPage = () => {
         ></StyledTextAreaForm>
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Status</StyledInputLabel>
-          <StyledSelect name= "status" label="status" value={formData.status}  onChange={handleChange}>
+          <StyledSelect name= "status" label="status" value={formData.status}    onChange={(e) => {handleChange(e)}}>
             <MenuItem value="ACTIVE">ACTIVE</MenuItem>
             <MenuItem value="INACTIVE">INACTIVE</MenuItem>
           </StyledSelect>
         </StyledFormControl>
         <StyledInputForm
-         onChange={handleChange}
-          value={formData.password}
           placeholder="Password"
           type="Password"
           name="password"
         ></StyledInputForm>
 
-        <StyledButton name="new" type="submit" onClick={(e) => {handleOnSubmit(e), navigate("/users")}}>
+        <StyledButton name="new" type="submit" onClick={(e) => {handleOnCreate(e), navigate("/users")}}>
           UPDATE EMPLOYEE
         </StyledButton>
       </StyledFormContainer>

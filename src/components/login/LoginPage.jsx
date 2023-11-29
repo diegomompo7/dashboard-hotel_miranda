@@ -5,7 +5,7 @@ import {
   StyledFormContainer,
   StyledInputForm
 } from "../common/StyledForm";
-import logo from "../assets/img/logo.png";
+import logo from "../../assets/img/logo.png";
 import { StyledButton } from "../common/StyledButton";
 import { Navigate } from "react-router-dom";
 
