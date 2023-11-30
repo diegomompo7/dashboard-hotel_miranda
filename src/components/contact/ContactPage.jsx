@@ -29,9 +29,6 @@ export const ContactPage = () => {
 
   const [spinner, setSpinner] = useState(true);
 
-  console.log(currentContactListArchived)
-
-
   const [numberPage, setNumberPage] = useState([0, 10])
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -71,7 +68,7 @@ export const ContactPage = () => {
   }
 
   const currentContactListData = currentView === "archived" ? currentContactListArchived : contactListData;
-  console.log(currentContactListData)
+
 
 
   return (

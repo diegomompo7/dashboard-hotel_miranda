@@ -42,7 +42,6 @@ export const UserPage = () => {
   const [numberPage, setNumberPage] = useState([0, 10])
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(currentPage)
 
   useEffect(
     () => {
@@ -80,7 +79,6 @@ export const UserPage = () => {
     switch(e.target.value){
       case "orderDate":
         orderSelect = [...currentUsersListData].sort((a,b) => new Date(`${b.startDate}`) - new Date(`${a.startDate}`))
-        console.log(orderSelect[0].startDate)
         break;
         case "name":
           orderSelect = [...currentUsersListData].sort((a,b) => {

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-undef */
 import './App.css';
 import {ContactPage} from "./components/contact/ContactPage"
 import {DashboardPage} from "./components/dashboard/DashboardPage"
@@ -11,9 +12,10 @@ import {RoomsListPage} from "./components/rooms/RoomsListPage"
 import { Root } from './components/root/Root';
 import {UserPage} from "./components/user/UserPage";
 import { BrowserRouter, Routes, Route,  Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import users from "./data/users.json"
 import { EditRoomsPage } from './components/rooms/EditRoomsPage';
+import AuthContext from './AuthContext';
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
 
   let checkLogin = false
   const[userLogin , setUserLogin] = useState ("");
+
 
   useEffect (() => {
     const userLogged = localStorage.getItem("email")
@@ -35,6 +38,7 @@ function App() {
       if(user.email === e.target[0].value && user.password === e.target[1].value){
         localStorage.setItem("email", user.email)
         return checkLogin = true
+
       }else{
         checkLogin = false
       }
@@ -43,8 +47,11 @@ function App() {
 }
 
 
+
   return (
     <div className="app">
+      
+      <AuthContext.Provider value={{userLogin}}>
       <BrowserRouter>
 
       {(checkLogin) && <Navigate to="/login"/>}
@@ -66,8 +73,10 @@ function App() {
         </Routes>
 
       </BrowserRouter>
+      </AuthContext.Provider>
     </div>
   )
 }
 
-export default App;
+;
+export default App ;

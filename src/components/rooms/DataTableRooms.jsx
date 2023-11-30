@@ -19,7 +19,6 @@ export const DataTableRooms = (props) => {
     const open = Boolean(anchorEl);
     const handleClick = (event, id) => {
         event.stopPropagation();
-        console.log(id)
         setAnchorEl(event.currentTarget);
         setMenuId(id)
     };
@@ -29,7 +28,6 @@ export const DataTableRooms = (props) => {
     };
 
     const handleDelete = (id) => {
-        console.log(id)
         dispatch(deleteRoom(id));
         dispatch(getNewData())
         handleClose()

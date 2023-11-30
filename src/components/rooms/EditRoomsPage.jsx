@@ -23,7 +23,6 @@ export const EditRoomsPage = () => {
 
   const url = new URL(window.location.href)
   const id = url.pathname.split("/").slice(2,3).join("")
-  console.log(id)
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -66,7 +65,6 @@ export const EditRoomsPage = () => {
 
   const handleChange = (e) => 
   {
-    console.log(e)
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,

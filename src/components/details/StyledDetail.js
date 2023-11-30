@@ -4,7 +4,6 @@ import styled from "styled-components";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdOutlineMessage } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { IoIosArrowRoundForward } from "react-icons/io";
 
 
 export const StyledDetailContainer = styled(Box)`

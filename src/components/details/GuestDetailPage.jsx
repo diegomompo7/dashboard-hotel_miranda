@@ -29,7 +29,7 @@ import { StyledMoreIcon } from "../common/StyledIcons";
 
 import { useDispatch, useSelector } from "react-redux";
 
-import { getBookingsData, getBookingsDataInProgress, getBookingsError, getBookingsStatus, getChangeData, getClient, getNewData, getSelect, updateRoomToBooking } from "../../features/bookings/bookingsSlice";
+import { getBookingsData, getBookingsError, getBookingsStatus } from "../../features/bookings/bookingsSlice";
 import { getBookingsFromApiTrunk } from "../../features/bookings/bookingsTrunk";
 import { getRoomId, getRoomsStatus } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
@@ -38,7 +38,7 @@ import { useEffect, useState } from "react";
 export const GuestDetailPage = () => {
   const url = new URL(window.location.href);
   const id = url.pathname.split("/").slice(2, 3).join("");
-  console.log(id);
+
 
 
   const dispatch = useDispatch()

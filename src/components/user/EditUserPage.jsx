@@ -51,7 +51,7 @@ export const EditUserPage = () => {
     usersListStatus]
   );
 
-  console.log(userUpdate)
+
   const userId = userUpdate.find((user) => parseInt(user.id) == id)
 
 
@@ -69,7 +69,7 @@ export const EditUserPage = () => {
 
   const handleChange = (e) => 
   {
-    console.log(e)
+
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -79,7 +79,7 @@ export const EditUserPage = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault()
-    console.log(e.target)
+   
     dispatch(updateUser({ id: userId.id, formData: formData }));
     dispatch(getNewData())
   }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, MenuItem, Modal, TableRow } from "@mui/material";
+import { Menu, MenuItem, TableRow } from "@mui/material";
 import {
   StyledTableCellBody,
   StyledTableCellBodyText,
@@ -25,7 +25,6 @@ export const DataTableGuest = (props) => {
     const open = Boolean(anchorEl);
     const handleClick = (event, id) => {
         event.stopPropagation();
-        console.log(id)
         setAnchorEl(event.currentTarget);
         setMenuId(id)
     };

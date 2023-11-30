@@ -1,5 +1,4 @@
 import { DataTableGuest } from "./DataTableGuest";
-import booking from "../../data/booking.json";
 import { TableHead, TableBody, TableRow, MenuItem } from "@mui/material";
 import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../common/StyledTable";
 import { useEffect, useState } from "react";
@@ -43,9 +42,7 @@ export const GuestsPage = () => {
 
 
 
-  console.log(currentPage)
 
-  console.log(open)
 
   useEffect(
     () => {
@@ -93,7 +90,7 @@ export const GuestsPage = () => {
 
   })
 
-  console.log(bookingList)
+
 
 
 
@@ -112,7 +109,7 @@ export const GuestsPage = () => {
 
   const handleOnSelect = (e) => {
 
-    console.log("hola1")
+   
 
     let orderSelect =  []
     setCurrentView("select")
@@ -141,7 +138,7 @@ export const GuestsPage = () => {
           })
           break;
       }
-      console.log(orderSelect)
+
       dispatch(getSelect(orderSelect))
       dispatch(getNewData())
       numberPage[0] = 0;

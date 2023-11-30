@@ -36,7 +36,6 @@ const roomsListBooked = useSelector(getRoomsDataBooked)
   const [numberPage, setNumberPage] = useState([0, 10])
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(currentPage)
 
   useEffect(
     () => {
@@ -75,7 +74,6 @@ const roomsListBooked = useSelector(getRoomsDataBooked)
           orderSelect = [...currentUsersListData].sort((a,b) => b.priceNight - a.priceNight)
           break;
       }
-      console.log(orderSelect)
       dispatch(getSelect(orderSelect))
       numberPage[0] = 0;
       numberPage[1] = 10;

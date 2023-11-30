@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyledBox, StyledMenuBox, StyledLogo, StyledBoxMenuProfile} from "./StyledBox";
 import {
   StyledBellIcon,
@@ -20,11 +20,16 @@ import textLogo from "../../assets/img/textLogo.png"
 import { StyledButton } from "../common/StyledButton";
 import { StyledLink } from "./StyledLink";
 import users from "../../data/users.json"
-
+import AuthContext from "../../AuthContext";
+ 
 export const Header = (props) => {
   const [open, setOpen] = React.useState(false);
+  const {userLogin} = useContext(AuthContext)
 
-  const user =  users.filter(user => user.email === localStorage.getItem("email"))
+
+  const user =  users.filter(user => user.email == userLogin)
+
+
 
   return (
     <div>

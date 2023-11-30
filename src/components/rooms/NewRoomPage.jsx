@@ -47,7 +47,6 @@ export const NewRoomPage = () => {
     roomsListStatus]
   );
 
-  console.log(store.getState())
   
   
   const [formData, setFormData] = useState({
@@ -62,7 +61,6 @@ export const NewRoomPage = () => {
     amenities: "",
   });
 
-  console.log(roomsListData)
 
 
   const handleChange = (e) => 

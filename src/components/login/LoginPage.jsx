@@ -11,7 +11,7 @@ import { Navigate } from "react-router-dom";
 
 
 
-export const LoginPage = ({handleOnSubmit, checkLogin, userLogin}) => {
+export const LoginPage = ({handleOnSubmit, userLogin}) => {
 
     
 
