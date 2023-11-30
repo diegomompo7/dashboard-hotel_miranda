@@ -136,7 +136,7 @@ const roomsListBooked = useSelector(getRoomsDataBooked)
                 setCurrentPage(next => next - 1) }}>Prev</StyledButton>
               {
                 Array.from({length: Math.ceil((currentUsersListData.length / 10))}, (_, i) => (
-                    <StyledTextPage key={i} isCurrentPage={i+1 === currentPage}>{i+1}</StyledTextPage>
+                    <StyledTextPage key={i+1} isCurrentPage={i+1 === currentPage}>{i+1}</StyledTextPage>
                 ))
               }
               <StyledButton  name="Next"  disabled={numberPage[1] >= currentUsersListData.length} onClick={() => {

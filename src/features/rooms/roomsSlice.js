@@ -56,22 +56,31 @@ export const RoomsSlice = createSlice({
             
         },
         createRoom: (state, action) => {
-            const data = state.changeRoom
+            const data = current(state.data)
+
+            console.log(data)
+
+            const index = data.filter((create) => create.id)
+
+            console.log(index)
 
            state.data = [{
-                id: action.payload.id,
-                photo: action.payload.formData.photo,
-                fullName: action.payload.formData.fullName,
-                job: action.payload.formData.job,
-                email: action.payload.formData.email,
-                phone: action.payload.formData.phone,
-                startDate: action.payload.formData.startDate,
-                descriptionJob: action.payload.formData.descriptionJob,
-                status: action.payload.formData.status,
-                password: action.payload.formData.password
-            },
+            id: data[data.length-1].id+1,
+            photos: action.payload.formData.photos.split("\n"),
+            roomType: action.payload.formData.roomType,
+            roomNumber: action.payload.formData.roomNumber,
+            description: action.payload.formData.description,
+            offer: action.payload.formData.offer,
+            priceNight: action.payload.formData.priceNight,
+            discount: action.payload.formData.discount,
+            cancellation: action.payload.formData.cancellation,
+            amenities: action.payload.formData.amenities.split("\n"),
+            status: "Available"    
+             },
             ...data
             ]
+
+            console.log(state.data)
 
     },
 },

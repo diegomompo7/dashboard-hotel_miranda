@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import { store } from "../../app/store";
 export const NewRoomPage = () => {
 
   const navigate = useNavigate()
@@ -39,27 +39,57 @@ export const NewRoomPage = () => {
         setSpinner(true);
       } else if (roomsListStatus === "fulfilled") {
         setSpinner(false)
+
       }
     },[
     dispatch,
-    roomCreate,
+    roomsListData,
     roomsListStatus]
   );
 
+  console.log(store.getState())
+  
   
   const [formData, setFormData] = useState({
     roomType: "",
     offer: "",
-    photos: [],
+    photos: "",
     roomNumber: "",
     description: "",
     priceNight: "",
     discount: "",
     cancellation: "",
-    amenities: [],
+    amenities: "",
   });
 
-  
+  console.log(roomsListData)
+
+
+  const handleChange = (e) => 
+  {
+    const { name, value } = e.target;
+    setFormData((prevData) => {
+      if (name === "amenities" || name ==="photos") {
+        return {
+          ...prevData,
+          [name]: value,
+        };
+      } else {
+        return {
+          ...prevData,
+          [name]: value,
+        };
+      }
+    });
+  }
+
+
+  const handleOnCreate = (e) => {
+    e.preventDefault()
+    dispatch(createRoom({formData: formData }));
+    dispatch(getNewData())
+  }
+
 
   return (
     <StyledBoxForm name="createForm">
@@ -67,10 +97,11 @@ export const NewRoomPage = () => {
       <StyledFormContainer
         onSubmit={(e) => handleOnSubmit(e)}
         name="createForm"
+        onChange={(e) => {handleChange(e)}}
       >
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Status</StyledInputLabel>
-          <StyledSelect label="roomType">
+          <StyledSelect label="roomType" name="roomType" onChange={(e) => {handleChange(e)}}>
             <MenuItem value="Single Bed">Single Bed</MenuItem>
             <MenuItem value="Double Bed">Double Bed</MenuItem>
             <MenuItem value="Double Superior">Double Superior</MenuItem>
@@ -79,23 +110,23 @@ export const NewRoomPage = () => {
         </StyledFormControl>
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Offer</StyledInputLabel>
-          <StyledSelect label="offer">
+          <StyledSelect label="offer" name="offer" onChange={(e) => {handleChange(e)}}>
             <MenuItem value="YES">YES</MenuItem>
             <MenuItem value="NO">NO</MenuItem>
           </StyledSelect>
         </StyledFormControl>
 
         <StyledTextAreaForm
-          placeholder="Photo"
-          type="url"
-          name="photo"
+          placeholder="Introduce each photo on a new line"
+          type="text"
+          name="photos"
           rows="5" cols="10"
         ></StyledTextAreaForm>
 
         <StyledInputForm
           placeholder="Room Number"
           type="text"
-          name="RoomNumber"
+          name="roomNumber"
         ></StyledInputForm>
         <StyledTextAreaForm
           placeholder="Description"
@@ -115,16 +146,16 @@ export const NewRoomPage = () => {
         <StyledInputForm
           placeholder="Cancelattion"
           type="text"
-          name="cancelattion"
+          name="cancellation"
         ></StyledInputForm>
         <StyledTextAreaForm
-          placeholder="Amenities"
+          placeholder="Amenities. Introduce each amenitie on a new line"
           type="text"
           name="amenities"
           rows="3"
         ></StyledTextAreaForm>
 
-        <StyledButton name="new" type="submit">
+        <StyledButton name="new" type="submit" onClick={(e) => {handleOnCreate(e), navigate("/rooms")}}>
           CREATE ROOM
         </StyledButton>
       </StyledFormContainer>

@@ -33,6 +33,7 @@ export const ContactPage = () => {
 
 
   const [numberPage, setNumberPage] = useState([0, 10])
+
   const [currentPage, setCurrentPage] = useState(1);
   const [currentView, setCurrentView] = useState("all");
 
