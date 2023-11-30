@@ -12,6 +12,8 @@ export const UsersSlice = createSlice({
     reducers: {
         getEmployee: (state, action) => {
 
+            console.log(current(state.changeUser))
+
             const searchEmployee = state.changeUser.filter((employee) => employee.fullName.includes(action.payload))
             state.data = searchEmployee;
 

@@ -84,8 +84,8 @@ export const UserPage = () => {
         break;
         case "name":
           orderSelect = [...currentUsersListData].sort((a,b) => {
-            const nameA = a.fullName.toUpperCase(); // ignore upper and lowercase
-            const nameB = b.fullName.toUpperCase(); // ignore upper and lowercase
+            const nameA = a.fullName.toUpperCase(); 
+            const nameB = b.fullName.toUpperCase();
             if (nameA < nameB) {
               return -1;
             }

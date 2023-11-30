@@ -27,25 +27,81 @@ import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Navigation } from "swiper/modules";
 import { StyledMoreIcon } from "../common/StyledIcons";
 
+import { useDispatch, useSelector } from "react-redux";
+
+import { getBookingsData, getBookingsDataInProgress, getBookingsError, getBookingsStatus, getChangeData, getClient, getNewData, getSelect, updateRoomToBooking } from "../../features/bookings/bookingsSlice";
+import { getBookingsFromApiTrunk } from "../../features/bookings/bookingsTrunk";
+import { getRoomId, getRoomsStatus } from "../../features/rooms/roomsSlice";
+import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
+import { useEffect, useState } from "react";
+
 export const GuestDetailPage = () => {
   const url = new URL(window.location.href);
   const id = url.pathname.split("/").slice(2, 3).join("");
   console.log(id);
-  const bookingId = booking.find((book) => parseInt(book.id) == id);
+
+
+  const dispatch = useDispatch()
+  let bookingsListData = useSelector(getBookingsData)
+  const bookingsListError = useSelector(getBookingsError)
+  const bookingsListStatus = useSelector(getBookingsStatus)
+  const [spinner, setSpinner] = useState(true);
+
+  const roomBoking = useSelector(getRoomId)
+  const roomsListStatus = useSelector(getRoomsStatus);
+
+  useEffect(
+    () => {
+
+      if (roomsListStatus === "idle") {
+        dispatch(getRoomsFromApiTrunk());
+      } else if (roomsListStatus === "pending") {
+        setSpinner(true);
+      } else if (roomsListStatus === "fulfilled") {
+        setSpinner(false)
+      }
+    },[
+    dispatch,
+    roomBoking,
+    roomsListStatus]
+  );
+
+  useEffect(
+    () => {
+
+      if (bookingsListStatus === "idle") {
+        dispatch(getBookingsFromApiTrunk());
+      } else if (bookingsListStatus === "pending") {
+        setSpinner(true);
+      } else if (bookingsListStatus === "fulfilled") {
+        setSpinner(false)
+      }
+    },[
+    dispatch,
+    bookingsListData,
+    bookingsListStatus]
+  );
+
+  const bookingId = bookingsListData.find((book) => parseInt(book.id) == id);
+  
+  const room = roomBoking.find(room => room.id === bookingId.roomId)
+
+  const bookingListRoom = {...bookingId, roomId: room}
+  
 
   return (
     <>
       {
-        <StyledDetailContainer key={bookingId.id}>
+        <StyledDetailContainer key={bookingListRoom.id}>
           <StyledDetailContent>
             <StyledDetailContentPerson>
-              <StyledDetailImg src={bookingId.userImg}></StyledDetailImg>
+              <StyledDetailImg src={bookingListRoom.userImg}></StyledDetailImg>
               <StyledDetailPersonText>
                 <StyledDetailText typeStyle="semibold">
-                  {bookingId.name} {bookingId.surname}
+                  {bookingListRoom.name} {bookingListRoom.surname}
                 </StyledDetailText>
                 <StyledDetailText typeStyle="id">
-                  ID {bookingId.id}
+                  ID {bookingListRoom.id}
                 </StyledDetailText>
                 <StyledDetailActions>
                   <StyledDetailIconPhone></StyledDetailIconPhone>
@@ -67,7 +123,7 @@ export const GuestDetailPage = () => {
                 </StyledDetailText>
                 <StyledDetailText typeStyle="checkMedium">
                   {" "}
-                  {bookingId.check_in} | {bookingId.hour_in}{" "}
+                  {bookingListRoom.check_in} | {bookingListRoom.hour_in}{" "}
                 </StyledDetailText>
               </div>
               <div>
@@ -76,7 +132,7 @@ export const GuestDetailPage = () => {
                   Check out
                 </StyledDetailText>
                 <StyledDetailText typeStyle="checkMedium">
-                  {bookingId.check_out} | {bookingId.hour_out}{" "}
+                  {bookingListRoom.check_out} | {bookingListRoom.hour_out}{" "}
                 </StyledDetailText>
               </div>
             </StyleDetailCheck>
@@ -87,7 +143,7 @@ export const GuestDetailPage = () => {
                   Room Info
                 </StyledDetailText>
                 <StyledDetailText typeStyle="infoMedium">
-                  {bookingId.roomType.roomNumber}
+                  {bookingListRoom.roomId.roomNumber}
                 </StyledDetailText>
               </StyledDetailInfoRoom>
               <StyledDetailInfoPrice>
@@ -95,7 +151,7 @@ export const GuestDetailPage = () => {
 
                 <div style={{ display: "flex" }}>
                   <StyledDetailText typeStyle="infoMedium">
-                    ${bookingId.roomType.priceNight}
+                    ${bookingListRoom.roomId.priceNight}
                   </StyledDetailText>
                   <StyledDetailText typeStyle="perNight">
                     {" "}
@@ -105,14 +161,14 @@ export const GuestDetailPage = () => {
               </StyledDetailInfoPrice>
             </StyledDetailInfo>
             <StyledDetailText typeStyle="normalDesc">
-              {bookingId.specialRequest}
+              {bookingListRoom.specialRequest}
             </StyledDetailText>
             <StyledDetailAmeContainer>
               <StyledDetailText typeStyle="normalFacilities">
                 Facilites
               </StyledDetailText>
               <StyledDetailAmenities>
-                {bookingId.roomType.amenities.map((amenities) => (
+                {bookingListRoom.roomId.amenities.map((amenities) => (
                   <StyledDetailText key={amenities} typeStyle="amenities">
                     {amenities}
                   </StyledDetailText>
@@ -128,17 +184,17 @@ export const GuestDetailPage = () => {
             modules={[Navigation]}
             className="mySwiper"
           >
-            {bookingId.roomType.photos.map((element) => (
+            {bookingListRoom.roomId.photos.map((element) => (
               <StyledDetailSwiperSlide key={element} img={element}>
-                <StyleDetailStatus typeStyle={bookingId.status}>
-                  {bookingId.status}
+                <StyleDetailStatus typeStyle={bookingListRoom.status}>
+                  {bookingListRoom.status}
                 </StyleDetailStatus>
                 <StyledDetailTextContainer>
                   <StyledDetailText typeStyle="roomType">
-                    {bookingId.roomType.roomType}
+                    {bookingListRoom.roomId.roomType}
                   </StyledDetailText>
                   <StyledDetailText typeStyle="roomDescription">
-                    {bookingId.roomType.description}
+                    {bookingListRoom.roomId.description}
                   </StyledDetailText>
                 </StyledDetailTextContainer>
               </StyledDetailSwiperSlide>

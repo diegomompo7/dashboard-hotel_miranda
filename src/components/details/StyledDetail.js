@@ -9,11 +9,12 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 
 export const StyledDetailContainer = styled(Box)`
     display: flex;
-    height: 830px;
+    height: auto;
 
 `
 export const StyledDetailContent = styled(Box)`
     width: 50%;
+
     background: #FFFFFF;
     border-radius: 0.75em;
     padding-left: 5.4%;

@@ -1,5 +1,5 @@
-import React from "react";
-import { Modal, TableRow } from "@mui/material";
+import React, { useState } from "react";
+import { Menu, MenuItem, Modal, TableRow } from "@mui/material";
 import {
   StyledTableCellBody,
   StyledTableCellBodyText,
@@ -20,6 +20,21 @@ export const DataTableGuest = (props) => {
     props.numberPage[1]
   );
 
+  const [anchorEl, setAnchorEl] = useState(null);
+    const [menuId, setMenuId] = useState(null)
+    const open = Boolean(anchorEl);
+    const handleClick = (event, id) => {
+        event.stopPropagation();
+        console.log(id)
+        setAnchorEl(event.currentTarget);
+        setMenuId(id)
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+        setMenuId(null)
+    };
+
+
   //onClick={ () => navigate(`/booking/${data.id}`)}
 
   return (
@@ -35,7 +50,7 @@ export const DataTableGuest = (props) => {
             ></StyledTableCellBodyImg>
             <div>
               <StyledTableCellBodyText typeStyle="title">
-                {data.name} {data.surname}
+                {data.name}
               </StyledTableCellBodyText>
               <StyledTableCellBodyText typeStyle="id">
                 #{data.id}
@@ -71,11 +86,19 @@ export const DataTableGuest = (props) => {
             </StyledButton>
           </StyledTableCellBody>
           <StyledTableCellBody>
+              <StyledTableCellBodyText typeStyle="title">{data.roomId.roomNumber}</StyledTableCellBodyText>
+          </StyledTableCellBody>
+          <StyledTableCellBody>
             <StyledButton name={data.status}>{data.status}</StyledButton>
           </StyledTableCellBody>
           <StyledTableCellBody>
-            <StyledMoreIcon></StyledMoreIcon>
-          </StyledTableCellBody>
+                        <StyledMoreIcon onClick={(e) => handleClick(e, data.id)}></StyledMoreIcon>
+                        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                            <MenuItem onClick={ () => navigate(`/booking/${menuId}`)}>
+                                View details
+                            </MenuItem>
+                        </Menu>
+                    </StyledTableCellBody>
         </TableRow>
       ))}
     </>

@@ -13,13 +13,16 @@ export const BookingsSlice = createSlice({
 
         getClient: (state, action) => {
 
-            const searchClient = state.changeBooking.filter((employee) => employee.fullName.includes(action.payload))
+            console.log(current(state.changeBooking))
+
+            const searchClient = state.changeBooking.filter((client) => client.name.includes(action.payload))
             state.data = searchClient;
 
         },
         getSelect: (state, action) => {
 
             state.data = action.payload;
+
         },
         
         deleteBooking: (state, action) => {
@@ -32,6 +35,7 @@ export const BookingsSlice = createSlice({
         getNewData: (state, action) => {
             state.changeBooking = state.data
         },
+
 
         updateBooking: (state, action) => {
 
@@ -89,6 +93,20 @@ export const BookingsSlice = createSlice({
             console.log(state.data)
 
     },
+
+    updateRoomToBooking: (state, action) => {
+        const data = current(state.changeBooking)
+
+        const updatedRoomId = {
+            ...data[action.payload.id],
+                roomId: action.payload.roomBooking
+
+        }
+
+        state.data = data.map((item, i) => (i === action.payload.id ? updatedRoomId : item));
+        console.log(state.data)
+
+    }
 },
 
     extraReducers: (builder) => {
@@ -108,7 +126,7 @@ export const BookingsSlice = createSlice({
     }
 })
 
-export const { getSelect, updateBooking, createBooking, deleteBooking, getNewData, getClient} = BookingsSlice.actions
+export const { getSelect, updateBooking, createBooking, deleteBooking, getNewData, getClient, updateRoomToBooking} = BookingsSlice.actions
 
 
 export const getBookingsDataInProgress = state => state.bookings.data.filter((inProgress) => inProgress.status === "In Progress")

@@ -11,8 +11,10 @@ import { StyledButton } from "../common/StyledButton";
 import { ModalComponent } from "../ModalComponent/ModalComponent";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getBookingsData, getBookingsDataInProgress, getBookingsError, getBookingsStatus, getClient, getSelect } from "../../features/bookings/bookingsSlice";
+import { getBookingsData, getBookingsDataInProgress, getBookingsError, getBookingsStatus, getChangeData, getClient, getNewData, getSelect, updateRoomToBooking } from "../../features/bookings/bookingsSlice";
 import { getBookingsFromApiTrunk } from "../../features/bookings/bookingsTrunk";
+import { getRoomId, getRoomsStatus } from "../../features/rooms/roomsSlice";
+import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 
 export const GuestsPage = () => {
 
@@ -23,11 +25,15 @@ export const GuestsPage = () => {
   const [specialRequest, setSpecialRequest] = useState("")
 
   const dispatch = useDispatch()
-  const bookingsListData = useSelector(getBookingsData)
+  let bookingsListData = useSelector(getBookingsData)
   const bookingsListError = useSelector(getBookingsError)
   const bookingsListStatus = useSelector(getBookingsStatus)
   const [spinner, setSpinner] = useState(true);
 
+  const roomBoking = useSelector(getRoomId)
+  const roomsListStatus = useSelector(getRoomsStatus);
+
+  const bookingList = useSelector(getChangeData)
   const bookingListInProgress= useSelector(getBookingsDataInProgress)
 
   const [currentView, setCurrentView] = useState("all");
@@ -35,9 +41,27 @@ export const GuestsPage = () => {
   const [numberPage, setNumberPage] = useState([0, 10])
   const [currentPage, setCurrentPage] = useState(1);
 
+
+
   console.log(currentPage)
 
   console.log(open)
+
+  useEffect(
+    () => {
+
+      if (roomsListStatus === "idle") {
+        dispatch(getRoomsFromApiTrunk());
+      } else if (roomsListStatus === "pending") {
+        setSpinner(true);
+      } else if (roomsListStatus === "fulfilled") {
+        setSpinner(false)
+      }
+    },[
+    dispatch,
+    roomBoking,
+    roomsListStatus]
+  );
 
   useEffect(
     () => {
@@ -55,6 +79,24 @@ export const GuestsPage = () => {
     bookingsListStatus]
   );
 
+
+  const bookingListRoom = 
+  
+  
+    (currentView === "inProgress" ? bookingListInProgress : bookingsListData).map((booking) => {
+
+    const room = roomBoking.find(room => room.id === booking.roomId)
+
+    if(room){
+      return {...booking, roomId: room}
+    }
+
+  })
+
+  console.log(bookingList)
+
+
+
   const handleClick = (click) => {
 
     setCurrentView(click)
@@ -68,15 +110,55 @@ export const GuestsPage = () => {
     dispatch(getClient(e.target.value))
   }
 
+  const handleOnSelect = (e) => {
+
+    console.log("hola1")
+
+    let orderSelect =  []
+    setCurrentView("select")
+
+    switch(e.target.value){
+        case "orderDate":
+        orderSelect = [...currentBookingsListData].sort((a,b) => new Date(`${b.orderDate}`) - new Date(`${a.orderDate}`))
+        break;
+        case "checkIn":
+          orderSelect = [...currentBookingsListData].sort((a,b) => new Date(`${b.check_in}`) - new Date(`${a.check_in}`))
+          break;
+          case "checkOut":
+            orderSelect = [...currentBookingsListData].sort((a,b) => new Date(`${b.check_out}`) - new Date(`${a.check_out}`))
+            break;
+        case "guest":
+          orderSelect = [...currentBookingsListData].sort((a,b) => {
+            const nameA = a.name.toUpperCase();
+            const nameB = b.name.toUpperCase(); 
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            return 0;
+          })
+          break;
+      }
+      console.log(orderSelect)
+      dispatch(getSelect(orderSelect))
+      dispatch(getNewData())
+      numberPage[0] = 0;
+      numberPage[1] = 10;
+      setCurrentPage(1)
+    }
 
   const currentBookingsListData = 
   currentView ==="checkIn" ? 
-    [...bookingsListData].sort((a,b) => new Date(b.check_in) - new Date(a.check_in)) :
+    [...bookingListRoom].sort((a,b) => new Date(b.check_in) - new Date(a.check_in)) :
     currentView ==="checkOut" ? 
-    [...bookingsListData].sort((a,b) => new Date(b.check_out) - new Date(a.check_out)) :
+    [...bookingListRoom].sort((a,b) => new Date(b.check_out) - new Date(a.check_out)) :
     currentView ==="inProgress" ? 
-    bookingListInProgress.sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate)) :
-    [...bookingsListData].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate))
+    [...bookingListRoom].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate)) :
+    currentView ==="select" ? 
+      bookingList:
+    [...bookingListRoom].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate))
 
   return (
     <>
@@ -96,11 +178,11 @@ export const GuestsPage = () => {
         <StyledTextField label="Client" onChange={(e) => handleOnChange(e)}/>
         <StyledFormControl>
         <StyledInputLabel>Order</StyledInputLabel>
-        <StyledSelect label="Order"  >
+        <StyledSelect label="Order" onChange={(e) => handleOnSelect(e)} >
                 <MenuItem value="guest" >Guest</MenuItem>
                 <MenuItem value="orderDate">Order Date</MenuItem>
                 <MenuItem value="checkIn">Check In</MenuItem>
-                <MenuItem value="CheckOut">Check Out</MenuItem>
+                <MenuItem value="checkOut">Check Out</MenuItem>
 
         </StyledSelect>
         </StyledFormControl>

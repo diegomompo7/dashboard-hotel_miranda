@@ -82,7 +82,12 @@ export const RoomsSlice = createSlice({
 
             console.log(state.data)
 
+
     },
+    getIdRoom: (state, action) => {
+        const room = state.data.filter(room => room.id === action.payload)
+        state.roomId = room
+    }
 },
 
     extraReducers: (builder) => {
@@ -90,11 +95,13 @@ export const RoomsSlice = createSlice({
             state.status = "fulfilled"
             state.data = action.payload;
             state.changeRoom = state.data
+            state.roomId = state.data
         })
             .addCase(getRoomsFromApiTrunk.rejected, (state, action) => {
                 state.status = "rejected"
                 console.log(getRoomRooms(state, action))
                 state.error = action.error.message
+
             })
             .addCase(getRoomsFromApiTrunk.pending, (state, action) => {
                 state.status = "pending"
@@ -109,5 +116,6 @@ export const getRoomsDataAvailable = state => state.rooms.data.filter((available
 export const getRoomsDataBooked = state => state.rooms.data.filter((booked) => booked.status === "Booked")
 export const getRoomsData = state => state.rooms.data
 export const getChangeData = state => state.rooms.changeRoom;
+export const getRoomId = state => state.rooms.roomId
 export const getRoomsStatus = state => state.rooms.status;
 export const getRoomsError = state => state.rooms.error;
