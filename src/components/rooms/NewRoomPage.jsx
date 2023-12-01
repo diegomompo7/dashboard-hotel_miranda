@@ -84,8 +84,7 @@ export const NewRoomPage = () => {
 
   const handleOnCreate = (e) => {
     e.preventDefault()
-    dispatch(createRoom({formData: formData }));
-    dispatch(getNewData())
+    dispatch(createRoom(formData));
   }
 
 

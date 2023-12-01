@@ -17,7 +17,7 @@ color: #E23428;
 export const StyledCardContainer = styled.div`
     display: flex;
     justify-content: space-between;
-    margin-bottom: 500px;
+    margin-bottom: 200px;
 `
 
 export const StyledCardKpi = styled(Card)`

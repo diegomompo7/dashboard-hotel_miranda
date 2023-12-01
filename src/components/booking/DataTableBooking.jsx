@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 
-export const DataTableGuest = (props) => {
+export const DataTableBooking = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

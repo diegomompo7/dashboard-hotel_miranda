@@ -41,7 +41,7 @@ export const NewUserPage = () => {
       }
     },[
     dispatch,
-    userCreate,
+    usersListData,
     usersListStatus]
   );
 
@@ -70,8 +70,7 @@ export const NewUserPage = () => {
 
   const handleOnCreate = (e) => {
     e.preventDefault()
-    dispatch(createUser({id: userCreate[userCreate.length-1].id + 1, formData: formData }));
-    dispatch(getNewData())
+    dispatch(createUser({id: usersListData[usersListData.length-1].id + 1, formData: formData }));
   }
 
   return (

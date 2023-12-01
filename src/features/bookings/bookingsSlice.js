@@ -21,92 +21,10 @@ export const BookingsSlice = createSlice({
         },
         getSelect: (state, action) => {
 
-            state.data = action.payload;
+            let data = current(state.data)
+            data = action.payload;
 
         },
-        
-        deleteBooking: (state, action) => {
-            const data = current(state.changeBooking)
-            const delBooking = data.filter((del) => del.id !== action.payload)
-            console.log(delBooking)
-            state.data = delBooking
-    },
-
-        getNewData: (state, action) => {
-            state.changeBooking = state.data
-        },
-
-
-        updateBooking: (state, action) => {
-
-            const data = current(state.changeBooking)
-            const index = data.findIndex((update) => update.id === action.payload.id)
-
-            console.log(action.payload.formData)
-
-            console.log(index)
-            if (index !== -1) {
-                const updatedData = {
-                    ...data[index],
-                    photos: action.payload.formData.photos.split("\n"),
-                    roomType: action.payload.formData.roomType,
-                    roomNumber: action.payload.formData.roomNumber,
-                    description: action.payload.formData.description,
-                    offer: action.payload.formData.offer,
-                    priceNight: action.payload.formData.priceNight,
-                    discount: action.payload.formData.discount,
-                    cancellation: action.payload.formData.cancellation,
-                    amenities: action.payload.formData.amenities.split("\n"),
-
-                }
-
-                state.data = data.map((item, i) => (i === index ? updatedData : item));
-                console.log(updatedData)
-            }
-            
-        },
-        createBooking: (state, action) => {
-            const data = current(state.data)
-
-            console.log(data)
-
-            const index = data.filter((create) => create.id)
-
-            console.log(index)
-
-           state.data = [{
-            id: data[data.length-1].id+1,
-            photos: action.payload.formData.photos.split("\n"),
-            roomType: action.payload.formData.roomType,
-            roomNumber: action.payload.formData.roomNumber,
-            description: action.payload.formData.description,
-            offer: action.payload.formData.offer,
-            priceNight: action.payload.formData.priceNight,
-            discount: action.payload.formData.discount,
-            cancellation: action.payload.formData.cancellation,
-            amenities: action.payload.formData.amenities.split("\n"),
-            status: "Available"    
-             },
-            ...data
-            ]
-
-            console.log(state.data)
-
-    },
-
-    updateRoomToBooking: (state, action) => {
-        const data = current(state.changeBooking)
-
-        const updatedRoomId = {
-            ...data[action.payload.id],
-                roomId: action.payload.roomBooking
-
-        }
-
-        state.data = data.map((item, i) => (i === action.payload.id ? updatedRoomId : item));
-        console.log(state.data)
-
-    }
 },
 
     extraReducers: (builder) => {
