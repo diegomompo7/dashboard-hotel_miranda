@@ -76,7 +76,7 @@ export const DataTableUsers = (props) => {
               onClick={(e) => handleClick(e, data.id)}
             ></StyledMoreIcon>
             <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-              <MenuItem onClick={() => navigate(`/createRoom/${menuId}`)}>
+              <MenuItem onClick={() => navigate(`/createUser/${menuId}`)}>
                 Edit
               </MenuItem>
               <MenuItem onClick={() => handleDelete(menuId)}>Delete</MenuItem>
