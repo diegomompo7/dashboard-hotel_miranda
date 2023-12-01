@@ -59,23 +59,9 @@ export const UsersSlice = createSlice({
             }
         },
         createUser: (state, action) => {
-            const data = state.changeUser
+            const data = current(state.changeUser)
 
-           state.data = [{
-                id: action.payload.id,
-                photo: action.payload.formData.photo,
-                fullName: action.payload.formData.fullName,
-                job: action.payload.formData.job,
-                email: action.payload.formData.email,
-                phone: action.payload.formData.phone,
-                startDate: action.payload.formData.startDate,
-                descriptionJob: action.payload.formData.descriptionJob,
-                status: action.payload.formData.status,
-                password: action.payload.formData.password
-            },
-            ...data
-            ]
-
+           state.data = [action.payload, ...data]
     },
 
 
