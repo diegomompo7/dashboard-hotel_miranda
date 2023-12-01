@@ -8,11 +8,15 @@ import {
   getContactStatus,
 } from "../../features/contact/contactSlice";
 import { getContactFromApiTrunk } from "../../features/contact/contactTrunk";
-
+import { useContext } from "react";
+import AuthContext from "../../AuthContext";
+import { Navigate } from "react-router-dom";
 
 export const DashboardPage = () => {
 
   const [isOpen, setIsOpen] = useState(false)
+
+  const {userLogin} = useContext(AuthContext)
 
   const dispatch = useDispatch();
   const contactListData = useSelector(getContactData);
@@ -42,6 +46,7 @@ export const DashboardPage = () => {
 
   return (
     <> 
+          {(userLogin === "") && <Navigate to="/login"/>}
         <CardKpi></CardKpi>
       {spinner ? <p>Loading</p>:  <CardContact contact={contactList}></CardContact>}
     </>
