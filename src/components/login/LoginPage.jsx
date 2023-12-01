@@ -19,7 +19,7 @@ export const LoginPage = ({handleOnSubmit, userLogin}) => {
   
     <StyledBoxForm>
 
-    {userLogin!=="" && <Navigate to="/"/>}
+      {userLogin!=="" && <Navigate to="/"/>}
 
       <StyledImgForm src={logo}></StyledImgForm>
       <StyledFormContainer onSubmit={(e) => handleOnSubmit(e)}>
