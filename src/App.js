@@ -54,7 +54,7 @@ function App() {
       <AuthContext.Provider value={{userLogin}}>
       <BrowserRouter>
 
-      {(!checkLogin) && <Navigate to="/login"/>}
+      {(checkLogin) && <Navigate to="/login"/>}
     
         <Routes>
         <Route path='/login' element={<LoginPage  handleOnSubmit={handleOnSubmit} checkLogin={checkLogin} userLogin={userLogin}/>}/>
