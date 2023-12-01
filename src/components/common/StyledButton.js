@@ -183,7 +183,7 @@ export const StyledButton = styled(Button)`
            `
              width: 18%;
       
-             height: 49px;
+             height: 3.062em;
                margin-left: auto;
               font-size: 1rem;
               font-family: 'Poppins', sans-serif;

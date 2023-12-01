@@ -13,7 +13,6 @@ export const BookingsSlice = createSlice({
 
         getClient: (state, action) => {
 
-            console.log(current(state.changeBooking))
 
             const searchClient = state.changeBooking.filter((client) => client.name.includes(action.payload))
             state.data = searchClient;
@@ -35,7 +34,6 @@ export const BookingsSlice = createSlice({
         })
             .addCase(getBookingsFromApiTrunk.rejected, (state, action) => {
                 state.status = "rejected"
-                console.log(getBookingBookings(state, action))
                 state.error = action.error.message
             })
             .addCase(getBookingsFromApiTrunk.pending, (state, action) => {

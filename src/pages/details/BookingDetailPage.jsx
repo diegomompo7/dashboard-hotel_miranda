@@ -21,11 +21,11 @@ import {
   StyledDetailTextContainer,
   StyledDetailSwiperSlide,
   StyleDetailStatus,
-} from "./StyledDetail";
+} from "../../components/details/StyledDetail";
 
 import { IoIosArrowRoundForward, IoIosArrowRoundBack } from "react-icons/io";
 import { Navigation } from "swiper/modules";
-import { StyledMoreIcon } from "../common/StyledIcons";
+import { StyledMoreIcon } from "../../components/common/StyledIcons";
 
 import { useDispatch, useSelector } from "react-redux";
 

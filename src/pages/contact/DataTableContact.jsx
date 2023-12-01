@@ -3,9 +3,9 @@ import { TableRow } from "@mui/material";
 import {
   StyledTableCellBody,
   StyledTableCellBodyText,
-} from "../common/StyledTable";
-import { StyledButton } from "../common/StyledButton";
-import { StyledMoreIcon } from "../common/StyledIcons";
+} from "../../components/common/StyledTable";
+import { StyledButton } from "../../components/common/StyledButton";
+import { StyledMoreIcon } from "../../components/common/StyledIcons";
 import { useDispatch } from "react-redux";
 import {updateContact } from "../../features/contact/contactSlice";
 

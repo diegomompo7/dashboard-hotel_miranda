@@ -1,11 +1,11 @@
 import { DataTableRooms } from "./DataTableRooms";
 import { TableHead, TableBody, TableRow, MenuItem} from "@mui/material";
-import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../common/StyledTable";
+import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../../components/common/StyledTable";
 import { useState, useEffect } from "react";
-import { StyledNav, StyledNavText } from "../common/StyledNav";
-import { StyledFormControl, StyledInputLabel, StyledSelect } from "../common/StyledSelect";
-import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../common/StyledPagination";
-import { StyledButton } from "../common/StyledButton";
+import { StyledNav, StyledNavText } from "../../components/common/StyledNav";
+import { StyledFormControl, StyledInputLabel, StyledSelect } from "../../components/common/StyledSelect";
+import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../../components/common/StyledPagination";
+import { StyledButton } from "../../components/common/StyledButton";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getRoomsData,
@@ -18,6 +18,7 @@ import {
 } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 
 export const RoomsListPage = () => {

@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 import { getUsersFromApiTrunk } from "./usersTrunk";
 
 
@@ -12,8 +12,6 @@ export const UsersSlice = createSlice({
     reducers: {
         getEmployee: (state, action) => {
 
-            console.log(current(state.changeUser))
-
             const searchEmployee = state.changeUser.filter((employee) => employee.fullName.includes(action.payload))
             state.data = searchEmployee;
 
@@ -24,21 +22,12 @@ export const UsersSlice = createSlice({
         },
 
         deleteUser: (state, action) => {
-                const data = current(state.changeUser)
-                const delUser = data.filter((del) => del.id !== action.payload)
-                console.log(delUser)
-
-                state.data = delUser
-        },
-
-        getNewData: (state, action) => {
-            state.changeUser = state.data
+              state.data.filter((del) => del.id !== action.payload)
         },
         updateUser: (state, action) => {
 
-            const data = current(state.changeUser)
+            const data = state.data
             const index = data.findIndex((update) => update.id === action.payload.id)
-            console.log(index)
             if (index !== -1) {
                 const updatedData = {
                     ...data[index],
@@ -55,13 +44,10 @@ export const UsersSlice = createSlice({
                 }
 
                 state.data = data.map((item, i) => (i === index ? updatedData : item));
-                console.log(state.data)
             }
         },
         createUser: (state, action) => {
-            const data = current(state.changeUser)
-
-           state.data = [action.payload, ...data]
+            state.data = [action.payload, ...state.data]
     },
 
 
@@ -75,7 +61,6 @@ export const UsersSlice = createSlice({
         })
             .addCase(getUsersFromApiTrunk.rejected, (state, action) => {
                 state.status = "rejected"
-                console.log(getUserUsers(state, action))
                 state.error = action.error.message
             })
             .addCase(getUsersFromApiTrunk.pending, (state, action) => {

@@ -3,20 +3,21 @@ import styled from "styled-components";
 import { Box} from "@mui/material";
 
 export const StyledBoxForm = styled(Box)`
-    box-shadow: 0 0 28px 8px #E23428;
-    height: auto;
-    width: 26.5em;
-    margin: 0 auto;
-    transform: translateY(50%);
-    text-align: center;
-    transform: translateY(50%);
 
-    ${props => props.name="formCreate" && `
+box-shadow: 0 0 28px 8px #E23428;
+height: auto;
+margin: 0 auto;
+width: 26.5em;
+transform: translateY(50%);
+text-align: center;
 
+    ${props => props.name==="createForm" && `
 
+    transform: translateY(5%);
+    width: 31.25em;
 
-    
     `}
+
 `
 export const StyledImgForm = styled.img`
     width: 5.375em;
@@ -32,8 +33,14 @@ export const StyledFormContainer = styled.form`
     margin: 0 auto;
     padding-bottom: 3.062em;
 
-    ${props => props.name="formCreate" && `
+    ${props => props.name==="createForm" && `
 
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    & input {
+        margin-right: 2.5em;
+    }
 
 
 `}

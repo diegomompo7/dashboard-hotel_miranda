@@ -1,28 +1,28 @@
-import { StyledButton } from "../common/StyledButton";
+import { StyledButton } from "../../components/common/StyledButton";
 import {
   StyledBoxForm,
   StyledFormContainer,
   StyledImgForm,
   StyledInputForm,
-  StyledTextAreaForm,
-} from "../common/StyledForm";
+  StyledTextAreaForm
+} from "../../components/common/StyledForm";
 import {
   StyledFormControl,
   StyledInputLabel,
   StyledSelect,
-} from "../common/StyledSelect";
+} from "../../components/common/StyledSelect";
 import { MenuItem } from "@mui/material";
 import logo from "../../assets/img/logo.png";
-import {  getChangeData, getNewData, getRoomsData, getRoomsError, getRoomsStatus, updateRoom } from "../../features/rooms/roomsSlice";
+
+import {  getChangeData, getNewData, getRoomsData, getRoomsError, getRoomsStatus, createRoom } from "../../features/rooms/roomsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
-export const EditRoomsPage = () => {
-
-  const url = new URL(window.location.href)
-  const id = url.pathname.split("/").slice(2,3).join("")
+import { store } from "../../app/store";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+export const NewRoomPage = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -30,53 +30,74 @@ export const EditRoomsPage = () => {
   const roomsListError = useSelector(getRoomsError);
   const roomsListStatus = useSelector(getRoomsStatus);
   const [spinner, setSpinner] = useState(true);
- let roomUpdate= useSelector(getChangeData)
+  let roomCreate= useSelector(getChangeData)
 
- useEffect(
-  () => {
+  useEffect(
+    () => {
+  
+      if (roomsListStatus === "idle") {
+        dispatch(getRoomsFromApiTrunk());
+      } else if (roomsListStatus === "pending") {
+        setSpinner(true);
+      } else if (roomsListStatus === "fulfilled") {
+        setSpinner(false)
 
-    if (roomsListStatus === "idle") {
-      dispatch(getRoomsFromApiTrunk());
-    } else if (roomsListStatus === "pending") {
-      setSpinner(true);
-    } else if (roomsListStatus === "fulfilled") {
-      setSpinner(false)
-    }
-  },[
-  dispatch,
-  roomUpdate,
-  roomsListStatus]
-);
+      }
+    },[
+    dispatch,
+    roomsListData,
+    roomsListStatus]
+  );
 
-  const roomId = roomUpdate.find((room) => parseInt(room.id) == id)
-
+  
+  
+  let searchMax = roomsListData.reduce(
+    (prev, cur) => (prev?.id > cur.id ? prev : cur),
+  );
 
   const [formData, setFormData] = useState({
-    roomType: roomId.roomType,
-    offer: roomId.offer,
-    photos: roomId.photos.join("\n"),
-    roomNumber: roomId.roomNumber,
-    description: roomId.description,
-    priceNight: roomId.priceNight,
-    discount: roomId.discount,
-    cancellation: roomId.cancellation,
-    amenities: roomId.amenities.join("\n"),
+    id:  searchMax.id + 1,
+    roomType: "",
+    offer: "",
+    photos: "",
+    roomNumber: "",
+    description: "",
+    priceNight: "",
+    discount: "",
+    cancellation: "",
+    amenities: "",
   });
+
+
 
   const handleChange = (e) => 
   {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData((prevData) => {
+      if (name === "amenities" || name ==="photos") {
+        return {
+          ...prevData,
+          [name]: value,
+        };
+      } else {
+        return {
+          ...prevData,
+          [name]: value,
+        };
+      }
+    });
   }
 
-  const handleOnSubmit = (e) => {
+
+  const handleOnCreate = (e) => {
     e.preventDefault()
-    console.log(e.target)
-    dispatch(updateRoom({ id: roomId.id, formData: formData }));
-    dispatch(getNewData())
+    dispatch(createRoom(formData));
+    toast.success('Room created succesfull', {
+      position: "bottom-center",
+      autoClose: 5000,
+      closeOnClick: true,
+      theme: "colored",
+      });
   }
 
 
@@ -90,7 +111,7 @@ export const EditRoomsPage = () => {
       >
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Status</StyledInputLabel>
-          <StyledSelect label="roomType" name="roomType" defaultValue={formData.roomType} onChange={(e) => {handleChange(e)}}>
+          <StyledSelect label="roomType" name="roomType" onChange={(e) => {handleChange(e)}}>
             <MenuItem value="Single Bed">Single Bed</MenuItem>
             <MenuItem value="Double Bed">Double Bed</MenuItem>
             <MenuItem value="Double Superior">Double Superior</MenuItem>
@@ -99,60 +120,53 @@ export const EditRoomsPage = () => {
         </StyledFormControl>
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Offer</StyledInputLabel>
-          <StyledSelect label="offer" name="offer" defaultValue={formData.offer} onChange={(e) => {handleChange(e)}}>
+          <StyledSelect label="offer" name="offer" onChange={(e) => {handleChange(e)}}>
             <MenuItem value="YES">YES</MenuItem>
             <MenuItem value="NO">NO</MenuItem>
           </StyledSelect>
         </StyledFormControl>
 
         <StyledTextAreaForm
-          value={formData.photos}
-          placeholder="Photo"
-          type="url"
+          placeholder="Introduce each photo on a new line"
+          type="text"
           name="photos"
           rows="5" cols="10"
         ></StyledTextAreaForm>
 
         <StyledInputForm
           placeholder="Room Number"
-          value={formData.roomNumber}
           type="text"
           name="roomNumber"
         ></StyledInputForm>
         <StyledTextAreaForm
           placeholder="Description"
-          value={formData.description}
           type="description"
           name="description"
         ></StyledTextAreaForm>
         <StyledInputForm
-        value={formData.priceNight}
           placeholder="Price per night"
           type="number"
           name="priceNight"
         ></StyledInputForm>
         <StyledInputForm
-        value={formData.discount}
           placeholder="Discount"
           type="number"
           name="discount"
         ></StyledInputForm>
         <StyledInputForm
           placeholder="Cancelattion"
-          value={formData.cancellation}
           type="text"
           name="cancellation"
         ></StyledInputForm>
         <StyledTextAreaForm
-          placeholder="Amenities"
-          value={formData.amenities}
+          placeholder="Amenities. Introduce each amenitie on a new line"
           type="text"
           name="amenities"
-          rows={3}
+          rows="3"
         ></StyledTextAreaForm>
 
-        <StyledButton name="new" type="submit" onClick={(e) => {handleOnSubmit(e), navigate("/rooms")}}>
-          UPDATE ROOM
+        <StyledButton name="new" type="submit" onClick={(e) => {handleOnCreate(e), navigate("/rooms")}}>
+          CREATE ROOM
         </StyledButton>
       </StyledFormContainer>
     </StyledBoxForm>

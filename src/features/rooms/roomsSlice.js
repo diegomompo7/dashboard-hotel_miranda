@@ -19,18 +19,16 @@ export const RoomsSlice = createSlice({
         deleteRoom: (state, action) => {
             const data = current(state.changeRoom)
             const delRoom = data.filter((del) => del.id !== action.payload)
-            console.log(delRoom)
             state.data = delRoom
     },
 
         updateRoom: (state, action) => {
 
-            const data = current(state.changeRoom)
+            const data = state.data
+            
             const index = data.findIndex((update) => update.id === action.payload.id)
 
-            console.log(action.payload.formData)
 
-            console.log(index)
             if (index !== -1) {
                 const updatedData = {
                     ...data[index],
@@ -47,13 +45,14 @@ export const RoomsSlice = createSlice({
                 }
 
                 state.data = data.map((item, i) => (i === index ? updatedData : item));
-                console.log(updatedData)
             }
             
         },
         createRoom: (state, action) => {
             
             state.data = [action.payload, ...state.data]
+
+
 
     },
     getIdRoom: (state, action) => {
@@ -71,7 +70,6 @@ export const RoomsSlice = createSlice({
         })
             .addCase(getRoomsFromApiTrunk.rejected, (state, action) => {
                 state.status = "rejected"
-                console.log(getRoomRooms(state, action))
                 state.error = action.error.message
 
             })

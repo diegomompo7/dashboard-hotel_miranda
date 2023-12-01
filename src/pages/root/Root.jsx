@@ -1,7 +1,8 @@
 import { Outlet, useLocation } from "react-router-dom"
 import { useState } from "react";
 import {Header} from "../header/Header"
-import { StyledBody } from "./StyledBody";
+import { StyledBody } from "../../components/root/StyledBody";
+import { ToastContainer } from "react-toastify";
 
 export const Root = () =>  {
     const [isOpen, setIsOpen] = useState(false)
@@ -33,7 +34,7 @@ export const Root = () =>  {
     
     return (
       <div style={{position: "relative", flexDirection: "column",  height: "100%"}}>
-        
+        <ToastContainer />
         <Header setIsOpen={setIsOpen} title={title}></Header>
         <StyledBody isOpen={isOpen}>
             <Outlet />

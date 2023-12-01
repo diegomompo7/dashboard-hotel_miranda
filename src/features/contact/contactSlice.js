@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { getContactFromApiTrunk } from "./contactTrunk";
 
 
@@ -20,10 +20,8 @@ export const ContactSlice = createSlice({
         updateContact:(state, action) => {
             const data = state.data
             const index = data.findIndex((archived) => archived.id === action.payload.id)
-            console.log(index)
             if(index !== -1){
             const updatedData = { ...data[index], is_archived: action.payload.is_archived  };
-            console.log(updatedData)
             state.data = data.map((item, i) => (i === index ? updatedData : item));
             }
         },
@@ -36,7 +34,6 @@ export const ContactSlice = createSlice({
         })
         .addCase(getContactFromApiTrunk.rejected,(state,action)  => {
             state.status = "rejected"
-            console.log(getUserContact(state, action))
             state.error = action.error.message
         })
         .addCase(getContactFromApiTrunk.pending,(state,action)  => {

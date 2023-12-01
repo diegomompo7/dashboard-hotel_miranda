@@ -86,7 +86,7 @@ export const StyledMoreIcon = styled(IoMdMore)`
        ${props => props.name==="moreDetail" && `
               width: 1.5em;
               height:1.5em;
-              margin-right: 30px;
+              margin-right: 1.875em;
               margin-left: auto;
        
        `
