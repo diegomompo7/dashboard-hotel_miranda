@@ -35,7 +35,7 @@ import { getRoomId, getRoomsStatus } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 import { useEffect, useState } from "react";
 
-export const GuestDetailPage = () => {
+export const BookingDetailPage = () => {
   const url = new URL(window.location.href);
   const id = url.pathname.split("/").slice(2, 3).join("");
 

@@ -1,4 +1,4 @@
-import { DataTableGuest } from "./DataTableGuest";
+import { DataTableBooking } from "./DataTableBooking";
 import { TableHead, TableBody, TableRow, MenuItem } from "@mui/material";
 import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../common/StyledTable";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ import { getBookingsFromApiTrunk } from "../../features/bookings/bookingsTrunk";
 import { getRoomId, getRoomsStatus } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 
-export const GuestsPage = () => {
+export const BookingPage = () => {
 
   const [isOpen] = useState(false)
   const [open, setOpen] = useState(false);
@@ -116,16 +116,16 @@ export const GuestsPage = () => {
 
     switch(e.target.value){
         case "orderDate":
-        orderSelect = [...currentBookingsListData].sort((a,b) => new Date(`${b.orderDate}`) - new Date(`${a.orderDate}`))
+        orderSelect = [... bookingListRoom].sort((a,b) => new Date(`${b.orderDate}`) - new Date(`${a.orderDate}`))
         break;
         case "checkIn":
-          orderSelect = [...currentBookingsListData].sort((a,b) => new Date(`${b.check_in}`) - new Date(`${a.check_in}`))
+          orderSelect = [... bookingListRoom].sort((a,b) => new Date(`${b.check_in}`) - new Date(`${a.check_in}`))
           break;
           case "checkOut":
-            orderSelect = [...currentBookingsListData].sort((a,b) => new Date(`${b.check_out}`) - new Date(`${a.check_out}`))
+            orderSelect = [...bookingListRoom].sort((a,b) => new Date(`${b.check_out}`) - new Date(`${a.check_out}`))
             break;
         case "guest":
-          orderSelect = [...currentBookingsListData].sort((a,b) => {
+          orderSelect = [...bookingListRoom].sort((a,b) => {
             const nameA = a.name.toUpperCase();
             const nameB = b.name.toUpperCase(); 
             if (nameA < nameB) {
@@ -140,7 +140,6 @@ export const GuestsPage = () => {
       }
 
       dispatch(getSelect(orderSelect))
-      dispatch(getNewData())
       numberPage[0] = 0;
       numberPage[1] = 10;
       setCurrentPage(1)
@@ -148,14 +147,15 @@ export const GuestsPage = () => {
 
   const currentBookingsListData = 
   currentView ==="checkIn" ? 
-    [...bookingListRoom].sort((a,b) => new Date(b.check_in) - new Date(a.check_in)) :
+    [...bookingsListData].sort((a,b) => new Date(b.check_in) - new Date(a.check_in)) :
     currentView ==="checkOut" ? 
-    [...bookingListRoom].sort((a,b) => new Date(b.check_out) - new Date(a.check_out)) :
+    [...bookingsListData].sort((a,b) => new Date(b.check_out) - new Date(a.check_out)) :
     currentView ==="inProgress" ? 
-    [...bookingListRoom].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate)) :
+    [...bookingListInProgress].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate)) :
     currentView ==="select" ? 
       bookingList:
-    [...bookingListRoom].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate))
+    [...bookingsListData].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate))
+
 
   return (
     <>
@@ -200,7 +200,7 @@ export const GuestsPage = () => {
           </TableHead>
           <TableBody>
           {spinner ? <p>Loading...</p> : 
-            <DataTableGuest data={currentBookingsListData} numberPage={numberPage}handleOpen={handleOpen} setSpecialRequest={setSpecialRequest}></DataTableGuest>
+            <DataTableBooking data={currentBookingsListData} numberPage={numberPage}handleOpen={handleOpen} setSpecialRequest={setSpecialRequest}></DataTableBooking>
           }
           </TableBody>
         </StyledTable>

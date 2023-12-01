@@ -9,11 +9,11 @@ export const StyledBoxForm = styled(Box)`
     margin: 0 auto;
     transform: translateY(50%);
     text-align: center;
+    transform: translateY(50%);
 
     ${props => props.name="formCreate" && `
 
-        transform: translateY(5%);
-        width: 31.25em;
+
 
     
     `}
@@ -34,12 +34,7 @@ export const StyledFormContainer = styled.form`
 
     ${props => props.name="formCreate" && `
 
-    flex-direction: row;
-    flex-wrap: wrap;
-    
-    & input {
-        margin-right: 2.5em;
-    }
+
 
 `}
 `

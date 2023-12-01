@@ -2,8 +2,8 @@
 import './App.css';
 import {ContactPage} from "./components/contact/ContactPage"
 import {DashboardPage} from "./components/dashboard/DashboardPage"
-import {GuestDetailPage} from "./components/details/GuestDetailPage"
-import { GuestsPage } from "./components/guest/GuestsPage"
+import { BookingDetailPage } from './components/details/BookingDetailPage';
+import { BookingPage } from './components/booking/BookingPage';
 import {LoginPage} from "./components/login/LoginPage"
 import { EditUserPage } from './components/user/EditUserPage';
 import { NewUserPage } from './components/user/NewUserPage';
@@ -63,8 +63,8 @@ function App() {
         <Route path="/createRoom/:id" element={<EditRoomsPage />} />
             <Route path="/" element={<Root />}>
               <Route path="/" element={<DashboardPage />} />
-              <Route path="booking" element={<GuestsPage />} />
-              <Route path="booking/:id" element={<GuestDetailPage />} />
+              <Route path="booking" element={<BookingPage />} />
+              <Route path="booking/:id" element={<BookingDetailPage />} />
               <Route path="rooms" element={<RoomsListPage />} />
               <Route path="contact" element={<ContactPage />} />
               <Route path="users" element={<UserPage />} />

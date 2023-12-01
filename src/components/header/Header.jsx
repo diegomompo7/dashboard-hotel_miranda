@@ -47,13 +47,13 @@ export const Header = (props) => {
         <StyledDashboardIcon></StyledDashboardIcon>
         <StyledLink to="/" activeClassName="active">Dashboard</StyledLink>
       </StyledMenuItem>
-      <StyledMenuItem> 
-        <StyledBookingIcon></StyledBookingIcon>
-        <StyledLink to="/rooms" activeClassName="active">Room</StyledLink>
-      </StyledMenuItem>
       <StyledMenuItem>
         <StyledRoomsIcon></StyledRoomsIcon>
         <StyledLink to="/booking" activeClassName="active">Bookings</StyledLink>
+      </StyledMenuItem>
+      <StyledMenuItem>
+        <StyledBookingIcon></StyledBookingIcon>
+        <StyledLink to="/rooms" activeClassName="active">Room</StyledLink>
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledContactIcon></StyledContactIcon>
@@ -61,7 +61,7 @@ export const Header = (props) => {
       </StyledMenuItem>
       <StyledMenuItem>
         <StyledUsersIcon></StyledUsersIcon>
-        <StyledLink to="/users" activeClassName="active">Concierge</StyledLink>
+        <StyledLink to="/users" activeClassName="active">Users</StyledLink>
       </StyledMenuItem>
       <StyledBoxMenuProfile>
         <StyledImgProfileMenu src={user[0].photo} width="70px" height="70px"></StyledImgProfileMenu>

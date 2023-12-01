@@ -21,10 +21,10 @@ export const BookingsSlice = createSlice({
         },
         getSelect: (state, action) => {
 
-            state.data = action.payload;
+            let data = current(state.data)
+            data = action.payload;
 
         },
-        
         deleteBooking: (state, action) => {
             const data = current(state.changeBooking)
             const delBooking = data.filter((del) => del.id !== action.payload)
@@ -32,9 +32,7 @@ export const BookingsSlice = createSlice({
             state.data = delBooking
     },
 
-        getNewData: (state, action) => {
-            state.changeBooking = state.data
-        },
+
 
 
         updateBooking: (state, action) => {
