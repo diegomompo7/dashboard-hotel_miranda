@@ -17,11 +17,13 @@ import {
 
 } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
+import { useNavigate } from "react-router-dom";
 
 
 export const RoomsListPage = () => {
 
   const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 const roomsListData = useSelector(getRoomsData);
 const roomsListError = useSelector(getRoomsError);
@@ -93,7 +95,7 @@ const roomsListBooked = useSelector(getRoomsDataBooked)
           <StyledNavText  onClick={() => handleClick("available")} isActive={currentView === "available"}>Available</StyledNavText>
           <StyledNavText  onClick={() => handleClick("booked")} isActive={currentView === "booked"}>Booked</StyledNavText>
         </StyledNav>
-        <StyledButton name="create" href="/createRoom">+ New Room</StyledButton>
+        <StyledButton name="create" onClick={() => navigate("/createRoom")}>+ New Room</StyledButton>
         <StyledFormControl>
         <StyledInputLabel>Order</StyledInputLabel>
         <StyledSelect label="Order"  onChange={(e) => handleOnSelect(e)}>
