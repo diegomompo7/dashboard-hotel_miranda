@@ -59,7 +59,7 @@ export const UsersSlice = createSlice({
             }
         },
         createUser: (state, action) => {
-            const data = current(state.changeUser)
+            const data = state.changeUser
 
            state.data = [action.payload, ...data]
     },

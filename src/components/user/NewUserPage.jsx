@@ -67,7 +67,6 @@ export const NewUserPage = () => {
   }
 
 
-
   const handleOnCreate = (e) => {
     e.preventDefault()
     dispatch(createUser({id: userCreate[userCreate.length-1].id + 1, formData: formData }));
