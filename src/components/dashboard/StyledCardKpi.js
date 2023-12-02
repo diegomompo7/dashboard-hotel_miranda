@@ -5,12 +5,12 @@ import { LuCalendarCheck2 } from "react-icons/lu";
 import { TbLogin2, TbLogin } from "react-icons/tb";
 
 const kpiIcon = `
-padding: 23px 18px 22px 19px;
+padding: 1.437em 1.125em 1.375em 1.187em;
 width: 28px;
 height: 20px;
 background: #FFEDEC;
 border-radius: 8px;
-margin: 30px 22px 30px 30px;
+margin: 1.875em 1.375em 1.875em 1.875em;
 color: #E23428;
 `
 

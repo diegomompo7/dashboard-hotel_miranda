@@ -1,13 +1,13 @@
 import { DataTableBooking } from "./DataTableBooking";
 import { TableHead, TableBody, TableRow, MenuItem } from "@mui/material";
-import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../common/StyledTable";
+import { StyledTable, StyledTableCellRow, StyledTableContainer } from "../../components/common/StyledTable";
 import { useEffect, useState } from "react";
-import { StyledNav, StyledNavText } from "../common/StyledNav";
-import { StyledTextField } from "../common/StyledTextField";
-import { StyledFormControl, StyledInputLabel, StyledSelect } from "../common/StyledSelect";
-import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../common/StyledPagination";
-import { StyledButton } from "../common/StyledButton";
-import { ModalComponent } from "../ModalComponent/ModalComponent";
+import { StyledNav, StyledNavText } from "../../components/common/StyledNav";
+import { StyledTextField } from "../../components/common/StyledTextField";
+import { StyledFormControl, StyledInputLabel, StyledSelect } from "../../components/common/StyledSelect";
+import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../../components/common/StyledPagination";
+import { StyledButton } from "../../components/common/StyledButton";
+import { ModalComponent } from "../../components/ModalComponent/ModalComponent";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getBookingsData, getBookingsDataInProgress, getBookingsError, getBookingsStatus, getChangeData, getClient, getNewData, getSelect, updateRoomToBooking } from "../../features/bookings/bookingsSlice";

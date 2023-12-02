@@ -1,25 +1,32 @@
-import { StyledButton } from "../common/StyledButton";
+import { StyledButton } from "../../components/common/StyledButton";
 import {
   StyledBoxForm,
   StyledFormContainer,
   StyledImgForm,
   StyledInputForm,
   StyledTextAreaForm
-} from "../common/StyledForm";
+} from "../../components/common/StyledForm";
 import {
   StyledFormControl,
   StyledInputLabel,
   StyledSelect,
-} from "../common/StyledSelect";
+} from "../../components/common/StyledSelect";
 import { MenuItem } from "@mui/material";
 import logo from "../../assets/img/logo.png";
-import {  createUser, getChangeData, getNewData, getUsersData, getUsersError, getUsersStatus} from "../../features/users/usersSlice";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import {  getChangeData, getNewData, getUsersData, getUsersError, getUsersStatus, updateUser } from "../../features/users/usersSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import { getUsersFromApiTrunk } from "../../features/users/usersTrunk";
+import { useNavigate } from "react-router-dom";
 
-export const NewUserPage = () => {
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+export const EditUserPage = () => {
+
+  const url = new URL(window.location.href)
+  const id = url.pathname.split("/").slice(2,3).join("")
+
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -27,7 +34,9 @@ export const NewUserPage = () => {
   const usersListError = useSelector(getUsersError);
   const usersListStatus = useSelector(getUsersStatus);
   const [spinner, setSpinner] = useState(true);
-  let userCreate= useSelector(getChangeData)
+ let userUpdate= useSelector(getChangeData)
+
+  
 
   useEffect(
     () => {
@@ -45,20 +54,25 @@ export const NewUserPage = () => {
     usersListStatus]
   );
 
+
+  const userId = usersListData.find((user) => parseInt(user.id) == id)
+
+
   const [formData, setFormData] = useState({
-    photo:"",
-    fullName:"",
-    job: "",
-    email: "",
-    phone: "",
-    startDate: "",
-    descriptionJob: "",
-    status: "",
-    password: ""
+    photo: userId.photo,
+    fullName: userId.fullName,
+    job: userId.job,
+    email: userId.email,
+    phone: userId.phone,
+    startDate: userId.startDate,
+    descriptionJob: userId.descriptionJob,
+    status: userId.status,
+    password: userId.password
   });
 
   const handleChange = (e) => 
   {
+
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -66,12 +80,18 @@ export const NewUserPage = () => {
     }));
   }
 
-
-
-  const handleOnCreate = (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault()
-    dispatch(createUser({id: usersListData[usersListData.length-1].id + 1, formData: formData }));
+   
+    dispatch(updateUser({ id: userId.id, formData: formData }));
+    toast.success('User updated succesfull', {
+      position: "bottom-center",
+      autoClose: 5000,
+      closeOnClick: true,
+      theme: "colored",
+      });
   }
+
 
   return (
     <StyledBoxForm name="createForm">
@@ -82,38 +102,46 @@ export const NewUserPage = () => {
         onChange={(e) => {handleChange(e)}}
       >
         <StyledTextAreaForm
+          value={formData.photo}
           placeholder="Photo"
           type="url"
           name="photo"
           rows="1"
         ></StyledTextAreaForm>
         <StyledInputForm
+          value={formData.fullName}
           placeholder="Full Name"
           type="text"
           name="fullName"
         ></StyledInputForm>
         <StyledInputForm
+        value={formData.job}
           placeholder="Job"
           type="text"
           name="job"
         ></StyledInputForm>
         <StyledInputForm
+        value={formData.email}
           placeholder="Email"
           type="email"
           name="email"
         ></StyledInputForm>
         <StyledInputForm
+        value={formData.phone}
           placeholder="123456789"
           type="tel"
           name="phone"
           pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
         ></StyledInputForm>
         <StyledInputForm
+        value={formData.startDate}
+  
           placeholder="YYYY/MM/DD"
           type="text"
           name="startDate"
         ></StyledInputForm>
         <StyledTextAreaForm
+          value={formData.descriptionJob}
           placeholder="Description about job"
           type="text"
           name="descriptionJob"
@@ -121,18 +149,20 @@ export const NewUserPage = () => {
         ></StyledTextAreaForm>
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Status</StyledInputLabel>
-          <StyledSelect name= "status" label="status" value={formData.status}    onChange={(e) => {handleChange(e)}}>
+          <StyledSelect name= "status" label="status" value={formData.status} onChange={(e) => {handleChange(e)}}>
             <MenuItem value="ACTIVE">ACTIVE</MenuItem>
             <MenuItem value="INACTIVE">INACTIVE</MenuItem>
           </StyledSelect>
         </StyledFormControl>
         <StyledInputForm
+
+          value={formData.password}
           placeholder="Password"
           type="Password"
           name="password"
         ></StyledInputForm>
 
-        <StyledButton name="new" type="submit" onClick={(e) => {handleOnCreate(e), navigate("/users")}}>
+        <StyledButton name="new" type="submit" onClick={(e) => {handleOnSubmit(e), navigate("/users")}}>
           UPDATE EMPLOYEE
         </StyledButton>
       </StyledFormContainer>

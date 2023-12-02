@@ -1,26 +1,31 @@
-import { StyledButton } from "../common/StyledButton";
+import { StyledButton } from "../../components/common/StyledButton";
 import {
   StyledBoxForm,
   StyledFormContainer,
   StyledImgForm,
   StyledInputForm,
-  StyledTextAreaForm
-} from "../common/StyledForm";
+  StyledTextAreaForm,
+} from "../../components/common/StyledForm";
 import {
   StyledFormControl,
   StyledInputLabel,
   StyledSelect,
-} from "../common/StyledSelect";
+} from "../../components/common/StyledSelect";
 import { MenuItem } from "@mui/material";
 import logo from "../../assets/img/logo.png";
-
-import {  getChangeData, getNewData, getRoomsData, getRoomsError, getRoomsStatus, createRoom } from "../../features/rooms/roomsSlice";
+import {  getChangeData, getNewData, getRoomsData, getRoomsError, getRoomsStatus, updateRoom } from "../../features/rooms/roomsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { store } from "../../app/store";
-export const NewRoomPage = () => {
+
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+export const EditRoomsPage = () => {
+
+  const url = new URL(window.location.href)
+  const id = url.pathname.split("/").slice(2,3).join("")
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -28,63 +33,58 @@ export const NewRoomPage = () => {
   const roomsListError = useSelector(getRoomsError);
   const roomsListStatus = useSelector(getRoomsStatus);
   const [spinner, setSpinner] = useState(true);
-  let roomCreate= useSelector(getChangeData)
+ let roomUpdate= useSelector(getChangeData)
 
-  useEffect(
-    () => {
-  
-      if (roomsListStatus === "idle") {
-        dispatch(getRoomsFromApiTrunk());
-      } else if (roomsListStatus === "pending") {
-        setSpinner(true);
-      } else if (roomsListStatus === "fulfilled") {
-        setSpinner(false)
+ useEffect(
+  () => {
 
-      }
-    },[
-    dispatch,
-    roomsListData,
-    roomsListStatus]
-  );
+    if (roomsListStatus === "idle") {
+      dispatch(getRoomsFromApiTrunk());
+    } else if (roomsListStatus === "pending") {
+      setSpinner(true);
+    } else if (roomsListStatus === "fulfilled") {
+      setSpinner(false)
+    }
+  },[
+  dispatch,
+  roomsListData,
+  roomsListStatus]
+);
 
-  
-  
+  const roomId = roomsListData.find((room) => parseInt(room.id) == id)
+
+
   const [formData, setFormData] = useState({
-    roomType: "",
-    offer: "",
-    photos: "",
-    roomNumber: "",
-    description: "",
-    priceNight: "",
-    discount: "",
-    cancellation: "",
-    amenities: "",
+    roomType: roomId.roomType,
+    offer: roomId.offer,
+    photos: roomId.photos.join("\n"),
+    roomNumber: roomId.roomNumber,
+    description: roomId.description,
+    priceNight: roomId.priceNight,
+    discount: roomId.discount,
+    cancellation: roomId.cancellation,
+    amenities: roomId.amenities.join("\n"),
   });
-
-
 
   const handleChange = (e) => 
   {
     const { name, value } = e.target;
-    setFormData((prevData) => {
-      if (name === "amenities" || name ==="photos") {
-        return {
-          ...prevData,
-          [name]: value,
-        };
-      } else {
-        return {
-          ...prevData,
-          [name]: value,
-        };
-      }
-    });
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   }
 
-
-  const handleOnCreate = (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault()
-    dispatch(createRoom(formData));
+    console.log(e.target)
+    dispatch(updateRoom({ id: roomId.id, formData: formData }));
+    toast.success('Room updated succesfull', {
+      position: "bottom-center",
+      autoClose: 5000,
+      closeOnClick: true,
+      theme: "colored",
+    });
   }
 
 
@@ -98,7 +98,7 @@ export const NewRoomPage = () => {
       >
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Status</StyledInputLabel>
-          <StyledSelect label="roomType" name="roomType" onChange={(e) => {handleChange(e)}}>
+          <StyledSelect label="roomType" name="roomType" defaultValue={formData.roomType} onChange={(e) => {handleChange(e)}}>
             <MenuItem value="Single Bed">Single Bed</MenuItem>
             <MenuItem value="Double Bed">Double Bed</MenuItem>
             <MenuItem value="Double Superior">Double Superior</MenuItem>
@@ -107,53 +107,60 @@ export const NewRoomPage = () => {
         </StyledFormControl>
         <StyledFormControl name="selectCreate">
           <StyledInputLabel>Offer</StyledInputLabel>
-          <StyledSelect label="offer" name="offer" onChange={(e) => {handleChange(e)}}>
+          <StyledSelect label="offer" name="offer" defaultValue={formData.offer} onChange={(e) => {handleChange(e)}}>
             <MenuItem value="YES">YES</MenuItem>
             <MenuItem value="NO">NO</MenuItem>
           </StyledSelect>
         </StyledFormControl>
 
         <StyledTextAreaForm
-          placeholder="Introduce each photo on a new line"
-          type="text"
+          value={formData.photos}
+          placeholder="Photo"
+          type="url"
           name="photos"
           rows="5" cols="10"
         ></StyledTextAreaForm>
 
         <StyledInputForm
           placeholder="Room Number"
+          value={formData.roomNumber}
           type="text"
           name="roomNumber"
         ></StyledInputForm>
         <StyledTextAreaForm
           placeholder="Description"
+          value={formData.description}
           type="description"
           name="description"
         ></StyledTextAreaForm>
         <StyledInputForm
+        value={formData.priceNight}
           placeholder="Price per night"
           type="number"
           name="priceNight"
         ></StyledInputForm>
         <StyledInputForm
+        value={formData.discount}
           placeholder="Discount"
           type="number"
           name="discount"
         ></StyledInputForm>
         <StyledInputForm
           placeholder="Cancelattion"
+          value={formData.cancellation}
           type="text"
           name="cancellation"
         ></StyledInputForm>
         <StyledTextAreaForm
-          placeholder="Amenities. Introduce each amenitie on a new line"
+          placeholder="Amenities"
+          value={formData.amenities}
           type="text"
           name="amenities"
-          rows="3"
+          rows={3}
         ></StyledTextAreaForm>
 
-        <StyledButton name="new" type="submit" onClick={(e) => {handleOnCreate(e), navigate("/rooms")}}>
-          CREATE ROOM
+        <StyledButton name="new" type="submit" onClick={(e) => {handleOnSubmit(e), navigate("/rooms")}}>
+          UPDATE ROOM
         </StyledButton>
       </StyledFormContainer>
     </StyledBoxForm>

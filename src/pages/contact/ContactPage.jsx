@@ -1,11 +1,11 @@
 
 import { DataTableContact } from "./DataTableContact";
 import { TableHead, TableBody, TableRow } from "@mui/material";
-import { StyledTable, StyledTableCellRow, StyledTableContainer} from "../common/StyledTable";
+import { StyledTable, StyledTableCellRow, StyledTableContainer} from "../../components/common/StyledTable";
 import { useState, useEffect } from "react";
-import { StyledNav, StyledNavText } from "../common/StyledNav";
-import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../common/StyledPagination";
-import { StyledButton } from "../common/StyledButton";
+import { StyledNav, StyledNavText } from "../../components/common/StyledNav";
+import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../../components/common/StyledPagination";
+import { StyledButton } from "../../components/common/StyledButton";
 import { CardContact } from "./CardContact";
 import { useDispatch, useSelector } from "react-redux";
 import {

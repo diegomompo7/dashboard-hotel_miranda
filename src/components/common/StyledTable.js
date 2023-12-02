@@ -13,6 +13,7 @@ export const StyledTable = styled.table`
     background: #FFFFFF;
     height: auto;
     width: 100%;
+    padding-left: 1.25rem;
 
 
 `

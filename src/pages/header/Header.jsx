@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyledBox, StyledMenuBox, StyledLogo, StyledBoxMenuProfile} from "./StyledBox";
+import { StyledBox, StyledMenuBox, StyledLogo, StyledBoxMenuProfile} from "../../components/header/StyledBox";
 import {
   StyledBellIcon,
   StyledBookingIcon,
@@ -11,14 +11,14 @@ import {
   StyledMenuIcon,
   StyledRoomsIcon,
   StyledUsersIcon,
-} from "../common/StyledIcons";
-import { StyledTextUserMenu, StyledTextHeader, StyledTextLogo, StyledTextFooter } from "./StyledText";
-import { StyledImgLogo, StyledTextImgLogo, StyledImgProfileMenu } from "../common/StyledImg";
-import { StyledMenuItem } from "./StyledMenuItem";
+} from "../../components/common/StyledIcons";
+import { StyledTextUserMenu, StyledTextHeader, StyledTextLogo, StyledTextFooter } from "../../components/header/StyledText";
+import { StyledImgLogo, StyledTextImgLogo, StyledImgProfileMenu } from "../../components/common/StyledImg";
+import { StyledMenuItem } from "../../components/header/StyledMenuItem";
 import logo  from "../../assets/img/logo.png";
 import textLogo from "../../assets/img/textLogo.png"
-import { StyledButton } from "../common/StyledButton";
-import { StyledLink } from "./StyledLink";
+import { StyledButton } from "../../components/common/StyledButton";
+import { StyledLink } from "../../components/header/StyledLink";
 import users from "../../data/users.json"
 import AuthContext from "../../AuthContext";
  

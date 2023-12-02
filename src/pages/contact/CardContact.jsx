@@ -1,5 +1,5 @@
 import React from "react";
-import {StyledSwiper, StyledSwiperSlide, StyledSSText, StyledSSImg } from "../common/StyledCardContact";
+import {StyledSwiper, StyledSwiperSlide, StyledSSText, StyledSSImg } from "../../components/common/StyledCardContact";
 import { Keyboard,  Navigation } from "swiper/modules";
 import { useState } from "react";
 import { getContactData, getFullMessage, resetState } from "../../features/contact/contactSlice";
@@ -9,7 +9,7 @@ import {store} from "../../app/store"
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { ModalComponent } from "../ModalComponent/ModalComponent";
+import { ModalComponent } from "../../components/ModalComponent/ModalComponent";
 import { useDispatch, useSelector } from "react-redux";
 
 

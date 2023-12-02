@@ -2,13 +2,13 @@
 import { DataTableUsers } from "./DataTableUsers";
 import users from "../../data/users.json";
 import { TableHead, TableBody, TableRow, MenuItem } from "@mui/material";
-import { StyledTable, StyledTableCellRow, StyledTableContainer} from "../common/StyledTable";
+import { StyledTable, StyledTableCellRow, StyledTableContainer} from "../../components/common/StyledTable";
 import { useEffect, useState } from "react";
-import { StyledNav, StyledNavText } from "../common/StyledNav";
-import { StyledTextField } from "../common/StyledTextField";
-import { StyledFormControl, StyledInputLabel, StyledSelect } from "../common/StyledSelect";
-import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../common/StyledPagination";
-import { StyledButton } from "../common/StyledButton";
+import { StyledNav, StyledNavText } from "../../components/common/StyledNav";
+import { StyledTextField } from "../../components/common/StyledTextField";
+import { StyledFormControl, StyledInputLabel, StyledSelect } from "../../components/common/StyledSelect";
+import { StyledPagination, StyledPaginationText , StyledButtonPage, StyledTextPage} from "../../components/common/StyledPagination";
+import { StyledButton } from "../../components/common/StyledButton";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getUsersData,
@@ -22,12 +22,14 @@ import {
 
 } from "../../features/users/usersSlice";
 import { getUsersFromApiTrunk } from "../../features/users/usersTrunk";
+import { useNavigate } from "react-router-dom";
 
 
 export const UserPage = () => {
 
   const [isOpen, setIsOpen] = useState(false)
   
+  const navigate = useNavigate()
   const dispatch = useDispatch();
   const usersListData = useSelector(getUsersData);
   const usersListError = useSelector(getUsersError);
@@ -116,7 +118,7 @@ export const UserPage = () => {
           <StyledNavText onClick={() => handleClick("inactive")} isActive={currentView === "inactive"}>Inactive Employee</StyledNavText>
         </StyledNav>
         <StyledTextField label="Employee" onChange={(e) => handleOnChange(e)}/>
-        <StyledButton name="create" href="/createUser">+ New Employee</StyledButton>
+        <StyledButton name="create" onClick={() => navigate("/createUser")}>+ New Employee</StyledButton>
         <StyledFormControl>
         <StyledInputLabel>Order</StyledInputLabel>
         <StyledSelect label="Order" onChange={(e) => handleOnSelect(e)}>

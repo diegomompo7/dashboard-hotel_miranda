@@ -6,12 +6,15 @@ import {
   StyledTableCellBodyImg,
   StyledTableRow,
   StyledMenu,
-} from "../common/StyledTable";
-import { StyledButton } from "../common/StyledButton";
-import { StyledMoreIcon, StyledPhone } from "../common/StyledIcons";
+} from "../../components/common/StyledTable";
+import { StyledButton } from "../../components/common/StyledButton";
+import { StyledMoreIcon, StyledPhone } from "../../components/common/StyledIcons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteUser, getNewData } from "../../features/users/usersSlice";
+
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const DataTableUsers = (props) => {
   const navigate = useNavigate();
@@ -35,8 +38,13 @@ export const DataTableUsers = (props) => {
 
   const handleDelete = (id) => {
     dispatch(deleteUser(id));
-    dispatch(getNewData());
     handleClose()
+    toast.error('User deleted succesfull', {
+      position: "bottom-center",
+      autoClose: 5000,
+      closeOnClick: true,
+      theme: "colored",
+      });
   };
 
   return (

@@ -4,9 +4,9 @@ import {
   StyledTableCellBody,
   StyledTableCellBodyText,
   StyledTableCellBodyImg,
-} from "../common/StyledTable";
-import { StyledButton } from "../common/StyledButton";
-import { StyledMoreIcon } from "../common/StyledIcons";
+} from "../../components/common/StyledTable";
+import { StyledButton } from "../../components/common/StyledButton";
+import { StyledMoreIcon } from "../../components/common/StyledIcons";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";

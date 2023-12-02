@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { Menu, MenuItem, TableRow } from "@mui/material";
-import { StyledTableCellBody, StyledTableCellBodyText, StyledTableCellBodyImg } from "../common/StyledTable";
-import { StyledButton } from "../common/StyledButton";
-import { StyledMoreIcon } from "../common/StyledIcons";
+import { StyledTableCellBody, StyledTableCellBodyText, StyledTableCellBodyImg } from "../../components/common/StyledTable";
+import { StyledButton } from "../../components/common/StyledButton";
+import { StyledMoreIcon } from "../../components/common/StyledIcons";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteRoom, getNewData} from "../../features/rooms/roomsSlice";
+
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -29,8 +32,13 @@ export const DataTableRooms = (props) => {
 
     const handleDelete = (id) => {
         dispatch(deleteRoom(id));
-        dispatch(getNewData())
         handleClose()
+        toast.error('User deleted succesfull', {
+            position: "bottom-center",
+            autoClose: 5000,
+            closeOnClick: true,
+            theme: "colored",
+            });
       
     }
 
