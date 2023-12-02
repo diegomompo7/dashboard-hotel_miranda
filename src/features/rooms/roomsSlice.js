@@ -48,24 +48,6 @@ export const RoomsSlice = createSlice({
             }
             
         },
-
-        updateStatus: (state, action) => {
-
-            const data = state.data
-            
-            const index = data.findIndex((update) => update.id === action.payload.id)
-
-
-            if (index !== -1) {
-                const updatedData = {
-                    status: action.payload.status,
-
-                }
-
-                state.data = data.map((item, i) => (i === index ? updatedData : item));
-            }
-            
-        },
         
         createRoom: (state, action) => {
             

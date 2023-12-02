@@ -24,6 +24,20 @@ export const StyledFormControl = styled(FormControl)`
         }
       
     `}
+    ${props => props.name==="selectRoom" && `
+    width: 100%;
+    margin-left: 0;
+    margin-right: 1.25em;
+    margin-bottom: 1.875em;
+
+    & .MuiSelect-select {
+
+    }
+    & .MuiInputLabel-root {
+
+    }
+  
+`}
 `
 export const StyledInputLabel = styled(InputLabel)`
     color: #135846;

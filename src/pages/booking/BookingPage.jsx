@@ -12,8 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getBookingsData,  getBookingsError, getBookingsStatus, getChangeData, getClient, getSelect } from "../../features/bookings/bookingsSlice";
 import { getBookingsFromApiTrunk } from "../../features/bookings/bookingsTrunk";
-import { getRoomId, getRoomsStatus } from "../../features/rooms/roomsSlice";
+import { getRoomsData, getRoomsStatus } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
+import { useNavigate } from "react-router";
 
 export const BookingPage = () => {
 
@@ -23,6 +24,7 @@ export const BookingPage = () => {
   const handleClose = () => setOpen(false);
   const [specialRequest, setSpecialRequest] = useState("")
 
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   let bookingsListData = useSelector(getBookingsData)
   const bookingsListError = useSelector(getBookingsError)
@@ -30,7 +32,7 @@ export const BookingPage = () => {
   const [spinner, setSpinner] = useState(true);
   let bookingListRoom = []
 
-  const roomBoking = useSelector(getRoomId)
+  const roomBoking = useSelector(getRoomsData)
   const roomsListStatus = useSelector(getRoomsStatus);
 
   const bookingList = useSelector(getChangeData)
@@ -98,9 +100,6 @@ export const BookingPage = () => {
 
   })
 
-  const bookingListInProgress = bookingListRoom.filter((inProgress) => inProgress.status === "In Progress");
-
-
 
   const handleClick = (click) => {
 
@@ -159,7 +158,7 @@ export const BookingPage = () => {
     currentView ==="checkOut" ? 
     [...bookingListRoom].sort((a,b) => new Date(b.check_out) - new Date(a.check_out)) :
     currentView ==="inProgress" ? 
-    [...bookingListInProgress].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate)) :
+    [...bookingListRoom].filter((inProgress) => inProgress.status === "In Progress").sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate)) :
     currentView ==="select" ? 
       bookingListRoom:
     [...bookingListRoom].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate))
@@ -181,6 +180,7 @@ export const BookingPage = () => {
           <StyledNavText onClick={() =>handleClick("inProgress")} isActive={currentView === "inProgress"}>In Progress</StyledNavText>
         </StyledNav>
         <StyledTextField label="Client" onChange={(e) => handleOnChange(e)}/>
+        <StyledButton name="create" onClick={() => navigate("/createBooking")}>+ New Booking</StyledButton>
         <StyledFormControl>
         <StyledInputLabel>Order</StyledInputLabel>
         <StyledSelect label="Order" onChange={(e) => handleOnSelect(e)} >

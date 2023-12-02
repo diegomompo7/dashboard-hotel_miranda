@@ -24,6 +24,10 @@ export const BookingsSlice = createSlice({
             data = action.payload;
 
         },
+        createBooking: (state, action) => {
+            
+            state.data = [action.payload, ...state.data]
+        },
 },
 
     extraReducers: (builder) => {

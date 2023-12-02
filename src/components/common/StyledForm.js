@@ -65,3 +65,14 @@ export const StyledTextAreaForm = styled.textarea`
     color: #135846;
     margin-bottom: 1.875rem;
 `
+
+export const StyledInputDate = styled.div `
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        & input {
+            margin-left: 0.25em;
+        }
+
+`

@@ -16,6 +16,7 @@ import { createContext, useEffect, useState } from 'react';
 import users from "./data/users.json"
 import { EditRoomsPage } from './pages/rooms/EditRoomsPage';
 import AuthContext from './AuthContext';
+import { NewBookingPage } from './pages/booking/NewBookingPage';
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
         <Route path="/createUser/:id" element={<EditUserPage />} />
         <Route path="/createRoom" element={<NewRoomPage />} />
         <Route path="/createRoom/:id" element={<EditRoomsPage />} />
+        <Route path="/createBooking/" element={<NewBookingPage />} />
             <Route path="/" element={<Root />}>
               <Route path="/" element={<DashboardPage />} />
               <Route path="booking" element={<BookingPage />} />

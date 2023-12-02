@@ -43,10 +43,6 @@ export const DataTableBooking = (props) => {
           <StyledTableCellBody
             style={{ display: "flex", alignItems: "center" }}
           >
-            <StyledTableCellBodyImg
-              src={data.userImg}
-              typeImg="booking"
-            ></StyledTableCellBodyImg>
             <div>
               <StyledTableCellBodyText typeStyle="title">
                 {data.name}
@@ -80,6 +76,7 @@ export const DataTableBooking = (props) => {
                 props.handleOpen(),
                   props.setSpecialRequest(data.specialRequest);
               }}
+              disabled={data.specialRequest === ""}
             >
               View Notes
             </StyledButton>
