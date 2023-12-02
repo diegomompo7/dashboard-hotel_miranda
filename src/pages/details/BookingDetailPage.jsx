@@ -110,7 +110,6 @@ export const BookingDetailPage = () => {
         <StyledDetailContainer key={bookingListRoom.id}>
           <StyledDetailContent>
             <StyledDetailContentPerson>
-              <StyledDetailImg src={bookingListRoom.userImg}></StyledDetailImg>
               <StyledDetailPersonText>
                 <StyledDetailText typeStyle="semibold">
                   {bookingListRoom.name} {bookingListRoom.surname}

@@ -30,7 +30,7 @@ export const StyledDetailImg = styled.img`
     height: 9.75em;
 `
 export const StyledDetailPersonText = styled(Box)`
-    margin-left: 5.2%;
+    
 `
 export const StyledDetailText = styled(Text) `
 

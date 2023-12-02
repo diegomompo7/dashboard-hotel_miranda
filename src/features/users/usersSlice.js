@@ -1,4 +1,4 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice, current} from "@reduxjs/toolkit";
 import { getUsersFromApiTrunk } from "./usersTrunk";
 
 
@@ -22,7 +22,9 @@ export const UsersSlice = createSlice({
         },
 
         deleteUser: (state, action) => {
-              state.data.filter((del) => del.id !== action.payload)
+            const data = current(state.data)
+            const delUser = data.filter((del) => del.id !== action.payload)
+            state.data = delUser
         },
         updateUser: (state, action) => {
 

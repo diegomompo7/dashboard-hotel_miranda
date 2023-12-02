@@ -10,6 +10,9 @@ import { StyledMoreIcon } from "../../components/common/StyledIcons";
 import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
+import { deleteBooking } from "../../features/bookings/bookingsSlice";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const DataTableBooking = (props) => {
   const navigate = useNavigate();
@@ -33,8 +36,17 @@ export const DataTableBooking = (props) => {
         setMenuId(null)
     };
 
-
-  //onClick={ () => navigate(`/booking/${data.id}`)}
+    const handleDelete = (id) => {
+      dispatch(deleteBooking(id));
+      handleClose()
+      toast.error('Booking deleted succesfull', {
+          position: "bottom-center",
+          autoClose: 5000,
+          closeOnClick: true,
+          theme: "colored",
+          });
+    
+  }
 
   return (
     <>
@@ -93,6 +105,7 @@ export const DataTableBooking = (props) => {
                             <MenuItem onClick={ () => navigate(`/booking/${menuId}`)}>
                                 View details
                             </MenuItem>
+                            <MenuItem onClick={() => handleDelete(menuId)}>Delete</MenuItem>
                         </Menu>
                     </StyledTableCellBody>
         </TableRow>

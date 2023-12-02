@@ -24,6 +24,11 @@ export const BookingsSlice = createSlice({
             data = action.payload;
 
         },
+        deleteBooking: (state, action) => {
+            const data = current(state.changeBooking)
+            const delBooking = data.filter((del) => del.id !== action.payload)
+            state.data = delBooking
+    },
         createBooking: (state, action) => {
             
             state.data = [action.payload, ...state.data]
