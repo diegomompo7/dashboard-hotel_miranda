@@ -10,7 +10,7 @@ import { StyledButton } from "../../components/common/StyledButton";
 import { ModalComponent } from "../../components/ModalComponent/ModalComponent";
 import { useDispatch, useSelector } from "react-redux";
 
-import { getBookingsData, getBookingsDataInProgress, getBookingsError, getBookingsStatus, getChangeData, getClient, getNewData, getSelect, updateRoomToBooking } from "../../features/bookings/bookingsSlice";
+import { getBookingsData,  getBookingsError, getBookingsStatus, getChangeData, getClient, getSelect } from "../../features/bookings/bookingsSlice";
 import { getBookingsFromApiTrunk } from "../../features/bookings/bookingsTrunk";
 import { getRoomId, getRoomsStatus } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
@@ -28,21 +28,21 @@ export const BookingPage = () => {
   const bookingsListError = useSelector(getBookingsError)
   const bookingsListStatus = useSelector(getBookingsStatus)
   const [spinner, setSpinner] = useState(true);
+  let bookingListRoom = []
 
   const roomBoking = useSelector(getRoomId)
   const roomsListStatus = useSelector(getRoomsStatus);
 
   const bookingList = useSelector(getChangeData)
-  const bookingListInProgress= useSelector(getBookingsDataInProgress)
 
   const [currentView, setCurrentView] = useState("all");
 
   const [numberPage, setNumberPage] = useState([0, 10])
   const [currentPage, setCurrentPage] = useState(1);
 
-
-
-
+    
+  const now = new Date();
+  const nowDate = now.toISOString().split('T')[0];;
 
   useEffect(
     () => {
@@ -76,21 +76,29 @@ export const BookingPage = () => {
     bookingsListStatus]
   );
 
-
-  const bookingListRoom = 
+  bookingListRoom = 
   
-  
-    (currentView === "inProgress" ? bookingListInProgress : bookingsListData).map((booking) => {
+     bookingsListData.map((booking) => {
 
     const room = roomBoking.find(room => room.id === booking.roomId)
 
     if(room){
-      return {...booking, roomId: room}
+
+      if(nowDate > booking.check_in){
+        if(nowDate >= booking.check_out){
+        return {...booking, roomId: room, status: "Check Out"}
+        }
+        else{
+          return {...booking, roomId: room, status: "In Progress"}
+        }
+      } else {
+        return {...booking, roomId: room, status: "Check In"}
+      }
     }
 
   })
 
-
+  const bookingListInProgress = bookingListRoom.filter((inProgress) => inProgress.status === "In Progress");
 
 
 
@@ -147,14 +155,14 @@ export const BookingPage = () => {
 
   const currentBookingsListData = 
   currentView ==="checkIn" ? 
-    [...bookingsListData].sort((a,b) => new Date(b.check_in) - new Date(a.check_in)) :
+    [...bookingListRoom].sort((a,b) => new Date(b.check_in) - new Date(a.check_in)) :
     currentView ==="checkOut" ? 
-    [...bookingsListData].sort((a,b) => new Date(b.check_out) - new Date(a.check_out)) :
+    [...bookingListRoom].sort((a,b) => new Date(b.check_out) - new Date(a.check_out)) :
     currentView ==="inProgress" ? 
     [...bookingListInProgress].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate)) :
     currentView ==="select" ? 
-      bookingList:
-    [...bookingsListData].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate))
+      bookingListRoom:
+    [...bookingListRoom].sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate))
 
 
   return (

@@ -125,8 +125,8 @@ export const NewUserPage = () => {
           pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
         ></StyledInputForm>
         <StyledInputForm
-          placeholder="YYYY/MM/DD"
-          type="text"
+          placeholder="date"
+          type="date"
           name="startDate"
         ></StyledInputForm>
         <StyledTextAreaForm

@@ -48,6 +48,25 @@ export const RoomsSlice = createSlice({
             }
             
         },
+
+        updateStatus: (state, action) => {
+
+            const data = state.data
+            
+            const index = data.findIndex((update) => update.id === action.payload.id)
+
+
+            if (index !== -1) {
+                const updatedData = {
+                    status: action.payload.status,
+
+                }
+
+                state.data = data.map((item, i) => (i === index ? updatedData : item));
+            }
+            
+        },
+        
         createRoom: (state, action) => {
             
             state.data = [action.payload, ...state.data]
@@ -79,7 +98,7 @@ export const RoomsSlice = createSlice({
     }
 })
 
-export const { getSelect, updateRoom, createRoom, deleteRoom, getNewData} = RoomsSlice.actions
+export const { getSelect, updateRoom, createRoom, deleteRoom, getNewData, updateStatus} = RoomsSlice.actions
 
 
 export const getRoomsDataAvailable = state => state.rooms.data.filter((available) => available.status === "Available")
