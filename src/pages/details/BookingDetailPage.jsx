@@ -34,6 +34,7 @@ import { getBookingsFromApiTrunk } from "../../features/bookings/bookingsTrunk";
 import { getRoomId, getRoomsStatus } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 import { useEffect, useState } from "react";
+import { bookingListRoom } from "../booking/BookingPage";
 
 export const BookingDetailPage = () => {
   const url = new URL(window.location.href);
@@ -49,6 +50,9 @@ export const BookingDetailPage = () => {
 
   const roomBoking = useSelector(getRoomId)
   const roomsListStatus = useSelector(getRoomsStatus);
+
+  const now = new Date();
+  const nowDate = now.toISOString().split('T')[0];;
 
   useEffect(
     () => {
@@ -86,7 +90,18 @@ export const BookingDetailPage = () => {
   
   const room = roomBoking.find(room => room.id === bookingId.roomId)
 
-  const bookingListRoom = {...bookingId, roomId: room}
+  let bookingListRoom = {}
+
+      if(nowDate > bookingId.check_in){
+        if(nowDate >= bookingId.check_out){
+        bookingListRoom = {...bookingId, roomId: room, status: "Check Out"}
+        }
+        else{
+          bookingListRoom = {...bookingId, roomId: room, status: "In Progress"}
+        }
+      } else {
+        bookingListRoom = {...bookingId, roomId: room, status: "Check In"}
+      }
   
 
   return (

@@ -15,7 +15,7 @@ import { getBookingsFromApiTrunk } from "../../features/bookings/bookingsTrunk";
 import { getRoomsData, getRoomsStatus } from "../../features/rooms/roomsSlice";
 import { getRoomsFromApiTrunk } from "../../features/rooms/roomsTrunk";
 import { useNavigate } from "react-router";
-
+  
 export const BookingPage = () => {
 
   const [isOpen] = useState(false)
@@ -30,12 +30,13 @@ export const BookingPage = () => {
   const bookingsListError = useSelector(getBookingsError)
   const bookingsListStatus = useSelector(getBookingsStatus)
   const [spinner, setSpinner] = useState(true);
-  let bookingListRoom = []
+
 
   const roomBoking = useSelector(getRoomsData)
   const roomsListStatus = useSelector(getRoomsStatus);
 
   const bookingList = useSelector(getChangeData)
+
 
   const [currentView, setCurrentView] = useState("all");
 
@@ -78,7 +79,7 @@ export const BookingPage = () => {
     bookingsListStatus]
   );
 
-  bookingListRoom = 
+  const bookingListRoom = 
   
      bookingsListData.map((booking) => {
 
@@ -99,6 +100,8 @@ export const BookingPage = () => {
     }
 
   })
+
+ 
 
 
   const handleClick = (click) => {
